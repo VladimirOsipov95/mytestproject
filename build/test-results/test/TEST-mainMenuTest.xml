@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="mainMenuTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2023-01-31T18:23:53" hostname="LAPTOP-06VBF7Q5" time="4.004">
+  <properties/>
+  <testcase name="1.Открываем вкладку Elements" classname="mainMenuTest" time="0.781"/>
+  <testcase name="3.Открываем вкладку Alerts, Frame &amp; Windows" classname="mainMenuTest" time="0.698"/>
+  <testcase name="6.Открываем вкладку Game Store Application" classname="mainMenuTest" time="0.431"/>
+  <testcase name="5.Открываем вкладку Interactions" classname="mainMenuTest" time="0.688"/>
+  <testcase name="4.Открываем вкладку Widgets" classname="mainMenuTest" time="0.786"/>
+  <testcase name="2.Открываем вкладку Forms" classname="mainMenuTest" time="0.606"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="elementsTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2023-01-31T18:23:33" hostname="LAPTOP-06VBF7Q5" time="20.131">
+  <properties/>
+  <testcase name="1.Открываем  раздел Text Box" classname="elementsTest" time="7.157"/>
+  <testcase name="2.Проверяем работу раздела Text Box" classname="elementsTest" time="0.801"/>
+  <testcase name="7.Открываем  раздел Web Tables" classname="elementsTest" time="0.582"/>
+  <testcase name="9.Добавление записей в разделе Web Tables" classname="elementsTest" time="2.8"/>
+  <testcase name="10.Удаление записей в разделе Web Tables" classname="elementsTest" time="0.303"/>
+  <testcase name="3.Открываем  раздел Check Box" classname="elementsTest" time="0.246"/>
+  <testcase name="8.Редактирование записей в разделе Web Tables" classname="elementsTest" time="5.152"/>
+  <testcase name="4.Проверка работы раздела Check Box" classname="elementsTest" time="1.539"/>
+  <testcase name="8.Поиск записей в разделе Web Tables" classname="elementsTest" time="0.363"/>
+  <testcase name="6.Проверка работы раздела Radio Button" classname="elementsTest" time="0.872"/>
+  <testcase name="5.Открываем  раздел Radio Button" classname="elementsTest" time="0.28"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[log4j:WARN No appenders could be found for logger (com.codeborne.selenide.impl.Plugins).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+Starting ChromeDriver 109.0.5414.74 (e7c5703604daa9cc128ccf5a5d3e993513758913-refs/branch-heads/5414@{#1172}) on port 55576
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+янв. 31, 2023 9:23:38 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected upstream dialect: W3C
+янв. 31, 2023 9:23:38 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 109, so returning the closest version found: a no-op implementation
+янв. 31, 2023 9:23:38 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+INFO: Unable to find CDP implementation matching 109.
+янв. 31, 2023 9:23:38 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$3
+WARNING: Unable to find version of CDP to use for . You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.4.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+]]></system-err>
+</testsuite>
