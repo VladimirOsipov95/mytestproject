@@ -1,6 +1,9 @@
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
+
+import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 public class elementsPage {
     private final SelenideElement buttonElements = $x("//h5[text()='Elements']"); // Открываем Elements
@@ -35,6 +38,7 @@ public class elementsPage {
     private final SelenideElement ageWebTables = $x("//*[@id='age']"); // Находим поле  Age в "WebTables"
     private final SelenideElement salaryWebTables = $x("//*[@id='salary']"); // Находим поле  Salary в "WebTables"
     private final SelenideElement departmentWebTables = $x("//*[@id='department']"); // Находим поле  Department в "WebTables"
+    private final ElementsCollection tablesWebTables = $$x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/div/div/div"); // Находим поле  tables в "WebTables"
 
     public  elementsPage (String url) {
         Selenide.open(url);
@@ -64,6 +68,7 @@ public class elementsPage {
         clearAndType(departmentWebTables, department);
 
     }
+
     public void clickElements () {
         buttonElements.click();
     }
@@ -134,9 +139,9 @@ public class elementsPage {
     public void clickWebTables () {
         buttonWebTables.click();
     }
-    public void searchWebTables () {
+    public void searchWebTables (String search) {
         buttonSearchWebTables.click();
-        buttonSearchWebTables.sendKeys("Alden");
+        buttonSearchWebTables.sendKeys(search);
     }
     public void editWebTables () {
         editWebTables.click();

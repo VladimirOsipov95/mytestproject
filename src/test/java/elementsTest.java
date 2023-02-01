@@ -7,13 +7,17 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static com.codeborne.selenide.Selenide.$x;
+
+import static com.codeborne.selenide.CollectionCondition.texts;
+import static com.codeborne.selenide.Selenide.*;
+
 /**
  *  Проверки вкладок в разделе Elements
  */
 @Epic("Проверки на вкладке Elements")
 public class elementsTest extends BaseTest {
     private final static String homeURL = "http://85.192.34.140:8081/";
+    private final static String search = "Alden";
     @Test
     @Owner("osipov_vr")
     @Description("Открываем  раздел Text Box")
@@ -197,8 +201,9 @@ public class elementsTest extends BaseTest {
         Allure.step("Открываем раздел Web Tables ");
         elementsPage.clickWebTables();
         Allure.step("Вводим значение в поиске");
-        elementsPage.searchWebTables();
+        elementsPage.searchWebTables(search);
         Allure.step("Проверяем отображаемые значения");
+        $$x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]").shouldHave(texts(search));
     }
     @Test // надо сделать проверку
     @Owner("osipov_vr")
