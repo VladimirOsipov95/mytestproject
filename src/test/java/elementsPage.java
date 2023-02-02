@@ -1,9 +1,7 @@
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
 
-import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 public class elementsPage {
     private final SelenideElement buttonElements = $x("//h5[text()='Elements']"); // Открываем Elements
@@ -38,12 +36,14 @@ public class elementsPage {
     private final SelenideElement ageWebTables = $x("//*[@id='age']"); // Находим поле  Age в "WebTables"
     private final SelenideElement salaryWebTables = $x("//*[@id='salary']"); // Находим поле  Salary в "WebTables"
     private final SelenideElement departmentWebTables = $x("//*[@id='department']"); // Находим поле  Department в "WebTables"
-    private final ElementsCollection tablesWebTables = $$x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/div/div/div"); // Находим поле  tables в "WebTables"
+    private final SelenideElement tablesWebTables = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]"); // Находим поле  tables в "WebTables"
 
     public  elementsPage (String url) {
         Selenide.open(url);
     }
-
+    public String [] getTables () {
+        return tablesWebTables.getText().split(" ");
+    }
     protected void clearAndType (SelenideElement element, String value ) {
         while (!element.getAttribute("value").equals("")) element.sendKeys(Keys.BACK_SPACE);
         element.sendKeys(value);
@@ -66,7 +66,6 @@ public class elementsPage {
         Selenide.sleep(300);
         departmentWebTables.click();
         clearAndType(departmentWebTables, department);
-
     }
 
     public void clickElements () {

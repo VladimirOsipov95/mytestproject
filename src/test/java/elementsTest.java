@@ -1,5 +1,4 @@
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -18,6 +17,13 @@ import static com.codeborne.selenide.Selenide.*;
 public class elementsTest extends BaseTest {
     private final static String homeURL = "http://85.192.34.140:8081/";
     private final static String search = "Alden";
+    private final static String NAME = "Vladimir";
+    private final static String LAST_NAME = "Osipov";
+    private final static int AGE = 25;
+    private final static String EMAIL = "volodka10@yandex.ru";
+    private final static int SALARY = 12000;
+    private final static String DEPARTMENT = "Legal";
+
     @Test
     @Owner("osipov_vr")
     @Description("Открываем  раздел Text Box")
@@ -189,7 +195,7 @@ public class elementsTest extends BaseTest {
         $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[6]/div[1]").shouldBe(Condition.visible);
         $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[7]/div[1]").shouldBe(Condition.visible);
     }
-    @Test // надо сделать проверку отображения
+    @Test
     @Owner("osipov_vr")
     @Description("Поиск записей в разделе Web Tables")
     @DisplayName("8.Поиск записей в разделе Web Tables")
@@ -219,10 +225,22 @@ public class elementsTest extends BaseTest {
         Allure.step("Кликаем  на кнопку редактирования");
         elementsPage.editWebTables();
         Allure.step("Изменяем значения  строки");
-        elementsPage.sendKeysWebTables("Vladimir", "Osipov", "volodka10@yandex.ru", 25 , 12000, "Moscow");
+        elementsPage.sendKeysWebTables(NAME, LAST_NAME, EMAIL, AGE , SALARY, DEPARTMENT);
         Allure.step("Подтверждаем изменения");
         elementsPage.clickButtonSubmit();
         Allure.step("Проверяем значения строки после редактирования");
+        String ACTUAL_FIRST_NAME = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/div/div[1]").getText();
+        String ACTUAL_LAST_NAME = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/div/div[2]").getText();
+        int ACTUAL_AGE = Integer.parseInt($x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/div/div[3]").getText());
+        String ACTUAL_EMAIL = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/div/div[4]").getText();
+        int ACTUAL_SALARY = Integer.parseInt($x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/div/div[5]").getText());
+        String ACTUAL_DEPARTMENT = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/div/div[6]").getText();
+        Assertions.assertEquals(NAME, ACTUAL_FIRST_NAME);
+        Assertions.assertEquals(LAST_NAME, ACTUAL_LAST_NAME);
+        Assertions.assertEquals(AGE, ACTUAL_AGE);
+        Assertions.assertEquals(EMAIL, ACTUAL_EMAIL);
+        Assertions.assertEquals(SALARY, ACTUAL_SALARY);
+        Assertions.assertEquals(DEPARTMENT, ACTUAL_DEPARTMENT);
     }
     @Test // надо сделать проверку
     @Owner("osipov_vr")
@@ -235,13 +253,16 @@ public class elementsTest extends BaseTest {
         elementsPage.clickElements();
         Allure.step("Открываем раздел Web Tables ");
         elementsPage.clickWebTables();
+        String [] actualTables = elementsPage.getTables();
         Allure.step("Кликаем  на кнопку Add");
         elementsPage.newWebTables();
         Allure.step("Заполняем поля данным");
-        elementsPage.sendKeysWebTables("Vladimir", "Osipov", "volodka10@yandex.ru", 25 , 12000, "Moscow");
+        elementsPage.sendKeysWebTables(NAME, LAST_NAME, EMAIL, AGE , SALARY, DEPARTMENT);
         Allure.step("Подтверждаем создание");
         elementsPage.clickButtonSubmit();
         Allure.step("Проверяем значения строки после создания");
+        String [] expectedTables = elementsPage.getTables();
+        Assertions.assertNotEquals(actualTables, expectedTables);
     }
     @Test // надо сделать
     @Owner("osipov_vr")
@@ -254,8 +275,11 @@ public class elementsTest extends BaseTest {
         elementsPage.clickElements();
         Allure.step("Открываем раздел Web Tables ");
         elementsPage.clickWebTables();
+        String [] actualTables = elementsPage.getTables();
         Allure.step("Кликаем  на кнопку удаление");
         elementsPage.deleteWebTables();
         Allure.step("Проверяем что строка удалилась");
+        String [] expectedTables = elementsPage.getTables();
+        Assertions.assertNotEquals(actualTables,expectedTables);
     }
 }
