@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
@@ -37,6 +38,11 @@ public class elementsPage {
     private final SelenideElement salaryWebTables = $x("//*[@id='salary']"); // Находим поле  Salary в "WebTables"
     private final SelenideElement departmentWebTables = $x("//*[@id='department']"); // Находим поле  Department в "WebTables"
     private final SelenideElement tablesWebTables = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]"); // Находим поле  tables в "WebTables"
+    private final SelenideElement buttonButtons = $x("//span[text()='Buttons']"); // Находим раздел "Buttons"
+    private final SelenideElement buttonDoubleClick = $x("//*[@id='doubleClickBtn']"); // Находим кнопку  "Double Click Me"
+    private final SelenideElement buttonRightClick = $x("//*[@id='rightClickBtn']"); // Находим кнопку  "Right Click Me"
+    private final SelenideElement buttonClickClick = $x("//*[@id='TYjkE']"); // Находим кнопку  "Click Me"
+    private final SelenideElement doubleClickMessage = $x("//*[@id='doubleClickMessage']"); // Текст после двойного клика
 
     public  elementsPage (String url) {
         Selenide.open(url);
@@ -151,5 +157,20 @@ public class elementsPage {
     public void deleteWebTables () {
         deleteWebTables.click();
     }
+    public void clickButtons () {
+        buttonButtons.click();
+    }
 
+    public void checkButtons () {
+        buttonDoubleClick.isDisplayed();
+        buttonRightClick.isDisplayed();
+        buttonClickClick.isDisplayed();
+    }
+    public void checkDoubleClick () {
+        buttonDoubleClick.doubleClick();
+    }
+
+    public void checkRightClick () {
+        buttonRightClick.contextClick();
+    }
 }

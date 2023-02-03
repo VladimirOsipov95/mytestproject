@@ -211,7 +211,7 @@ public class elementsTest extends BaseTest {
         Allure.step("Проверяем отображаемые значения");
         $$x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]").shouldHave(texts(search));
     }
-    @Test // надо сделать проверку
+    @Test
     @Owner("osipov_vr")
     @Description("Редактирование записей в разделе Web Tables")
     @DisplayName("8.Редактирование записей в разделе Web Tables")
@@ -242,7 +242,7 @@ public class elementsTest extends BaseTest {
         Assertions.assertEquals(SALARY, ACTUAL_SALARY);
         Assertions.assertEquals(DEPARTMENT, ACTUAL_DEPARTMENT);
     }
-    @Test // надо сделать проверку
+    @Test
     @Owner("osipov_vr")
     @Description("Добавление записей в разделе Web Tables")
     @DisplayName("9.Добавление записей в разделе Web Tables")
@@ -264,7 +264,7 @@ public class elementsTest extends BaseTest {
         String [] expectedTables = elementsPage.getTables();
         Assertions.assertNotEquals(actualTables, expectedTables);
     }
-    @Test // надо сделать
+    @Test
     @Owner("osipov_vr")
     @Description("Удаление записей в разделе Web Tables")
     @DisplayName("10.Удаление записей в разделе Web Tables")
@@ -281,5 +281,51 @@ public class elementsTest extends BaseTest {
         Allure.step("Проверяем что строка удалилась");
         String [] expectedTables = elementsPage.getTables();
         Assertions.assertNotEquals(actualTables,expectedTables);
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Description("Открываем  раздел Buttons")
+    @DisplayName("11.Открываем  раздел Buttons")
+    public void openButtons() {
+        Allure.step("Открываем главную страницу");
+        elementsPage elementsPage = new elementsPage(homeURL);
+        Allure.step("Переходим на вкладку Elements");
+        elementsPage.clickElements();
+        Allure.step("Открываем раздел Buttons");
+        elementsPage.clickButtons();
+        Allure.step("Проверяем содержимое раздела Buttons");
+        elementsPage.checkButtons();
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Description("Проверка двойного клика")
+    @DisplayName("12.Проверка двойного клика")
+    public void checkDoubleClick() {
+        Allure.step("Открываем главную страницу");
+        elementsPage elementsPage = new elementsPage(homeURL);
+        Allure.step("Переходим на вкладку Elements");
+        elementsPage.clickElements();
+        Allure.step("Открываем раздел Buttons");
+        elementsPage.clickButtons();
+        Allure.step("Деляем двойник клик на соответсвующую кнопку");
+        elementsPage.checkDoubleClick();
+        String message = $x("//*[@id='doubleClickMessage']").getOwnText();
+        Assertions.assertEquals(message, "You have done a double click");
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Description("Проверка правого клика")
+    @DisplayName("13.Проверка правого клика")
+    public void checkRightClick() {
+        Allure.step("Открываем главную страницу");
+        elementsPage elementsPage = new elementsPage(homeURL);
+        Allure.step("Переходим на вкладку Elements");
+        elementsPage.clickElements();
+        Allure.step("Открываем раздел Buttons");
+        elementsPage.clickButtons();
+        Allure.step("Деляем правый клик на соответсвующую кнопку");
+        elementsPage.checkRightClick();
+        String message = $x("//*[@id='rightClickMessage']").getOwnText();
+        Assertions.assertEquals(message, "You have done a right click");
     }
 }
