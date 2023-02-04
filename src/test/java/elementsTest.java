@@ -1,4 +1,5 @@
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 /**
  *  Проверки вкладок в разделе Elements
@@ -327,5 +329,34 @@ public class elementsTest extends BaseTest {
         elementsPage.checkRightClick();
         String message = $x("//*[@id='rightClickMessage']").getOwnText();
         Assertions.assertEquals(message, "You have done a right click");
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Description("Открываем  раздел Links")
+    @DisplayName("14.Открываем  раздел Links")
+    public void openLinks() {
+        Allure.step("Открываем главную страницу");
+        elementsPage elementsPage = new elementsPage(homeURL);
+        Allure.step("Переходим на вкладку Elements");
+        elementsPage.clickElements();
+        Allure.step("Открываем раздел Links");
+        elementsPage.clickButtonLinks();
+        Allure.step("Проверяем содержимое раздела Links");
+        elementsPage.checkLinks();
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Description("Открываем  новую вкладку")
+    @DisplayName("14.Открываем  овую вкладку")
+    public void openNewWindows() {
+        Allure.step("Открываем главную страницу");
+        elementsPage elementsPage = new elementsPage(homeURL);
+        Allure.step("Переходим на вкладку Elements");
+        elementsPage.clickElements();
+        Allure.step("Открываем раздел Links");
+        elementsPage.clickButtonLinks();
+        Allure.step("Кликаем на линку Home");
+        elementsPage.clickNewWindowLinks();
+        Allure.step("Проверяем что открылось новое окно");
     }
 }

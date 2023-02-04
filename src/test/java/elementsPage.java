@@ -1,4 +1,3 @@
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
@@ -42,7 +41,11 @@ public class elementsPage {
     private final SelenideElement buttonDoubleClick = $x("//*[@id='doubleClickBtn']"); // Находим кнопку  "Double Click Me"
     private final SelenideElement buttonRightClick = $x("//*[@id='rightClickBtn']"); // Находим кнопку  "Right Click Me"
     private final SelenideElement buttonClickClick = $x("//*[@id='TYjkE']"); // Находим кнопку  "Click Me"
-    private final SelenideElement doubleClickMessage = $x("//*[@id='doubleClickMessage']"); // Текст после двойного клика
+    private final SelenideElement buttonLinks = $x("//span[text()='Links']"); // Находим раздел "Links"
+    private final SelenideElement openNewTabsLinks = $x("//*[@id='linkWrapper']/h5[1]/strong"); // Находим раздел с сылками на новое окно
+    private final SelenideElement sendAnApiCall = $x("//*[@id='linkWrapper']/h5[2]/strong"); // Находим раздел с сылками на апи
+    private final SelenideElement newWindowHome = $x("//*[@id='simpleLink']"); // Находим линк Home
+
 
     public  elementsPage (String url) {
         Selenide.open(url);
@@ -169,8 +172,17 @@ public class elementsPage {
     public void checkDoubleClick () {
         buttonDoubleClick.doubleClick();
     }
-
     public void checkRightClick () {
         buttonRightClick.contextClick();
+    }
+    public void clickButtonLinks () {
+        buttonLinks.click();
+    }
+    public void checkLinks () {
+        openNewTabsLinks.isDisplayed();
+        sendAnApiCall.isDisplayed();
+    }
+    public void clickNewWindowLinks () {
+        newWindowHome.click();
     }
 }
