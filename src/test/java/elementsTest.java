@@ -1,5 +1,4 @@
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -8,9 +7,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+
 
 /**
  *  Проверки вкладок в разделе Elements
@@ -347,7 +348,7 @@ public class elementsTest extends BaseTest {
     @Test
     @Owner("osipov_vr")
     @Description("Открываем  новую вкладку")
-    @DisplayName("14.Открываем  овую вкладку")
+    @DisplayName("14.Открываем  новую вкладку")
     public void openNewWindows() {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);
@@ -358,5 +359,55 @@ public class elementsTest extends BaseTest {
         Allure.step("Кликаем на линку Home");
         elementsPage.clickNewWindowLinks();
         Allure.step("Проверяем что открылось новое окно");
+        switchTo().window(1);
+        $x("//h5[text()='Elements']").shouldBe(Condition.visible);
+        $x("//h5[text()='Forms']").shouldBe(Condition.visible);
+        $x("//h5[text()='Alerts, Frame & Windows']").shouldBe(Condition.visible);
+        $x("//h5[text()='Widgets']").shouldBe(Condition.visible);
+        $x("//h5[text()='Interactions']").shouldBe(Condition.visible);
+        $x("//h5[text()='Game Store Application']").shouldBe(Condition.visible);
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Description("Открываем  раздел Upload and Download")
+    @DisplayName("15.Открываем  раздел Upload and Download")
+    public void openUploadAndDownload() {
+        Allure.step("Открываем главную страницу");
+        elementsPage elementsPage = new elementsPage(homeURL);
+        Allure.step("Переходим на вкладку Elements");
+        elementsPage.clickElements();
+        Allure.step("Открываем раздел Upload and Download");
+        elementsPage.openUploadAndDownload();
+        Allure.step("Проверяем содержимое раздела Upload and Download");
+        elementsPage.checkUploadAndDownload();
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Description("Скачиваем файл")
+    @DisplayName("16.Скачиваем файл")
+    public void Download() throws FileNotFoundException {
+        Allure.step("Открываем главную страницу");
+        elementsPage elementsPage = new elementsPage(homeURL);
+        Allure.step("Переходим на вкладку Elements");
+        elementsPage.clickElements();
+        Allure.step("Открываем раздел Upload and Download");
+        elementsPage.openUploadAndDownload();
+        Allure.step("Нажимаем на кнопку Download");
+        elementsPage.clickDownload();
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Description("Загружаем файл")
+    @DisplayName("17.Загружаем файл")
+    public void Upload() throws FileNotFoundException {
+        Allure.step("Открываем главную страницу");
+        elementsPage elementsPage = new elementsPage(homeURL);
+        Allure.step("Переходим на вкладку Elements");
+        elementsPage.clickElements();
+        Allure.step("Открываем раздел Upload and Download");
+        elementsPage.openUploadAndDownload();
+        Allure.step("Нажимаем на кнопку Upload");
+        elementsPage.clickDownload();
+        Allure.step("Проверяем что файл загрузился");
     }
 }

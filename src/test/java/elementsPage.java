@@ -2,6 +2,8 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
 
+import java.io.FileNotFoundException;
+
 import static com.codeborne.selenide.Selenide.$x;
 public class elementsPage {
     private final SelenideElement buttonElements = $x("//h5[text()='Elements']"); // Открываем Elements
@@ -45,6 +47,10 @@ public class elementsPage {
     private final SelenideElement openNewTabsLinks = $x("//*[@id='linkWrapper']/h5[1]/strong"); // Находим раздел с сылками на новое окно
     private final SelenideElement sendAnApiCall = $x("//*[@id='linkWrapper']/h5[2]/strong"); // Находим раздел с сылками на апи
     private final SelenideElement newWindowHome = $x("//*[@id='simpleLink']"); // Находим линк Home
+    private final SelenideElement buttonUploadAndDownload = $x("//span[text()='Upload and Download']"); // Находим раздел "Upload And Download"
+    private final SelenideElement buttonDownload = $x("//a[@href='images/sticker.png']"); // Находим кнопку "Download"
+    private final SelenideElement buttonUpload = $x("//*[@id='uploadFile']"); // Находим кнопку "Upload"
+
 
 
     public  elementsPage (String url) {
@@ -184,5 +190,15 @@ public class elementsPage {
     }
     public void clickNewWindowLinks () {
         newWindowHome.click();
+    }
+    public void openUploadAndDownload () {
+        buttonUploadAndDownload.click();
+    }
+    public void checkUploadAndDownload () {
+        buttonUpload.isDisplayed();
+        buttonDownload.isDisplayed();
+    }
+    public void clickDownload () throws FileNotFoundException {
+        buttonDownload.click();
     }
 }
