@@ -4,15 +4,15 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 /**
- * Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р° СЃР°Р№С‚Р° РїСЂРѕРµРєС‚Р°
+ * Главная страница сайта проекта
  */
 public class mainPage {
-    private final SelenideElement buttonElements = $x("//h5[text()='Elements']"); // РћС‚РєСЂС‹РІР°РµРј Elements
-    private final SelenideElement buttonForms = $x("//h5[text()='Forms']"); // РћС‚РєСЂС‹РІР°РµРј Forms
-    private final SelenideElement buttonAFW = $x("//h5[text()='Alerts, Frame & Windows']"); // РћС‚РєСЂС‹РІР°РµРј Alerts, Frame & Windows
-    private final SelenideElement buttonWidgets = $x("//h5[text()='Widgets']"); // РћС‚РєСЂС‹РІР°РµРј Widgets
-    private final SelenideElement buttonInteractions = $x("//h5[text()='Interactions']"); // РћС‚РєСЂС‹РІР°РµРј Interactions
-    private final SelenideElement buttonGSA = $x("//h5[text()='Game Store Application']"); // РћС‚РєСЂС‹РІР°РµРј Game Store Application
+    private final SelenideElement buttonElements = $x("//h5[text()='Elements']"); // Открываем Elements
+    private final SelenideElement buttonForms = $x("//h5[text()='Forms']"); // Открываем Forms
+    private final SelenideElement buttonAFW = $x("//h5[text()='Alerts, Frame & Windows']"); // Открываем Alerts, Frame & Windows
+    private final SelenideElement buttonWidgets = $x("//h5[text()='Widgets']"); // Открываем Widgets
+    private final SelenideElement buttonInteractions = $x("//h5[text()='Interactions']"); // Открываем Interactions
+    private final SelenideElement buttonGSA = $x("//h5[text()='Game Store Application']"); // Открываем Game Store Application
 
 
     public  mainPage (String url) {

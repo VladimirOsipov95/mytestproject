@@ -6,12 +6,9 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.io.FileNotFoundException;
-
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Selenide.*;
-
 
 /**
  *  Проверки вкладок в разделе Elements
@@ -366,6 +363,7 @@ public class elementsTest extends BaseTest {
         $x("//h5[text()='Widgets']").shouldBe(Condition.visible);
         $x("//h5[text()='Interactions']").shouldBe(Condition.visible);
         $x("//h5[text()='Game Store Application']").shouldBe(Condition.visible);
+        closeWindow();
     }
     @Test
     @Owner("osipov_vr")
@@ -393,13 +391,15 @@ public class elementsTest extends BaseTest {
         Allure.step("Открываем раздел Upload and Download");
         elementsPage.openUploadAndDownload();
         Allure.step("Нажимаем на кнопку Download");
-        elementsPage.clickDownload();
+        String result = elementsPage.clickDownload();
+        Allure.step("Проверяем что файл скачался");
+        Assertions.assertEquals(result,"sticker.png");
     }
     @Test
     @Owner("osipov_vr")
     @Description("Загружаем файл")
     @DisplayName("17.Загружаем файл")
-    public void Upload() throws FileNotFoundException {
+    public void Upload()  {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);
         Allure.step("Переходим на вкладку Elements");
@@ -407,7 +407,8 @@ public class elementsTest extends BaseTest {
         Allure.step("Открываем раздел Upload and Download");
         elementsPage.openUploadAndDownload();
         Allure.step("Нажимаем на кнопку Upload");
-        elementsPage.clickDownload();
+        elementsPage.clickUpload();
         Allure.step("Проверяем что файл загрузился");
+        $x("//*[@id='uploadedFilePath']").shouldBe(Condition.visible);
     }
 }

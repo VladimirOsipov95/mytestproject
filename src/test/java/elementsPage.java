@@ -1,10 +1,13 @@
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
-
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Objects;
 
 import static com.codeborne.selenide.Selenide.$x;
+
+
 public class elementsPage {
     private final SelenideElement buttonElements = $x("//h5[text()='Elements']"); // Открываем Elements
     private final SelenideElement buttonTextBox = $x("//span[text()='Text Box']"); // Находим раздел "TextBox"
@@ -56,11 +59,16 @@ public class elementsPage {
     public  elementsPage (String url) {
         Selenide.open(url);
     }
+
+    public SelenideElement getButtonTextBox() {
+        return buttonTextBox;
+    }
+
     public String [] getTables () {
         return tablesWebTables.getText().split(" ");
     }
     protected void clearAndType (SelenideElement element, String value ) {
-        while (!element.getAttribute("value").equals("")) element.sendKeys(Keys.BACK_SPACE);
+        while (!Objects.equals(element.getAttribute("value"), "")) element.sendKeys(Keys.BACK_SPACE);
         element.sendKeys(value);
     } // очищаем поле перед вводом
     public void sendKeysWebTables (String name, String lastName, String email, int age, int salary, String department) {
@@ -188,6 +196,7 @@ public class elementsPage {
         openNewTabsLinks.isDisplayed();
         sendAnApiCall.isDisplayed();
     }
+
     public void clickNewWindowLinks () {
         newWindowHome.click();
     }
@@ -198,7 +207,12 @@ public class elementsPage {
         buttonUpload.isDisplayed();
         buttonDownload.isDisplayed();
     }
-    public void clickDownload () throws FileNotFoundException {
-        buttonDownload.click();
+    public String clickDownload () throws FileNotFoundException {
+        File download = buttonDownload.download();
+        download.getName();
+        return download.getName();
+    }
+    public void clickUpload () {
+        buttonUpload.uploadFile(new File("src/test/resources/1.png"));
     }
 }
