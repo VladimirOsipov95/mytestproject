@@ -60,8 +60,20 @@ public class elementsPage {
         Selenide.open(url);
     }
 
-    public SelenideElement getButtonTextBox() {
-        return buttonTextBox;
+    public SelenideElement getFullName() {
+        return fullName;
+    }
+    public SelenideElement getEmail () {
+        return email;
+    }
+    public SelenideElement getCurrentAddress () {
+        return currentAddress;
+    }
+    public SelenideElement getPermanentAddress () {
+        return permanentAddress;
+    }
+    public SelenideElement getButtonSubmit () {
+        return buttonSubmit;
     }
 
     public String [] getTables () {
@@ -90,7 +102,6 @@ public class elementsPage {
         departmentWebTables.click();
         clearAndType(departmentWebTables, department);
     }
-
     public void clickElements () {
         buttonElements.click();
     }
@@ -119,6 +130,9 @@ public class elementsPage {
     public void clickButtonCheckBox () {
         buttonCheckBox.click();
     }
+    public SelenideElement getHome () {
+        return buttonHome;
+    }
     public void clickHome () {
         buttonHome.click();
     }
@@ -146,8 +160,20 @@ public class elementsPage {
     public void clickRadioButton () {
         buttonRadioButton.click();
     }
+    public SelenideElement getButtonYes () {
+        return buttonYes;
+    }
+    public SelenideElement getButtonImpressive () {
+        return buttonImpressive;
+    }
+    public SelenideElement getButtonNo () {
+        return buttonNo;
+    }
     public void clickYes () {
         buttonYes.click();
+    }
+    public SelenideElement getAfterClickRadio () {
+        return afterClickRadio;
     }
     public String afterClick () {
         return afterClickRadio.getText();

@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.*;
  *  Проверки вкладок в разделе Elements
  */
 @Epic("Проверки на вкладке Elements")
-public class elementsTest extends BaseTest {
+public class ElementsTest extends BaseTest {
     private final static String homeURL = "http://85.192.34.140:8081/";
     private final static String search = "Alden";
     private final static String NAME = "Vladimir";
@@ -36,11 +36,11 @@ public class elementsTest extends BaseTest {
         Allure.step("Открываем раздел Text Box");
         elementsPage.clickButtonTextBox();
         Allure.step("Проверяем содержимое раздела Text Box");
-        $x("//*[@id='userName']").shouldBe(Condition.visible);
-        $x("//*[@id='userEmail']").shouldBe(Condition.visible);
-        $x("//*[@id='currentAddress']").shouldBe(Condition.visible);
-        $x("//*[@id='permanentAddress']").shouldBe (Condition.visible);
-        $x("//button[@id='submit']").shouldBe(Condition.visible);
+        elementsPage.getFullName().shouldBe(Condition.visible);
+        elementsPage.getEmail().shouldBe(Condition.visible);
+        elementsPage.getCurrentAddress().shouldBe(Condition.visible);
+        elementsPage.getPermanentAddress().shouldBe (Condition.visible);
+        elementsPage.getButtonSubmit().shouldBe(Condition.visible);
     }
     @Test
     @Owner("osipov_vr")
@@ -61,7 +61,7 @@ public class elementsTest extends BaseTest {
         elementsPage.currentAddress();
         Allure.step("Заполняем поле Permanent Address");
         elementsPage.permanentAddress();
-        Allure.step("Нажимаем кнопку  Sumbit");
+        Allure.step("Нажимаем кнопку  Submit");
         elementsPage.clickButtonSubmit();
     }
     @Test
@@ -76,7 +76,7 @@ public class elementsTest extends BaseTest {
         Allure.step("Открываем раздел Check Box");
         elementsPage.clickButtonCheckBox();
         Allure.step("Проверяем содержимое раздела Check Box");
-        $x("//span[text()='Home']").shouldBe(Condition.visible);
+        elementsPage.getHome().shouldBe(Condition.visible);
     }
     @Test
     @Owner("osipov_vr")
@@ -138,9 +138,9 @@ public class elementsTest extends BaseTest {
         Allure.step("Открываем раздел Radio Button ");
         elementsPage.clickRadioButton();
         Allure.step("Проверяем содержимое раздела Radio Button");
-        $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[2]/label").shouldBe(Condition.visible);
-        $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/label").shouldBe(Condition.visible);
-        $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[4]/label").shouldBe(Condition.visible);
+        elementsPage.getButtonYes().shouldBe(Condition.visible);
+        elementsPage.getButtonImpressive().shouldBe(Condition.visible);
+        elementsPage.getButtonNo().shouldBe(Condition.visible);
     }
     @Test
     @Owner("osipov_vr")
@@ -156,19 +156,19 @@ public class elementsTest extends BaseTest {
         Allure.step("Кликаем в Yes");
         elementsPage.clickYes();
         String Yes = elementsPage.afterClick();
-        String Yes1 = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/p/span").getText();
+        String Yes1 = elementsPage.getAfterClickRadio().getText();
         Assertions.assertTrue(Yes.contains(Yes1));
         Thread.sleep(150);
         Allure.step("Кликаем в Impressive");
         elementsPage.clickImpressive();
         String Impressive = elementsPage.afterClick();
-        String Impressive1 = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/p/span").getText();
+        String Impressive1 = elementsPage.getAfterClickRadio().getText();
         Assertions.assertTrue(Impressive.contains(Impressive1));
         Thread.sleep(150);
         Allure.step("Кликаем в No");
         elementsPage.clickNo();
         String No = elementsPage.afterClick();
-        String No1 = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/p/span").getText();
+        String No1 = elementsPage.getAfterClickRadio().getText();
         Assertions.assertTrue(No.contains(No1));
     }
     @Test
