@@ -1,3 +1,5 @@
+package Pages;
+
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
@@ -43,8 +45,8 @@ public class elementsPage {
     private final SelenideElement departmentWebTables = $x("//*[@id='department']"); // Находим поле  Department в "WebTables"
     private final SelenideElement tablesWebTables = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]"); // Находим поле  tables в "WebTables"
     private final SelenideElement buttonButtons = $x("//span[text()='Buttons']"); // Находим раздел "Buttons"
-    private final SelenideElement buttonDoubleClick = $x("//*[@id='doubleClickBtn']"); // Находим кнопку  "Double Click Me"
-    private final SelenideElement buttonRightClick = $x("//*[@id='rightClickBtn']"); // Находим кнопку  "Right Click Me"
+    private final SelenideElement buttonDoubleClick = $x("//button[text()='Double Click Me']"); // Находим кнопку  "Double Click Me"
+    private final SelenideElement buttonRightClick = $x("//button[text()='Right Click Me']"); // Находим кнопку  "Right Click Me"
     private final SelenideElement buttonClickClick = $x("//*[@id='TYjkE']"); // Находим кнопку  "Click Me"
     private final SelenideElement buttonLinks = $x("//span[text()='Links']"); // Находим раздел "Links"
     private final SelenideElement openNewTabsLinks = $x("//*[@id='linkWrapper']/h5[1]/strong"); // Находим раздел с сылками на новое окно

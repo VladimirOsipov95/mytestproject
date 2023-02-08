@@ -1,8 +1,7 @@
+package Pages;
+
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-
-import java.util.Random;
-
 import static com.codeborne.selenide.Selenide.$x;
 
 public class formsPage {
@@ -50,7 +49,7 @@ public class formsPage {
         return fieldMobile;
     }
 
-    public void checkFieldMobile (String number) {
+    public void checkFieldMobile(String number) {
         fieldMobile.click();
         fieldMobile.sendKeys(number);
     }

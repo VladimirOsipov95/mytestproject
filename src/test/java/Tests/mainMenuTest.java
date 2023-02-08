@@ -1,3 +1,6 @@
+package Tests;
+
+import Pages.mainPage;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;

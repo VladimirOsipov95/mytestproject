@@ -1,3 +1,6 @@
+package Tests;
+
+import Pages.elementsPage;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
@@ -300,13 +303,14 @@ public class ElementsTest extends BaseTest {
     @Owner("osipov_vr")
     @Description("Проверка двойного клика")
     @DisplayName("12.Проверка двойного клика")
-    public void checkDoubleClick() {
+    public void checkDoubleClick() throws InterruptedException {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);
         Allure.step("Переходим на вкладку Elements");
         elementsPage.clickElements();
         Allure.step("Открываем раздел Buttons");
         elementsPage.clickButtons();
+        Thread.sleep(3000);
         Allure.step("Деляем двойник клик на соответсвующую кнопку");
         elementsPage.checkDoubleClick();
         String message = $x("//*[@id='doubleClickMessage']").getOwnText();
@@ -316,13 +320,14 @@ public class ElementsTest extends BaseTest {
     @Owner("osipov_vr")
     @Description("Проверка правого клика")
     @DisplayName("13.Проверка правого клика")
-    public void checkRightClick() {
+    public void checkRightClick() throws InterruptedException {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);
         Allure.step("Переходим на вкладку Elements");
         elementsPage.clickElements();
         Allure.step("Открываем раздел Buttons");
         elementsPage.clickButtons();
+        Thread.sleep(3000);
         Allure.step("Деляем правый клик на соответсвующую кнопку");
         elementsPage.checkRightClick();
         String message = $x("//*[@id='rightClickMessage']").getOwnText();
