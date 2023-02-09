@@ -2,7 +2,15 @@ package Pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.Keys;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import static com.codeborne.selenide.Condition.enabled;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class formsPage {
     private final SelenideElement buttonForms = $x("//h5[text()='Forms']"); // Открываем Forms
@@ -73,5 +81,9 @@ public class formsPage {
     }
     public SelenideElement getSelectState() {
         return selectState;
+    }
+
+    public void setDateByName( String date) {
+        executeJavaScript(String.format("//*[@id='dateOfBirthInput']", date));
     }
 }

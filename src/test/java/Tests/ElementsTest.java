@@ -8,6 +8,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import java.io.FileNotFoundException;
 import static com.codeborne.selenide.CollectionCondition.texts;
@@ -29,6 +30,7 @@ public class ElementsTest extends BaseTest {
 
     @Test
     @Owner("osipov_vr")
+    @Order(1)
     @Description("Открываем  раздел Text Box")
     @DisplayName("1.Открываем  раздел Text Box")
     public void openTextBox () {
@@ -47,6 +49,7 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(2)
     @Description("Проверяем работу раздела Text Box")
     @DisplayName("2.Проверяем работу раздела Text Box")
     public void workTextBox () {
@@ -69,6 +72,7 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(3)
     @Description("Открываем  раздел Check Box")
     @DisplayName("3.Открываем  раздел Check Box")
     public void openCheckBox () {
@@ -83,6 +87,7 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(4)
     @Description("Проверка работы раздела Check Box")
     @DisplayName("4.Проверка работы раздела Check Box")
     public void workCheckBox () throws InterruptedException {
@@ -131,6 +136,7 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(5)
     @Description("Открываем  раздел Radio Button")
     @DisplayName("5.Открываем  раздел Radio Button")
     public void openRadioButton () {
@@ -147,6 +153,7 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(6)
     @Description("Проверка работы раздела Radio Button")
     @DisplayName("6.Проверка работы раздела Radio Button")
     public void workRadioButton () throws InterruptedException {
@@ -176,6 +183,7 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(7)
     @Description("Открываем  раздел Web Tables")
     @DisplayName("7.Открываем  раздел Web Tables")
     public void openWebTables() {
@@ -200,6 +208,7 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(8)
     @Description("Поиск записей в разделе Web Tables")
     @DisplayName("8.Поиск записей в разделе Web Tables")
     public void searchWebTables() {
@@ -216,8 +225,9 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(9)
     @Description("Редактирование записей в разделе Web Tables")
-    @DisplayName("8.Редактирование записей в разделе Web Tables")
+    @DisplayName("9.Редактирование записей в разделе Web Tables")
     public void editWebTables()  {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);
@@ -247,8 +257,9 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(10)
     @Description("Добавление записей в разделе Web Tables")
-    @DisplayName("9.Добавление записей в разделе Web Tables")
+    @DisplayName("10.Добавление записей в разделе Web Tables")
     public void newWebTables() {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);
@@ -269,8 +280,9 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(11)
     @Description("Удаление записей в разделе Web Tables")
-    @DisplayName("10.Удаление записей в разделе Web Tables")
+    @DisplayName("11.Удаление записей в разделе Web Tables")
     public void deleteWebTables() {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);
@@ -287,8 +299,9 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(12)
     @Description("Открываем  раздел Buttons")
-    @DisplayName("11.Открываем  раздел Buttons")
+    @DisplayName("12.Открываем  раздел Buttons")
     public void openButtons() {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);
@@ -301,8 +314,9 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(13)
     @Description("Проверка двойного клика")
-    @DisplayName("12.Проверка двойного клика")
+    @DisplayName("13.Проверка двойного клика")
     public void checkDoubleClick() throws InterruptedException {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);
@@ -318,8 +332,9 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(14)
     @Description("Проверка правого клика")
-    @DisplayName("13.Проверка правого клика")
+    @DisplayName("14.Проверка правого клика")
     public void checkRightClick() throws InterruptedException {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);
@@ -335,8 +350,9 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(15)
     @Description("Открываем  раздел Links")
-    @DisplayName("14.Открываем  раздел Links")
+    @DisplayName("15.Открываем  раздел Links")
     public void openLinks() {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);
@@ -349,8 +365,9 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(16)
     @Description("Открываем  новую вкладку")
-    @DisplayName("14.Открываем  новую вкладку")
+    @DisplayName("16.Открываем  новую вкладку")
     public void openNewWindows() {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);
@@ -372,8 +389,9 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(17)
     @Description("Открываем  раздел Upload and Download")
-    @DisplayName("15.Открываем  раздел Upload and Download")
+    @DisplayName("17.Открываем  раздел Upload and Download")
     public void openUploadAndDownload() {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);
@@ -386,8 +404,9 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(18)
     @Description("Скачиваем файл")
-    @DisplayName("16.Скачиваем файл")
+    @DisplayName("18.Скачиваем файл")
     public void Download() throws FileNotFoundException {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);
@@ -402,8 +421,9 @@ public class ElementsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(19)
     @Description("Загружаем файл")
-    @DisplayName("17.Загружаем файл")
+    @DisplayName("19.Загружаем файл")
     public void Upload()  {
         Allure.step("Открываем главную страницу");
         elementsPage elementsPage = new elementsPage(homeURL);

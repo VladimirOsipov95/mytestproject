@@ -8,9 +8,13 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.Random;
+
+import static com.codeborne.selenide.Selenide.$x;
 
 @Epic("Проверки на вкладке Forms")
 public class FormsTest extends BaseTest {
@@ -21,6 +25,7 @@ public class FormsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(1)
     @Description("Открываем  раздел Practice Form")
     @DisplayName("1.Открываем  раздел Practice Form")
     public void openTextBox () {
@@ -47,6 +52,7 @@ public class FormsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
+    @Order(2)
     @Description("Проверяем что в поле Mobile вводиться не больше 10 символов")
     @DisplayName("2.Проверяем что в поле Mobile вводиться не больше 10 символов")
     public void checkFieldMobile () {
@@ -65,6 +71,7 @@ public class FormsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr") // надо сделать
+    @Order(3)
     @Description("Проверяем работы датапикера")
     @DisplayName("3.Проверяем работу датапикера")
     public void workDataPicker () {
@@ -75,6 +82,7 @@ public class FormsTest extends BaseTest {
         Allure.step("Открываем раздел Practice Form");
         formsPage.openPracticeForm();
         Allure.step("Открываем дата-пикер");
+        formsPage.getFieldDateOfBrith().click();
         Allure.step("Устанаволиваем значение = текущая дата - 1 год");
         Allure.step("Проверярем отображения значения");
     }
