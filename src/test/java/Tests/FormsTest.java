@@ -2,6 +2,9 @@ package Tests;
 
 import Pages.formsPage;
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.SetValueOptions;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -10,15 +13,22 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.$x;
 
+
 @Epic("Проверки на вкладке Forms")
 public class FormsTest extends BaseTest {
     private final static String homeURL = "http://85.192.34.140:8081/";
+    private final SelenideElement select = $x("/html/body/div/div/div/div[2]/div[2]/div[1]/form/div[10]/div[2]/div/div/div[1]/div[1]");
+
     private long generateRandomNumber () {
         Random Random = new Random();
         return Random.nextLong();
@@ -70,7 +80,7 @@ public class FormsTest extends BaseTest {
         Assertions.assertNotEquals(randomNumber,results);
     }
     @Test
-    @Owner("osipov_vr") // надо сделать
+    @Owner("osipov_vr")
     @Order(3)
     @Description("Проверяем работы датапикера")
     @DisplayName("3.Проверяем работу датапикера")
@@ -83,7 +93,37 @@ public class FormsTest extends BaseTest {
         formsPage.openPracticeForm();
         Allure.step("Открываем дата-пикер");
         formsPage.getFieldDateOfBrith().click();
-        Allure.step("Устанаволиваем значение = текущая дата - 1 год");
+        Allure.step("Устанаволиваем значение = текущая дата - 20 лет");
+        String dateFormat = "dd MMM yyyy";
+        String expectedDate =LocalDateTime.now().minusYears(20).format(DateTimeFormatter.ofPattern(dateFormat).localizedBy(Locale.US));
+        formsPage.getFieldDateOfBrith().sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        formsPage.getFieldDateOfBrith().sendKeys(expectedDate);
+        formsPage.getFieldDateOfBrith().sendKeys(Keys.ENTER);
         Allure.step("Проверярем отображения значения");
+        Assertions.assertEquals(expectedDate, formsPage.getFieldDateOfBrith().getValue());
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Order(4)
+    @Description("Проверяем работы селектов")
+    @DisplayName("4.Проверяем работу селектов")
+    public void workSelected () {
+        Allure.step("Открываем главную страницу");
+        formsPage formsPage = new formsPage(homeURL);
+        Allure.step("Переходим на вкладку Forms");
+        formsPage.openForms();
+        Allure.step("Открываем раздел Practice Form");
+        formsPage.openPracticeForm();
+        Allure.step("Проверяем что поле Select City недоступно для выбора");
+        formsPage.getSelectCity().shouldBe(Condition.editable);
+        Allure.step("Устанаволиваем значение в Select State");
+        formsPage.getSelectState().click();
+        String A = select.getText();
+        select.sendKeys("NCR");
+        //select.setValue(SetValueOptions.withText("NCR"));
+        Selenide.sleep(3000);
+        Allure.step("Проверярем что поле Select City доступно для редактирования");
+        Allure.step("Устанавливаем значение Select City");
+        Allure.step("Проверяем что в селектах установленные нами значения");
     }
 }

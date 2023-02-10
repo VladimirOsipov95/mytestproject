@@ -83,7 +83,4 @@ public class formsPage {
         return selectState;
     }
 
-    public void setDateByName( String date) {
-        executeJavaScript(String.format("//*[@id='dateOfBirthInput']", date));
-    }
 }
