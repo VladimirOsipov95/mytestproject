@@ -2,9 +2,7 @@ package Tests;
 
 import Pages.formsPage;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.SetValueOptions;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -13,7 +11,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import java.time.LocalDateTime;
@@ -27,7 +24,8 @@ import static com.codeborne.selenide.Selenide.$x;
 @Epic("Проверки на вкладке Forms")
 public class FormsTest extends BaseTest {
     private final static String homeURL = "http://85.192.34.140:8081/";
-    private final SelenideElement select = $x("/html/body/div/div/div/div[2]/div[2]/div[1]/form/div[10]/div[2]/div/div/div[1]/div[1]");
+    private final SelenideElement selectState = $x("//div[contains(text(),'NCR')]");
+    private final SelenideElement selectCity = $x("//div[contains(text(),'Delhi')]");
 
     private long generateRandomNumber () {
         Random Random = new Random();
@@ -118,12 +116,14 @@ public class FormsTest extends BaseTest {
         formsPage.getSelectCity().shouldBe(Condition.editable);
         Allure.step("Устанаволиваем значение в Select State");
         formsPage.getSelectState().click();
-        String A = select.getText();
-        select.sendKeys("NCR");
-        //select.setValue(SetValueOptions.withText("NCR"));
-        Selenide.sleep(3000);
+        selectState.click();
         Allure.step("Проверярем что поле Select City доступно для редактирования");
+        formsPage.getSelectCity().click();
         Allure.step("Устанавливаем значение Select City");
+        selectCity.click();
+        formsPage.getFieldMobile().click();
         Allure.step("Проверяем что в селектах установленные нами значения");
+        Assertions.assertEquals("NCR", formsPage.getSelectState().getText());
+        Assertions.assertEquals("Delhi", formsPage.getSelectCity().getText());
     }
 }
