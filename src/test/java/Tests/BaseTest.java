@@ -5,13 +5,12 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.After;
-import org.junit.Before;
-
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 
 
 abstract class BaseTest {
-    public void setUp() {
+    public static void setUp() {
         WebDriverManager.chromedriver().setup();
         Configuration.browser= "chrome";
         Configuration.driverManagerEnabled = true;
@@ -19,12 +18,12 @@ abstract class BaseTest {
         Configuration.headless = false;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
-    @Before
-    public void start () {
+    @BeforeAll
+    public static void start() {
         setUp();
     }
-    @After
-    public  void  end () {
+    @AfterAll
+    public static void end() {
         SelenideLogger.removeListener("AllureSelenide");
         Selenide.closeWebDriver();
     }
