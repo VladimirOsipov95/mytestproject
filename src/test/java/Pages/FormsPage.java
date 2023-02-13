@@ -5,7 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class formsPage {
+public class FormsPage {
     private final SelenideElement buttonForms = $x("//h5[text()='Forms']"); // Открываем Forms
     private final SelenideElement buttonPracticeForm = $x("//span[text()='Practice Form']"); // Открываем Practice Forms
     private final SelenideElement labelPracticeForm = $x("//div[text()='Practice Form']");// Название странцы
@@ -21,11 +21,12 @@ public class formsPage {
     private final SelenideElement fieldCurrentAddress = $x("//*[@id='currentAddress']"); // Поле  current Address
     private final SelenideElement selectState = $x("//*[@id='state']"); // Селект state
     private final SelenideElement selectCity = $x("//*[@id='city']"); // Селект city
+    private final SelenideElement buttonSubmit = $x("//*[@id=\"submit\"]"); //  Кнопка Submit
     private final SelenideElement genderMale = $x("//*[@id=\"genterWrapper\"]/div[2]/div[1]"); // Male
     private final SelenideElement genderFemale = $x("//*[@id=\"genterWrapper\"]/div[2]/div[2]"); // Female
     private final SelenideElement genderOther = $x("//*[@id=\"genterWrapper\"]/div[2]/div[3]"); // Other
 
-    public  formsPage (String url) {
+    public  void openMainPage (String url) {
         Selenide.open(url);
     }
     public void openForms () {
@@ -86,5 +87,8 @@ public class formsPage {
     }
     public SelenideElement getGenderOther() {
         return genderOther;
+    }
+    public SelenideElement getButtonSubmit () {
+        return buttonSubmit;
     }
 }

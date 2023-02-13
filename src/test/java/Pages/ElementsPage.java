@@ -8,9 +8,10 @@ import java.io.FileNotFoundException;
 import java.util.Objects;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static org.junit.Assert.assertNotNull;
 
 
-public class elementsPage {
+public class ElementsPage {
     private final SelenideElement buttonElements = $x("//h5[text()='Elements']"); // Открываем Elements
     private final SelenideElement buttonTextBox = $x("//span[text()='Text Box']"); // Находим раздел "TextBox"
     private final SelenideElement fullName = $x("//input[@class=' mr-sm-2 form-control']"); // Находим поле "Имя"
@@ -58,7 +59,7 @@ public class elementsPage {
 
 
 
-    public  elementsPage (String url) {
+    public void openMainPage(String url) {
         Selenide.open(url);
     }
 
@@ -238,6 +239,7 @@ public class elementsPage {
     public String clickDownload () throws FileNotFoundException {
         File download = buttonDownload.download();
         download.getName();
+        assertNotNull(download);
         return download.getName();
     }
     public void clickUpload () {

@@ -8,22 +8,21 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
-
 abstract class BaseTest {
-    public static void setUp() {
+    public static void start() {
         WebDriverManager.chromedriver().setup();
         Configuration.browser= "chrome";
         Configuration.driverManagerEnabled = true;
         Configuration.browserSize = "1920x1080";
-        Configuration.headless = false;
+        Configuration.headless = false; // false чтобы видеть как автотесты прогоняются в браузере
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
     @BeforeAll
-    public static void start() {
-        setUp();
+    public static void setUp() {
+        start();
     }
     @AfterAll
-    public static void end() {
+    public static void tearDown() {
         SelenideLogger.removeListener("AllureSelenide");
         Selenide.closeWebDriver();
     }

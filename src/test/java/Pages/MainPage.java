@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$x;
 /**
  * Главная страница сайта проекта
  */
-public class mainPage {
+public class MainPage {
     private final SelenideElement buttonElements = $x("//h5[text()='Elements']"); // Открываем Elements
     private final SelenideElement buttonForms = $x("//h5[text()='Forms']"); // Открываем Forms
     private final SelenideElement buttonAFW = $x("//h5[text()='Alerts, Frame & Windows']"); // Открываем Alerts, Frame & Windows
@@ -17,7 +17,7 @@ public class mainPage {
     private final SelenideElement buttonGSA = $x("//h5[text()='Game Store Application']"); // Открываем Game Store Application
 
 
-    public  mainPage (String url) {
+    public void openMainPage(String url) {
         Selenide.open(url);
     }
     public void clickButtonElments () {
