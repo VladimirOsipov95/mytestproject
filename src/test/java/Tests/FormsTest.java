@@ -21,18 +21,27 @@ import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.*;
 
-@Epic("Ïðîâåðêè íà âêëàäêå Forms")
+
+@Epic("ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ¸ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÐµ Forms")
 public class FormsTest extends BaseTest  {
     private final static String homeURL = "http://85.192.34.140:8081/";
     private final SelenideElement selectState = $x("//div[contains(text(),'NCR')]");
     private final SelenideElement selectCity = $x("//div[contains(text(),'Delhi')]");
     private final ElementsCollection selectRadio= $$x("//input[@type='radio']");
     private final ElementsCollection selectBox = $$x("//*[@id=\"hobbiesWrapper\"]/div[2]/div | //input[contains(@id,'hobbies-checkbox')]");
-    private final SelenideElement studentName = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[1/td[2]");
-    private final SelenideElement studentEmail = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[2/td[2]");
+    private final SelenideElement studentName = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[1]/td[2]");
+    private final SelenideElement studentEmail = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[2]/td[2]");
+    private final SelenideElement gender = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[3]/td[2]");
+    private final SelenideElement mobile = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[4]/td[2]");
+    private final SelenideElement dateOfBirth = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[5]/td[2]");
+    private final SelenideElement subjects = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[6]/td[2]");
+    private final SelenideElement hobbies = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[7]/td[2]");
+    private final SelenideElement picture = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[8]/td[2]");
+    private final SelenideElement address = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[9]/td[2]");
+    private final SelenideElement stateAndCity = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[10]/td[2]");
     public String dateFormat = "dd MMM yyyy";
     public String expectedDate =LocalDateTime.now().minusYears(20).format(DateTimeFormatter.ofPattern(dateFormat).localizedBy(Locale.US));
-    public String randomNumber = String.valueOf(generateRandomNumber());
+
     private final String firstName = "Vladimir";
     private final String lastName = "Osipov";
     private final String email = "volodka10@yandex.ru";
@@ -41,20 +50,21 @@ public class FormsTest extends BaseTest  {
         Random Random = new Random(1000000000);
         return Random.nextLong();
     }
+    public String randomNumber = String.valueOf(generateRandomNumber());
     @Test
     @Owner("osipov_vr")
     @Order(1)
-    @Description("Îòêðûâàåì  ðàçäåë Practice Form")
-    @DisplayName("1.Îòêðûâàåì  ðàçäåë Practice Form")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Practice Form")
+    @DisplayName("1.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Practice Form")
     public void openPracticeForms () {
         FormsPage formsPage = new FormsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Forms",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Forms",
                 formsPage::openForms);
-        Allure.step("Îòêðûâàåì ðàçäåë Practice Form",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Practice Form",
                 formsPage::openPracticeForm);
-        Allure.step("Ïðîâåðÿåì ñîäåðæèìîå ðàçäåëà Practice Form",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Practice Form",
                 ()-> {
                     formsPage.getLabelPracticeForm().shouldBe(Condition.visible);
                     formsPage.getFieldFirstName().shouldBe(Condition.visible);
@@ -74,19 +84,19 @@ public class FormsTest extends BaseTest  {
     @Test
     @Owner("osipov_vr")
     @Order(2)
-    @Description("Ïðîâåðÿåì ÷òî â ïîëå Mobile ââîäèòüñÿ íå áîëüøå 10 ñèìâîëîâ")
-    @DisplayName("2.Ïðîâåðÿåì ÷òî â ïîëå Mobile ââîäèòüñÿ íå áîëüøå 10 ñèìâîëîâ")
+    @Description("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‡Ñ‚Ð¾ Ð² Ð¿Ð¾Ð»Ðµ Mobile Ð²Ð²Ð¾Ð´Ð¸Ñ‚ÑŒÑÑ Ð½Ðµ Ð±Ð¾Ð»ÑŒÑˆÐµ 10 ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð²")
+    @DisplayName("2.ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‡Ñ‚Ð¾ Ð² Ð¿Ð¾Ð»Ðµ Mobile Ð²Ð²Ð¾Ð´Ð¸Ñ‚ÑŒÑÑ Ð½Ðµ Ð±Ð¾Ð»ÑŒÑˆÐµ 10 ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð²")
     public void checkFieldMobile () {
         FormsPage formsPage = new FormsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà êëàäêó Forms",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° ÐºÐ»Ð°Ð´ÐºÑƒ Forms",
                 formsPage::openForms);
-        Allure.step("Îòêðûâàåì ðàçäåë Practice Form",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Practice Form",
                 formsPage::openPracticeForm);
-        Allure.step("Ââîäèì â ïîëå Mobile áîëüøå 10 öèôð",
+        Allure.step("Ð’Ð²Ð¾Ð´Ð¸Ð¼ Ð² Ð¿Ð¾Ð»Ðµ Mobile Ð±Ð¾Ð»ÑŒÑˆÐµ 10 Ñ†Ð¸Ñ„Ñ€",
                 ()-> formsPage.checkFieldMobile(randomNumber));
-        Allure.step("Ïðîâðÿåì ÷òî â ïîëå òîëüêî 10 öèôð",
+        Allure.step("ÐŸÑ€Ð¾Ð²Ñ€ÑÐµÐ¼ Ñ‡Ñ‚Ð¾ Ð² Ð¿Ð¾Ð»Ðµ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ 10 Ñ†Ð¸Ñ„Ñ€",
                 ()-> {
                     String results = formsPage.getFieldMobile().getAttribute("value");
                     Assertions.assertNotEquals(randomNumber,results);
@@ -95,21 +105,21 @@ public class FormsTest extends BaseTest  {
     @Test
     @Owner("osipov_vr")
     @Order(3)
-    @Description("Ïðîâåðÿåì ðàáîòû äàòàïèêåðà")
-    @DisplayName("3.Ïðîâåðÿåì ðàáîòó äàòàïèêåðà")
+    @Description("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð´Ð°Ñ‚Ð°Ð¿Ð¸ÐºÐµÑ€Ð°")
+    @DisplayName("3.ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ Ð´Ð°Ñ‚Ð°Ð¿Ð¸ÐºÐµÑ€Ð°")
     public void workDataPicker () {
         FormsPage formsPage = new FormsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Forms",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Forms",
                 formsPage::openForms);
-        Allure.step("Îòêðûâàåì ðàçäåë Practice Form",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Practice Form",
                 formsPage::openPracticeForm);
-        Allure.step("Îòêðûâàåì äàòà-ïèêåð",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð´Ð°Ñ‚Ð°-Ð¿Ð¸ÐºÐµÑ€",
                 ()->formsPage
                         .getFieldDateOfBrith()
                         .click());
-        Allure.step("Óñòàíàâîëèâàåì çíà÷åíèå = òåêóùàÿ äàòà - 20 ëåò",
+        Allure.step("Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð¾Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ = Ñ‚ÐµÐºÑƒÑ‰Ð°Ñ Ð´Ð°Ñ‚Ð° - 20 Ð»ÐµÑ‚",
                 ()-> {
                     formsPage
                             .getFieldDateOfBrith()
@@ -121,45 +131,45 @@ public class FormsTest extends BaseTest  {
                             .getFieldDateOfBrith()
                             .sendKeys(Keys.ENTER);
                 });
-        Allure.step("Ïðîâåðÿðåì îòîáðàæåíèÿ çíà÷åíèÿ",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÑ€ÐµÐ¼ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ",
                 ()->Assertions.assertEquals(expectedDate, formsPage.getFieldDateOfBrith().getValue()));
     }
     @Test
     @Owner("osipov_vr")
     @Order(4)
-    @Description("Ïðîâåðÿåì ðàáîòû ñåëåêòîâ")
-    @DisplayName("4.Ïðîâåðÿåì ðàáîòó ñåëåêòîâ")
+    @Description("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ ÑÐµÐ»ÐµÐºÑ‚Ð¾Ð²")
+    @DisplayName("4.ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ ÑÐµÐ»ÐµÐºÑ‚Ð¾Ð²")
     public void workSelected () {
         FormsPage formsPage = new FormsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Forms",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Forms",
                 formsPage::openForms);
-        Allure.step("Îòêðûâàåì ðàçäåë Practice Form",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Practice Form",
                 formsPage::openPracticeForm);
-        Allure.step("Ïðîâåðÿåì ÷òî ïîëå Select City íåäîñòóïíî äëÿ âûáîðà",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‡Ñ‚Ð¾ Ð¿Ð¾Ð»Ðµ Select City Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ Ð´Ð»Ñ Ð²Ñ‹Ð±Ð¾Ñ€Ð°",
                 ()->formsPage
                         .getSelectCity()
                         .shouldBe(Condition.editable));
-        Allure.step("Óñòàíàâîëèâàåì çíà÷åíèå â Select State",
+        Allure.step("Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð¾Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð² Select State",
                 ()-> {
                 formsPage
                         .getSelectState()
                         .click();
                 selectState.click();
                 });
-        Allure.step("Ïðîâåðÿðåì ÷òî ïîëå Select City äîñòóïíî äëÿ ðåäàêòèðîâàíèÿ",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÑ€ÐµÐ¼ Ñ‡Ñ‚Ð¾ Ð¿Ð¾Ð»Ðµ Select City Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ Ð´Ð»Ñ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ",
                 ()->formsPage
                         .getSelectCity()
                         .click());
-        Allure.step("Óñòàíàâëèâàåì çíà÷åíèå Select City",
+        Allure.step("Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Select City",
                 ()->{
                 selectCity.click();
                 formsPage
                         .getFieldMobile()
                         .click();
                 });
-        Allure.step("Ïðîâåðÿåì ÷òî â ñåëåêòàõ óñòàíîâëåííûå íàìè çíà÷åíèÿ",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‡Ñ‚Ð¾ Ð² ÑÐµÐ»ÐµÐºÑ‚Ð°Ñ… ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð½Ñ‹Ðµ Ð½Ð°Ð¼Ð¸ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ",
                 ()-> {
                 Assertions.assertEquals("NCR", formsPage.getSelectState().getText());
                 Assertions.assertEquals("Delhi", formsPage.getSelectCity().getText());
@@ -168,18 +178,18 @@ public class FormsTest extends BaseTest  {
     @Test
     @Owner("osipov_vr")
     @Order(5)
-    @Description("Ïðîâåðÿåì ðàáîòó ðàäèî-áàòòîíîâ Gender")
-    @DisplayName("5.Ïðîâåðÿåì ðàáîòó ðàäèî-áàòòîíîâ Gender")
+    @Description("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ Ñ€Ð°Ð´Ð¸Ð¾-Ð±Ð°Ñ‚Ñ‚Ð¾Ð½Ð¾Ð² Gender")
+    @DisplayName("5.ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ Ñ€Ð°Ð´Ð¸Ð¾-Ð±Ð°Ñ‚Ñ‚Ð¾Ð½Ð¾Ð² Gender")
     public void workGender () {
         FormsPage formsPage = new FormsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> formsPage.openMainPage(homeURL));
         Selenide.sleep(1000);
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Forms",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Forms",
                 formsPage::openForms);
-        Allure.step("Îòêðûâàåì ðàçäåë Practice Form",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Practice Form",
                 formsPage::openPracticeForm);
-        Allure.step("Óñòàíàâëèâàåì çíà÷åíèå Male",
+        Allure.step("Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Male",
                 ()-> {
                 formsPage
                         .getGenderMale()
@@ -188,9 +198,9 @@ public class FormsTest extends BaseTest  {
                         .first()
                         .shouldBe(Condition.selected);
                 });
-        Allure.step("Óñòàíàâëèâàåì çíà÷åíèå Female",
+        Allure.step("Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Female",
                 ()->formsPage.getGenderFemale().click());
-        Allure.step("Ïðîâåðÿåì ÷òî àêòèâíî òîëüêî âûáðàííîå çíà÷åíèå",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‡Ñ‚Ð¾ Ð°ÐºÑ‚Ð¸Ð²Ð½Ð¾ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ",
                 ()-> {
                 selectRadio
                         .get(1)
@@ -199,11 +209,11 @@ public class FormsTest extends BaseTest  {
                         .first()
                         .shouldNotBe(Condition.selected);
                 });
-        Allure.step("Óñòàíàâëèâàåì çíà÷åíèå Other",
+        Allure.step("Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Other",
                 ()->formsPage
                         .getGenderOther()
                         .click());
-        Allure.step("Ïðîâåðÿåì ÷òî àêòèâíî òîëüêî âûáðàííîå çíà÷åíèå",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‡Ñ‚Ð¾ Ð°ÐºÑ‚Ð¸Ð²Ð½Ð¾ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ",
                 ()->{
                 selectRadio
                         .get(2)
@@ -216,51 +226,51 @@ public class FormsTest extends BaseTest  {
     @Test
     @Owner("osipov_vr")
     @Order(6)
-    @Description("Ïðîâåðÿåì ðàáîòó ÷åê-áîêñîâ  Hobbies")
-    @DisplayName("6.Ïðîâåðÿåì ðàáîòó ÷åê-áîêñîâ  Hobbies")
+    @Description("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ Ñ‡ÐµÐº-Ð±Ð¾ÐºÑÐ¾Ð²  Hobbies")
+    @DisplayName("6.ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ Ñ‡ÐµÐº-Ð±Ð¾ÐºÑÐ¾Ð²  Hobbies")
     public void workHobbies () {
         FormsPage formsPage = new FormsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Forms",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Forms",
                 formsPage::openForms);
-        Allure.step("Îòêðûâàåì ðàçäåë Practice Form",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Practice Form",
                 formsPage::openPracticeForm);
-        Allure.step("Óñòàíàâëèâàåì ÷åê ó  Sports",
+        Allure.step("Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ñ‡ÐµÐº Ñƒ  Sports",
                 ()->selectBox
                         .get(0)
                         .click());
-        Allure.step("Ïðîâåðÿåì àêòèâíîñòü ÷åêîâ",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð°ÐºÑ‚Ð¸Ð²Ð½Ð¾ÑÑ‚ÑŒ Ñ‡ÐµÐºÐ¾Ð²",
                 ()->{
                 Assertions.assertTrue(selectBox.get(1).isSelected());
                 Assertions.assertFalse(selectBox.get(3).isSelected());
                 Assertions.assertFalse(selectBox.get(5).isSelected());
                 });
-        Allure.step("Óñòàíàâëèâàåì ÷åê ó  Reading",
+        Allure.step("Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ñ‡ÐµÐº Ñƒ  Reading",
                 ()->selectBox
                         .get(2)
                         .click());
-        Allure.step("Ïðîâåðÿåì àêòèâíîñòü ÷åêîâ",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð°ÐºÑ‚Ð¸Ð²Ð½Ð¾ÑÑ‚ÑŒ Ñ‡ÐµÐºÐ¾Ð²",
                 ()-> {
                 Assertions.assertTrue(selectBox.get(1).isSelected());
                 Assertions.assertTrue(selectBox.get(3).isSelected());
                 Assertions.assertFalse(selectBox.get(5).isSelected());
                 });
-        Allure.step("Óñòàíàâëèâàåì ÷åê ó  Music",
+        Allure.step("Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ñ‡ÐµÐº Ñƒ  Music",
                 ()->selectBox
                         .get(4)
                         .click());
-        Allure.step("Ïðîâåðÿåì àêòèâíîñòü ÷åêîâ",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð°ÐºÑ‚Ð¸Ð²Ð½Ð¾ÑÑ‚ÑŒ Ñ‡ÐµÐºÐ¾Ð²",
                 ()-> {
                 Assertions.assertTrue(selectBox.get(1).isSelected());
                 Assertions.assertTrue(selectBox.get(3).isSelected());
                 Assertions.assertTrue(selectBox.get(5).isSelected());
                 });
-        Allure.step("Ñíèìàåì ÷åê ó Reading",
+        Allure.step("Ð¡Ð½Ð¸Ð¼Ð°ÐµÐ¼ Ñ‡ÐµÐº Ñƒ Reading",
                 () ->selectBox
                         .get(2)
                         .click());
-        Allure.step("Ïðîâåðÿåì àêòèâíîñòü ÷åêîâ",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð°ÐºÑ‚Ð¸Ð²Ð½Ð¾ÑÑ‚ÑŒ Ñ‡ÐµÐºÐ¾Ð²",
                 ()-> {
                 Assertions.assertTrue(selectBox.get(1).isSelected());
                 Assertions.assertFalse(selectBox.get(3).isSelected());
@@ -270,21 +280,21 @@ public class FormsTest extends BaseTest  {
     @Test
     @Owner("osipov_vr")
     @Order(7)
-    @Description("Çàãðóæàåì ôàéë")
-    @DisplayName("7.Çàãðóæàåì ôàéë")
+    @Description("Ð—Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð»")
+    @DisplayName("7.Ð—Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð»")
     public void Upload()  {
         FormsPage formsPage = new FormsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Forms",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Forms",
                 formsPage::openForms);
-        Allure.step("Îòêðûâàåì ðàçäåë Practice Form",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Practice Form",
                 formsPage::openPracticeForm);
-        Allure.step("Çàãðóæàåì ôàéë",
+        Allure.step("Ð—Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð»",
                 () -> formsPage
                         .getButtonSelectPicture()
                         .uploadFile(new File("src/test/resources/1.png")));
-        Allure.step("Ïðîâåðÿåì ÷òî ôàéë çàãðóçèëñÿ",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‡Ñ‚Ð¾ Ñ„Ð°Ð¹Ð» Ð·Ð°Ð³Ñ€ÑƒÐ·Ð¸Ð»ÑÑ",
                 () -> formsPage
                         .getButtonSelectPicture()
                         .shouldBe(Condition.value("1.png")));
@@ -292,33 +302,33 @@ public class FormsTest extends BaseTest  {
     @Test
     @Owner("osipov_vr")
     @Order(8)
-    @Description("Çàïîëíåíèå âñåõ òåêñòîâûõ ïîëåé")
-    @DisplayName("8.Çàïîëíåíåíèå âñåõ òåêñòîâûõ ïîëåé")
+    @Description("Ð—Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ Ð²ÑÐµÑ… Ñ‚ÐµÐºÑÑ‚Ð¾Ð²Ñ‹Ñ… Ð¿Ð¾Ð»ÐµÐ¹")
+    @DisplayName("8.Ð—Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½ÐµÐ½Ð¸Ðµ Ð²ÑÐµÑ… Ñ‚ÐµÐºÑÑ‚Ð¾Ð²Ñ‹Ñ… Ð¿Ð¾Ð»ÐµÐ¹")
     public void workField()  {
         FormsPage formsPage = new FormsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Forms",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Forms",
                 formsPage::openForms);
-        Allure.step("Îòêðûâàåì ðàçäåë Practice Form",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Practice Form",
                 formsPage::openPracticeForm);
-        Allure.step("Çàïîëíÿåì ïîëå First Name",
+        Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ First Name",
                 () -> formsPage
                         .getFieldFirstName()
                         .setValue(firstName));
-        Allure.step("Çàïîëíÿåì ïîëå Last Name",
+        Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Last Name",
                 () -> formsPage
                         .getFieldLastName()
                         .setValue(lastName));
-        Allure.step("Çàïîëíÿåì ïîëå email",
+        Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ email",
                 () -> formsPage
                         .getFieldEmail()
                         .setValue(email));
-        Allure.step("Çàïîëíÿåì ïîëå Current Address",
+        Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Current Address",
                 () -> formsPage
                         .getFieldCurrentAddress()
                         .setValue(currentAddress));
-        Allure.step("Ïðîâåðÿåì, ÷òî â  ïîëÿõ ïðèñóòâòóåþò âåäåííûå íàìè çíà÷åíèÿ",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼, Ñ‡Ñ‚Ð¾ Ð²  Ð¿Ð¾Ð»ÑÑ… Ð¿Ñ€Ð¸ÑÑƒÑ‚Ð²Ñ‚ÑƒÐµÑŽÑ‚ Ð²ÐµÐ´ÐµÐ½Ð½Ñ‹Ðµ Ð½Ð°Ð¼Ð¸ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ",
                 () -> {
                 Assertions.assertEquals(firstName, formsPage.getFieldFirstName().getValue());
                 Assertions.assertEquals(lastName, formsPage.getFieldLastName().getValue());
@@ -327,50 +337,50 @@ public class FormsTest extends BaseTest  {
                 });
     }
     @Test
-    @Owner("osipov_vr")
+    @Owner("osipov_vr") // ÑÐ´ÐµÐ»Ð°Ñ‚ÑŒ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÑƒ Ð½Ð¾Ð¼ÐµÑ€Ð° Ð¸ Ð´Ð°Ñ‚Ñ‹ Ñ€Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ
     @Order(9)
-    @Description("Ïðîâåðêà ðàáîòû ôîðìû ñ âàëèäíûìè äàííûìè")
-    @DisplayName("9.Ïðîâåðêà ðàáîòû ôîðìû ñ âàëèäíûìè äàííûìè")
+    @Description("ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ñ Ð²Ð°Ð»Ð¸Ð´Ð½Ñ‹Ð¼Ð¸ Ð´Ð°Ð½Ð½Ñ‹Ð¼Ð¸")
+    @DisplayName("9.ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ñ Ð²Ð°Ð»Ð¸Ð´Ð½Ñ‹Ð¼Ð¸ Ð´Ð°Ð½Ð½Ñ‹Ð¼Ð¸")
     public void workWithValidData()  {
         FormsPage formsPage = new FormsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Forms",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Forms",
                 formsPage::openForms);
-        Allure.step("Îòêðûâàåì ðàçäåë Practice Form",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Practice Form",
                 formsPage::openPracticeForm);
-        Allure.step("Çàïîëíÿåì âñå òåêñòîâûõ ïîëÿ",
+        Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð²ÑÐµ Ñ‚ÐµÐºÑÑ‚Ð¾Ð²Ñ‹Ñ… Ð¿Ð¾Ð»Ñ",
                 ()->{
-                    Allure.step("Çàïîëíÿåì ïîëå First Name",
+                    Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ First Name",
                             () -> formsPage
                                     .getFieldFirstName()
                                     .setValue(firstName));
-                    Allure.step("Çàïîëíÿåì ïîëå Last Name",
+                    Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Last Name",
                             () -> formsPage
                                     .getFieldLastName()
                                     .setValue(lastName));
-                    Allure.step("Çàïîëíÿåì ïîëå email",
+                    Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ email",
                             () -> formsPage
                                     .getFieldEmail()
                                     .setValue(email));
-                    Allure.step("Çàïîëíÿåì ïîëå Current Address",
+                    Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Current Address",
                             () -> formsPage
                                     .getFieldCurrentAddress()
                                     .setValue(currentAddress));
                 });
-        Allure.step("Çàïîëíÿåì íîìåð òåëåôîíà",
+        Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð½Ð¾Ð¼ÐµÑ€ Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½Ð°",
                 ()-> formsPage.checkFieldMobile(randomNumber));
-        Allure.step("Óñòàíâàëèâàåì ãåíäåð",
+        Allure.step("Ð£ÑÑ‚Ð°Ð½Ð²Ð°Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð³ÐµÐ½Ð´ÐµÑ€",
                 ()-> formsPage
                         .getGenderMale()
                         .click());
-        Allure.step("Çàïîëíÿåì äàòó",
+        Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð´Ð°Ñ‚Ñƒ",
                 ()->{
-                    Allure.step("Îòêðûâàåì äàòà-ïèêåð",
+                    Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð´Ð°Ñ‚Ð°-Ð¿Ð¸ÐºÐµÑ€",
                             ()->formsPage
                                     .getFieldDateOfBrith()
                                     .click());
-                    Allure.step("Óñòàíàâîëèâàåì çíà÷åíèå = òåêóùàÿ äàòà - 20 ëåò",
+                    Allure.step("Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð¾Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ = Ñ‚ÐµÐºÑƒÑ‰Ð°Ñ Ð´Ð°Ñ‚Ð° - 20 Ð»ÐµÑ‚",
                             ()-> {
                                 formsPage
                                         .getFieldDateOfBrith()
@@ -383,50 +393,61 @@ public class FormsTest extends BaseTest  {
                                         .sendKeys(Keys.ENTER);
                             });
                 });
-        Allure.step("Óñòàíâàëèâàåì õîááè",
+        Allure.step("Ð£ÑÑ‚Ð°Ð½Ð²Ð°Ð»Ð¸Ð²Ð°ÐµÐ¼ Ñ…Ð¾Ð±Ð±Ð¸",
                 ()-> {
-                    Allure.step("Óñòàíàâëèâàåì ÷åê ó  Sports",
+                    Allure.step("Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ñ‡ÐµÐº Ñƒ  Sports",
                             ()->selectBox
                                     .get(0)
                                     .click());
-                    Allure.step("Óñòàíàâëèâàåì ÷åê ó  Reading",
+                    Allure.step("Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ñ‡ÐµÐº Ñƒ  Reading",
                             ()->selectBox
                                     .get(2)
                                     .click());
                 });
-        Allure.step("Çàãðóæàåì ôàéë",
+        Allure.step("Ð—Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð»",
                 () -> formsPage
                         .getButtonSelectPicture()
                         .uploadFile(new File("src/test/resources/1.png")));
-        Allure.step("Óñòàíâëèâàåì çíà÷åíèÿ â  State and City",
+        Allure.step("Ð£ÑÑ‚Ð°Ð½Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ Ð²  State and City",
                 () -> {
-                    Allure.step("Óñòàíàâîëèâàåì çíà÷åíèå â Select State",
+                    Allure.step("Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð¾Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð² Select State",
                             ()-> {
                                 formsPage
                                         .getSelectState()
                                         .click();
                                 selectState.click();
                             });
-                    Allure.step("Ïðîâåðÿðåì ÷òî ïîëå Select City äîñòóïíî äëÿ ðåäàêòèðîâàíèÿ",
+                    Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÑ€ÐµÐ¼ Ñ‡Ñ‚Ð¾ Ð¿Ð¾Ð»Ðµ Select City Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ Ð´Ð»Ñ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ",
                             ()->formsPage
                                     .getSelectCity()
                                     .click());
-                    Allure.step("Óñòàíàâëèâàåì çíà÷åíèå Select City",
+                    Allure.step("Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Select City",
                             ()->{
                                 selectCity.click();
                             });
                 });
-        Allure.step("Íàæèìàåì íà êíîïêó Submit",
+        Allure.step("ÐÐ°Ð¶Ð¸Ð¼Ð°ÐµÐ¼ Ð½Ð° ÐºÐ½Ð¾Ð¿ÐºÑƒ Submit",
                 ()->formsPage.getButtonSubmit().click());
-        /*
-         Allure.step("Ïðîâåðÿåì äàííûå â îòêðûâøåìñÿ îêíå",
+         Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð² Ð¾Ñ‚ÐºÑ€Ñ‹Ð²ÑˆÐµÐ¼ÑÑ Ð¾ÐºÐ½Ðµ",
                 ()->{
-                    Selenide.switchTo().window(0);
-                    Allure.step("Ïðîâåðÿåì ïîëå Student Name",
-                            ()-> Assertions.assertEquals(firstName+" "+lastName, studentName.getValue()));
-                    Allure.step("Ïðîâåðÿåì ïîëå Student Email",
-                            ()-> Assertions.assertEquals(email, studentEmail.getValue()));
+                    Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Student Name",
+                            ()-> Assertions.assertEquals(firstName+" "+lastName, studentName.getText()));
+                    Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Student Email",
+                            ()-> Assertions.assertEquals(email, studentEmail.getText()));
+                    Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Gender",
+                            ()-> Assertions.assertEquals("Male", gender.getText()));
+                    Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Subjects",
+                            ()-> Assertions.assertEquals("", subjects.getText()));
+                    Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Hobbies",
+                            ()-> Assertions.assertEquals("Sports, Reading", hobbies.getText()));
+                    Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Picture",
+                            ()-> Assertions.assertEquals("1.png", picture.getText()));
+                    Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Address",
+                            ()-> Assertions.assertEquals(currentAddress, address.getText()));
+                    Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ State and City",
+                            ()-> Assertions.assertEquals("NCR Delhi", stateAndCity.getText()));
                 });
-         */
+        Allure.step("ÐÐ°Ð¶Ð¸Ð¼Ð°ÐµÐ¼ Ð½Ð° ÐºÐ½Ð¾Ð¿ÐºÑƒ Close",
+                ()->formsPage.getButtonClose().click());
     }
 }

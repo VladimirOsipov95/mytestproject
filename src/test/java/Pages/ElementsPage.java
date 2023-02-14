@@ -12,50 +12,50 @@ import static org.junit.Assert.assertNotNull;
 
 
 public class ElementsPage {
-    private final SelenideElement buttonElements = $x("//h5[text()='Elements']"); // Открываем Elements
-    private final SelenideElement buttonTextBox = $x("//span[text()='Text Box']"); // Находим раздел "TextBox"
-    private final SelenideElement fullName = $x("//input[@class=' mr-sm-2 form-control']"); // Находим поле "Имя"
-    private final SelenideElement email = $x("//input[@class='mr-sm-2 form-control']"); // Находим поле "email"
-    private final SelenideElement currentAddress = $x("//textarea[@placeholder='Current Address']"); // Находим поле "курадрес"
-    private final SelenideElement permanentAddress = $x("//*[@id='permanentAddress']"); // Находим поле "перадрес"
-    private final SelenideElement buttonSubmit = $x("//button[@id='submit']"); // Кнопка "Submit"
-    private final SelenideElement buttonCheckBox = $x("//span[text()='Check Box']"); // Находим раздел "CheckBox"
-    private final SelenideElement buttonHome = $x("//*[@id='tree-node']/ol/li/span/button"); // Раскрываем/скрываем  папку "Home"
-    private final SelenideElement buttonDesktop = $x("//*[@id='tree-node']/ol/li/ol/li[1]/span/button"); // Раскрываем/скрываем  папку "Desktop"
-    private final SelenideElement buttonDocuments = $x("//*[@id='tree-node']/ol/li/ol/li[2]/span/button"); // Раскрываем/скрываем  папку "Documents"
-    private final SelenideElement buttonDownloads= $x("//*[@id='tree-node']/ol/li/ol/li[3]/span/button"); // Раскрываем/скрываем  папку "Downloads"
-    private final SelenideElement checkBoxDesktop= $x("//*[@id='tree-node']/ol/li/ol/li[1]/span/label/span[1]"); // Нажимаем на чек-бокс у  "Desktop"
-    private final SelenideElement checkBoxDocuments= $x("//*[@id='tree-node']/ol/li/ol/li[2]/span/label/span[1]"); // Нажимаем на чек-бокс у  "Documents"
-    private final SelenideElement checkBoxDownloads= $x("//*[@id='tree-node']/ol/li/ol/li[3]/span/label/span[1]"); // Нажимаем на чек-бокс у  "Downloads"
-    private final SelenideElement checkBoxHome= $x("//*[@id='tree-node']/ol/li/span/label/span[1]"); // Нажимаем на чек-бокс у  "Downloads"
-    private final SelenideElement buttonRadioButton = $x("//span[text()='Radio Button']"); // Находим раздел "RadioButton"
-    private final SelenideElement buttonYes = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[2]/label"); // Кликаем в  "Yes"
-    private final SelenideElement buttonImpressive = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/label"); // Кликаем в  "Impressive"
-    private final SelenideElement buttonNo = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[4]/label"); // Кликаем в  "No"
-    private final SelenideElement afterClickRadio = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/p/span"); // После клика по радиобаттанам
-    private final SelenideElement buttonWebTables = $x("//span[text()='Web Tables']"); // Находим раздел "WebTables"
-    private final SelenideElement buttonSearchWebTables = $x("//*[@id='searchBox']"); // Находим поиск "WebTables"
-    private final SelenideElement editWebTables = $x("//*[@id='edit-record-1']"); // Находим кнопку редактирования в "WebTables"
-    private final SelenideElement newWebTables = $x("//*[@id='addNewRecordButton']"); // Находим кнопку Add в "WebTables"
-    private final SelenideElement deleteWebTables = $x("//*[@id='delete-record-1']"); // Находим кнопку удалить в "WebTables"
-    private final SelenideElement firstNameWebTables = $x("//*[@id='firstName']"); // Находим поле  FirstName в "WebTables"
-    private final SelenideElement lastNameWebTables = $x("//*[@id='lastName']"); // Находим поле  LastName в "WebTables"
-    private final SelenideElement emailWebTables = $x("//*[@id='userEmail']"); // Находим поле  Email в "WebTables"
-    private final SelenideElement ageWebTables = $x("//*[@id='age']"); // Находим поле  Age в "WebTables"
-    private final SelenideElement salaryWebTables = $x("//*[@id='salary']"); // Находим поле  Salary в "WebTables"
-    private final SelenideElement departmentWebTables = $x("//*[@id='department']"); // Находим поле  Department в "WebTables"
-    private final SelenideElement tablesWebTables = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]"); // Находим поле  tables в "WebTables"
-    private final SelenideElement buttonButtons = $x("//span[text()='Buttons']"); // Находим раздел "Buttons"
-    private final SelenideElement buttonDoubleClick = $x("//button[text()='Double Click Me']"); // Находим кнопку  "Double Click Me"
-    private final SelenideElement buttonRightClick = $x("//button[text()='Right Click Me']"); // Находим кнопку  "Right Click Me"
-    private final SelenideElement buttonClickClick = $x("//*[@id='TYjkE']"); // Находим кнопку  "Click Me"
-    private final SelenideElement buttonLinks = $x("//span[text()='Links']"); // Находим раздел "Links"
-    private final SelenideElement openNewTabsLinks = $x("//*[@id='linkWrapper']/h5[1]/strong"); // Находим раздел с сылками на новое окно
-    private final SelenideElement sendAnApiCall = $x("//*[@id='linkWrapper']/h5[2]/strong"); // Находим раздел с сылками на апи
-    private final SelenideElement newWindowHome = $x("//*[@id='simpleLink']"); // Находим линк Home
-    private final SelenideElement buttonUploadAndDownload = $x("//span[text()='Upload and Download']"); // Находим раздел "Upload And Download"
-    private final SelenideElement buttonDownload = $x("//a[@href='images/sticker.png']"); // Находим кнопку "Download"
-    private final SelenideElement buttonUpload = $x("//*[@id='uploadFile']"); // Находим кнопку "Upload"
+    private final SelenideElement buttonElements = $x("//h5[text()='Elements']"); // РћС‚РєСЂС‹РІР°РµРј Elements
+    private final SelenideElement buttonTextBox = $x("//span[text()='Text Box']"); // РќР°С…РѕРґРёРј СЂР°Р·РґРµР» "TextBox"
+    private final SelenideElement fullName = $x("//input[@class=' mr-sm-2 form-control']"); // РќР°С…РѕРґРёРј РїРѕР»Рµ "РРјСЏ"
+    private final SelenideElement email = $x("//input[@class='mr-sm-2 form-control']"); // РќР°С…РѕРґРёРј РїРѕР»Рµ "email"
+    private final SelenideElement currentAddress = $x("//textarea[@placeholder='Current Address']"); // РќР°С…РѕРґРёРј РїРѕР»Рµ "РєСѓСЂР°РґСЂРµСЃ"
+    private final SelenideElement permanentAddress = $x("//*[@id='permanentAddress']"); // РќР°С…РѕРґРёРј РїРѕР»Рµ "РїРµСЂР°РґСЂРµСЃ"
+    private final SelenideElement buttonSubmit = $x("//button[@id='submit']"); // РљРЅРѕРїРєР° "Submit"
+    private final SelenideElement buttonCheckBox = $x("//span[text()='Check Box']"); // РќР°С…РѕРґРёРј СЂР°Р·РґРµР» "CheckBox"
+    private final SelenideElement buttonHome = $x("//*[@id='tree-node']/ol/li/span/button"); // Р Р°СЃРєСЂС‹РІР°РµРј/СЃРєСЂС‹РІР°РµРј  РїР°РїРєСѓ "Home"
+    private final SelenideElement buttonDesktop = $x("//*[@id='tree-node']/ol/li/ol/li[1]/span/button"); // Р Р°СЃРєСЂС‹РІР°РµРј/СЃРєСЂС‹РІР°РµРј  РїР°РїРєСѓ "Desktop"
+    private final SelenideElement buttonDocuments = $x("//*[@id='tree-node']/ol/li/ol/li[2]/span/button"); // Р Р°СЃРєСЂС‹РІР°РµРј/СЃРєСЂС‹РІР°РµРј  РїР°РїРєСѓ "Documents"
+    private final SelenideElement buttonDownloads= $x("//*[@id='tree-node']/ol/li/ol/li[3]/span/button"); // Р Р°СЃРєСЂС‹РІР°РµРј/СЃРєСЂС‹РІР°РµРј  РїР°РїРєСѓ "Downloads"
+    private final SelenideElement checkBoxDesktop= $x("//*[@id='tree-node']/ol/li/ol/li[1]/span/label/span[1]"); // РќР°Р¶РёРјР°РµРј РЅР° С‡РµРє-Р±РѕРєСЃ Сѓ  "Desktop"
+    private final SelenideElement checkBoxDocuments= $x("//*[@id='tree-node']/ol/li/ol/li[2]/span/label/span[1]"); // РќР°Р¶РёРјР°РµРј РЅР° С‡РµРє-Р±РѕРєСЃ Сѓ  "Documents"
+    private final SelenideElement checkBoxDownloads= $x("//*[@id='tree-node']/ol/li/ol/li[3]/span/label/span[1]"); // РќР°Р¶РёРјР°РµРј РЅР° С‡РµРє-Р±РѕРєСЃ Сѓ  "Downloads"
+    private final SelenideElement checkBoxHome= $x("//*[@id='tree-node']/ol/li/span/label/span[1]"); // РќР°Р¶РёРјР°РµРј РЅР° С‡РµРє-Р±РѕРєСЃ Сѓ  "Downloads"
+    private final SelenideElement buttonRadioButton = $x("//span[text()='Radio Button']"); // РќР°С…РѕРґРёРј СЂР°Р·РґРµР» "RadioButton"
+    private final SelenideElement buttonYes = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[2]/label"); // РљР»РёРєР°РµРј РІ  "Yes"
+    private final SelenideElement buttonImpressive = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/label"); // РљР»РёРєР°РµРј РІ  "Impressive"
+    private final SelenideElement buttonNo = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[4]/label"); // РљР»РёРєР°РµРј РІ  "No"
+    private final SelenideElement afterClickRadio = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/p/span"); // РџРѕСЃР»Рµ РєР»РёРєР° РїРѕ СЂР°РґРёРѕР±Р°С‚С‚Р°РЅР°Рј
+    private final SelenideElement buttonWebTables = $x("//span[text()='Web Tables']"); // РќР°С…РѕРґРёРј СЂР°Р·РґРµР» "WebTables"
+    private final SelenideElement buttonSearchWebTables = $x("//*[@id='searchBox']"); // РќР°С…РѕРґРёРј РїРѕРёСЃРє "WebTables"
+    private final SelenideElement editWebTables = $x("//*[@id='edit-record-1']"); // РќР°С…РѕРґРёРј РєРЅРѕРїРєСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РІ "WebTables"
+    private final SelenideElement newWebTables = $x("//*[@id='addNewRecordButton']"); // РќР°С…РѕРґРёРј РєРЅРѕРїРєСѓ Add РІ "WebTables"
+    private final SelenideElement deleteWebTables = $x("//*[@id='delete-record-1']"); // РќР°С…РѕРґРёРј РєРЅРѕРїРєСѓ СѓРґР°Р»РёС‚СЊ РІ "WebTables"
+    private final SelenideElement firstNameWebTables = $x("//*[@id='firstName']"); // РќР°С…РѕРґРёРј РїРѕР»Рµ  FirstName РІ "WebTables"
+    private final SelenideElement lastNameWebTables = $x("//*[@id='lastName']"); // РќР°С…РѕРґРёРј РїРѕР»Рµ  LastName РІ "WebTables"
+    private final SelenideElement emailWebTables = $x("//*[@id='userEmail']"); // РќР°С…РѕРґРёРј РїРѕР»Рµ  Email РІ "WebTables"
+    private final SelenideElement ageWebTables = $x("//*[@id='age']"); // РќР°С…РѕРґРёРј РїРѕР»Рµ  Age РІ "WebTables"
+    private final SelenideElement salaryWebTables = $x("//*[@id='salary']"); // РќР°С…РѕРґРёРј РїРѕР»Рµ  Salary РІ "WebTables"
+    private final SelenideElement departmentWebTables = $x("//*[@id='department']"); // РќР°С…РѕРґРёРј РїРѕР»Рµ  Department РІ "WebTables"
+    private final SelenideElement tablesWebTables = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]"); // РќР°С…РѕРґРёРј РїРѕР»Рµ  tables РІ "WebTables"
+    private final SelenideElement buttonButtons = $x("//span[text()='Buttons']"); // РќР°С…РѕРґРёРј СЂР°Р·РґРµР» "Buttons"
+    private final SelenideElement buttonDoubleClick = $x("//button[text()='Double Click Me']"); // РќР°С…РѕРґРёРј РєРЅРѕРїРєСѓ  "Double Click Me"
+    private final SelenideElement buttonRightClick = $x("//button[text()='Right Click Me']"); // РќР°С…РѕРґРёРј РєРЅРѕРїРєСѓ  "Right Click Me"
+    private final SelenideElement buttonClickClick = $x("//*[@id='TYjkE']"); // РќР°С…РѕРґРёРј РєРЅРѕРїРєСѓ  "Click Me"
+    private final SelenideElement buttonLinks = $x("//span[text()='Links']"); // РќР°С…РѕРґРёРј СЂР°Р·РґРµР» "Links"
+    private final SelenideElement openNewTabsLinks = $x("//*[@id='linkWrapper']/h5[1]/strong"); // РќР°С…РѕРґРёРј СЂР°Р·РґРµР» СЃ СЃС‹Р»РєР°РјРё РЅР° РЅРѕРІРѕРµ РѕРєРЅРѕ
+    private final SelenideElement sendAnApiCall = $x("//*[@id='linkWrapper']/h5[2]/strong"); // РќР°С…РѕРґРёРј СЂР°Р·РґРµР» СЃ СЃС‹Р»РєР°РјРё РЅР° Р°РїРё
+    private final SelenideElement newWindowHome = $x("//*[@id='simpleLink']"); // РќР°С…РѕРґРёРј Р»РёРЅРє Home
+    private final SelenideElement buttonUploadAndDownload = $x("//span[text()='Upload and Download']"); // РќР°С…РѕРґРёРј СЂР°Р·РґРµР» "Upload And Download"
+    private final SelenideElement buttonDownload = $x("//a[@href='images/sticker.png']"); // РќР°С…РѕРґРёРј РєРЅРѕРїРєСѓ "Download"
+    private final SelenideElement buttonUpload = $x("//*[@id='uploadFile']"); // РќР°С…РѕРґРёРј РєРЅРѕРїРєСѓ "Upload"
 
 
 
@@ -85,7 +85,7 @@ public class ElementsPage {
     protected void clearAndType (SelenideElement element, String value ) {
         while (!Objects.equals(element.getAttribute("value"), "")) element.sendKeys(Keys.BACK_SPACE);
         element.sendKeys(value);
-    } // очищаем поле перед вводом
+    } // РѕС‡РёС‰Р°РµРј РїРѕР»Рµ РїРµСЂРµРґ РІРІРѕРґРѕРј
     public void sendKeysWebTables (String name, String lastName, String email, int age, int salary, String department) {
         firstNameWebTables.click();
         clearAndType(firstNameWebTables, name);

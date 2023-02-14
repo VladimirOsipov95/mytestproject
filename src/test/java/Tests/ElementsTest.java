@@ -15,9 +15,9 @@ import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Selenide.*;
 
 /**
- *  Ïðîâåðêè âêëàäîê â ðàçäåëå Elements
+ *  ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ¸ Ð²ÐºÐ»Ð°Ð´Ð¾Ðº Ð² Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ Elements
  */
-@Epic("Ïðîâåðêè íà âêëàäêå Elements")
+@Epic("ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ¸ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÐµ Elements")
 public class ElementsTest extends BaseTest {
     private final static String homeURL = "http://85.192.34.140:8081/";
     private final static String search = "Alden";
@@ -31,17 +31,17 @@ public class ElementsTest extends BaseTest {
     @Test
     @Owner("osipov_vr")
     @Order(1)
-    @Description("Îòêðûâàåì  ðàçäåë Text Box")
-    @DisplayName("1.Îòêðûâàåì  ðàçäåë Text Box")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Text Box")
+    @DisplayName("1.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Text Box")
     public void openTextBox () {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Text Box",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Text Box",
                 elementsPage::clickButtonTextBox);
-        Allure.step("Ïðîâåðÿåì ñîäåðæèìîå ðàçäåëà Text Box",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Text Box",
                 ()-> {
                     elementsPage.getFullName().shouldBe(Condition.visible);
                     elementsPage.getEmail().shouldBe(Condition.visible);
@@ -54,131 +54,131 @@ public class ElementsTest extends BaseTest {
     @Test
     @Owner("osipov_vr")
     @Order(2)
-    @Description("Ïðîâåðÿåì ðàáîòó ðàçäåëà Text Box")
-    @DisplayName("2.Ïðîâåðÿåì ðàáîòó ðàçäåëà Text Box")
+    @Description("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Text Box")
+    @DisplayName("2.ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Text Box")
     public void workTextBox () {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Text Box",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Text Box",
                 elementsPage::clickButtonTextBox);
-        Allure.step("Çàïîëíÿåì ïîëå Full Name",
+        Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Full Name",
                 elementsPage::fullName);
-        Allure.step("Çàïîëíÿåì ïîëå Email",
+        Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Email",
                 elementsPage::email);
-        Allure.step("Çàïîëíÿåì ïîëå Current  Address",
+        Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Current  Address",
                 elementsPage::currentAddress);
-        Allure.step("Çàïîëíÿåì ïîëå Permanent Address",
+        Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¿Ð¾Ð»Ðµ Permanent Address",
                 elementsPage::permanentAddress);
-        Allure.step("Íàæèìàåì êíîïêó  Submit",
+        Allure.step("ÐÐ°Ð¶Ð¸Ð¼Ð°ÐµÐ¼ ÐºÐ½Ð¾Ð¿ÐºÑƒ  Submit",
                 elementsPage::clickButtonSubmit);
     }
     @Test
     @Owner("osipov_vr")
     @Order(3)
-    @Description("Îòêðûâàåì  ðàçäåë Check Box")
-    @DisplayName("3.Îòêðûâàåì  ðàçäåë Check Box")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Check Box")
+    @DisplayName("3.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Check Box")
     public void openCheckBox () {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Check Box",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Check Box",
                 elementsPage::clickButtonCheckBox);
-        Allure.step("Ïðîâåðÿåì ñîäåðæèìîå ðàçäåëà Check Box",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Check Box",
                 ()->elementsPage.getHome().shouldBe(Condition.visible));
     }
     @Test
     @Owner("osipov_vr")
     @Order(4)
-    @Description("Ïðîâåðêà ðàáîòû ðàçäåëà Check Box")
-    @DisplayName("4.Ïðîâåðêà ðàáîòû ðàçäåëà Check Box")
+    @Description("ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Check Box")
+    @DisplayName("4.ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Check Box")
     public void workCheckBox () throws InterruptedException {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Check Box",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Check Box",
                 elementsPage::clickButtonCheckBox);
-        Allure.step("Ðàñêðûâàåì ïàïêó Home",
+        Allure.step("Ð Ð°ÑÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð¿Ð°Ð¿ÐºÑƒ Home",
                 ()->{
                     elementsPage.clickHome();
                     Thread.sleep(30);
                 });
-        Allure.step("Ðàñêðûâàåì ïàïêó Desktop",
+        Allure.step("Ð Ð°ÑÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð¿Ð°Ð¿ÐºÑƒ Desktop",
                 ()-> {
                     elementsPage.clickDesktop();
                     Thread.sleep(30);
                 });
-        Allure.step("Ðàñêðûâàåì ïàïêó Documents",
+        Allure.step("Ð Ð°ÑÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð¿Ð°Ð¿ÐºÑƒ Documents",
                 ()->{
                     elementsPage.clickDocuments();
                     Thread.sleep(30);
                 });
-        Allure.step("Ðàñêðûâàåì ïàïêó Downloads",
+        Allure.step("Ð Ð°ÑÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð¿Ð°Ð¿ÐºÑƒ Downloads",
                 ()->{
                     elementsPage.clickDownloads();
                     Thread.sleep(30);
                 });
-        Allure.step("Àêòèâèðóåì ÷åê-áîêñ ó ïàïêè Desktop",
+        Allure.step("ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€ÑƒÐµÐ¼ Ñ‡ÐµÐº-Ð±Ð¾ÐºÑ Ñƒ Ð¿Ð°Ð¿ÐºÐ¸ Desktop",
                 ()->{
                     elementsPage.clickCheckBoxDesktop();
                     Thread.sleep(30);
                 });
-        Allure.step("Äèçåéáëèì ÷åê-áîêñ ó ïàïêè Desktop",
+        Allure.step("Ð”Ð¸Ð·ÐµÐ¹Ð±Ð»Ð¸Ð¼ Ñ‡ÐµÐº-Ð±Ð¾ÐºÑ Ñƒ Ð¿Ð°Ð¿ÐºÐ¸ Desktop",
                 ()-> {
                     elementsPage.clickCheckBoxDesktop();
                     Thread.sleep(30);
                 });
 
-        Allure.step("Àêòèâèðóåì ÷åê-áîêñ ó ïàïêè Documents",
+        Allure.step("ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€ÑƒÐµÐ¼ Ñ‡ÐµÐº-Ð±Ð¾ÐºÑ Ñƒ Ð¿Ð°Ð¿ÐºÐ¸ Documents",
                 ()->{
                     elementsPage.clickCheckBoxDocuments();
                     Thread.sleep(30);
                 });
 
-        Allure.step("Äèçåéáëèì ÷åê-áîêñ ó ïàïêè Documents",
+        Allure.step("Ð”Ð¸Ð·ÐµÐ¹Ð±Ð»Ð¸Ð¼ Ñ‡ÐµÐº-Ð±Ð¾ÐºÑ Ñƒ Ð¿Ð°Ð¿ÐºÐ¸ Documents",
                 ()->{
                     elementsPage.clickCheckBoxDocuments();
                     Thread.sleep(30);
                 });
-        Allure.step("Àêòèâèðóåì ÷åê-áîêñ ó ïàïêè Downloads",
+        Allure.step("ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€ÑƒÐµÐ¼ Ñ‡ÐµÐº-Ð±Ð¾ÐºÑ Ñƒ Ð¿Ð°Ð¿ÐºÐ¸ Downloads",
                 ()->{
                     elementsPage.clickCheckBoxDownloads();
                     Thread.sleep(30);
                 });
 
-        Allure.step("Äèçåéáëèì ÷åê-áîêñ ó ïàïêè Downloads",
+        Allure.step("Ð”Ð¸Ð·ÐµÐ¹Ð±Ð»Ð¸Ð¼ Ñ‡ÐµÐº-Ð±Ð¾ÐºÑ Ñƒ Ð¿Ð°Ð¿ÐºÐ¸ Downloads",
                 ()->{
                     elementsPage.clickCheckBoxDownloads();
                     Thread.sleep(30);
                 });
-        Allure.step("Àêòèâèðóåì ÷åê-áîêñ ó ïàïêè Home",
+        Allure.step("ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€ÑƒÐµÐ¼ Ñ‡ÐµÐº-Ð±Ð¾ÐºÑ Ñƒ Ð¿Ð°Ð¿ÐºÐ¸ Home",
                 ()->{
                     elementsPage.clickCheckBoxHome();
                     Thread.sleep(30);
                 });
-        Allure.step("Äèçåéáëèì ÷åê-áîêñ ó ïàïêè Home",
+        Allure.step("Ð”Ð¸Ð·ÐµÐ¹Ð±Ð»Ð¸Ð¼ Ñ‡ÐµÐº-Ð±Ð¾ÐºÑ Ñƒ Ð¿Ð°Ð¿ÐºÐ¸ Home",
                 elementsPage::clickCheckBoxHome);
     }
     @Test
     @Owner("osipov_vr")
     @Order(5)
-    @Description("Îòêðûâàåì  ðàçäåë Radio Button")
-    @DisplayName("5.Îòêðûâàåì  ðàçäåë Radio Button")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Radio Button")
+    @DisplayName("5.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Radio Button")
     public void openRadioButton () {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Radio Button",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Radio Button",
                 elementsPage::clickRadioButton);
-        Allure.step("Ïðîâåðÿåì ñîäåðæèìîå ðàçäåëà Radio Button",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Radio Button",
                 ()->{
                     elementsPage.getButtonYes().shouldBe(Condition.visible);
                     elementsPage.getButtonImpressive().shouldBe(Condition.visible);
@@ -188,17 +188,17 @@ public class ElementsTest extends BaseTest {
     @Test
     @Owner("osipov_vr")
     @Order(6)
-    @Description("Ïðîâåðêà ðàáîòû ðàçäåëà Radio Button")
-    @DisplayName("6.Ïðîâåðêà ðàáîòû ðàçäåëà Radio Button")
+    @Description("ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Radio Button")
+    @DisplayName("6.ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Radio Button")
     public void workRadioButton () throws InterruptedException {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Radio Button",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Radio Button",
                 elementsPage::clickRadioButton);
-        Allure.step("Êëèêàåì â Yes",
+        Allure.step("ÐšÐ»Ð¸ÐºÐ°ÐµÐ¼ Ð² Yes",
                 ()-> {
                     elementsPage.clickYes();
                     String Yes = elementsPage.afterClick();
@@ -206,7 +206,7 @@ public class ElementsTest extends BaseTest {
                     Assertions.assertTrue(Yes.contains(Yes1));
                     Thread.sleep(150);
                 });
-        Allure.step("Êëèêàåì â Impressive",
+        Allure.step("ÐšÐ»Ð¸ÐºÐ°ÐµÐ¼ Ð² Impressive",
                 ()->{
                     elementsPage.clickImpressive();
                     String Impressive = elementsPage.afterClick();
@@ -214,7 +214,7 @@ public class ElementsTest extends BaseTest {
                     Assertions.assertTrue(Impressive.contains(Impressive1));
                     Thread.sleep(150);
                 });
-        Allure.step("Êëèêàåì â No",
+        Allure.step("ÐšÐ»Ð¸ÐºÐ°ÐµÐ¼ Ð² No",
                 ()-> {
                     elementsPage.clickNo();
                     String No = elementsPage.afterClick();
@@ -225,17 +225,17 @@ public class ElementsTest extends BaseTest {
     @Test
     @Owner("osipov_vr")
     @Order(7)
-    @Description("Îòêðûâàåì  ðàçäåë Web Tables")
-    @DisplayName("7.Îòêðûâàåì  ðàçäåë Web Tables")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Web Tables")
+    @DisplayName("7.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Web Tables")
     public void openWebTables() {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Web Tables",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Web Tables",
                 elementsPage::clickWebTables);
-        Allure.step("Ïðîâåðÿåì ñîäåðæèìîå ðàçäåëà Web Tables",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Web Tables",
                 ()->{
                     $x("//*[@id='addNewRecordButton']").shouldBe(Condition.visible);
                     $x("//*[@id='searchBox']").shouldBe(Condition.visible);
@@ -253,41 +253,41 @@ public class ElementsTest extends BaseTest {
     @Test
     @Owner("osipov_vr")
     @Order(8)
-    @Description("Ïîèñê çàïèñåé â ðàçäåëå Web Tables")
-    @DisplayName("8.Ïîèñê çàïèñåé â ðàçäåëå Web Tables")
+    @Description("ÐŸÐ¾Ð¸ÑÐº Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð² Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ Web Tables")
+    @DisplayName("8.ÐŸÐ¾Ð¸ÑÐº Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð² Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ Web Tables")
     public void searchWebTables() {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Web Tables ",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Web Tables ",
                 elementsPage::clickWebTables);
-        Allure.step("Ââîäèì çíà÷åíèå â ïîèñêå",
+        Allure.step("Ð’Ð²Ð¾Ð´Ð¸Ð¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð² Ð¿Ð¾Ð¸ÑÐºÐµ",
                 ()->elementsPage.searchWebTables(search));
-        Allure.step("Ïðîâåðÿåì îòîáðàæàåìûå çíà÷åíèÿ",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÐµÐ¼Ñ‹Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ",
                 ()->$$x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]").shouldHave(texts(search)));
     }
     @Test
     @Owner("osipov_vr")
     @Order(9)
-    @Description("Ðåäàêòèðîâàíèå çàïèñåé â ðàçäåëå Web Tables")
-    @DisplayName("9.Ðåäàêòèðîâàíèå çàïèñåé â ðàçäåëå Web Tables")
+    @Description("Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð² Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ Web Tables")
+    @DisplayName("9.Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð² Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ Web Tables")
     public void editWebTables()  {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Web Tables ",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Web Tables ",
                 elementsPage::clickWebTables);
-        Allure.step("Êëèêàåì  íà êíîïêó ðåäàêòèðîâàíèÿ",
+        Allure.step("ÐšÐ»Ð¸ÐºÐ°ÐµÐ¼  Ð½Ð° ÐºÐ½Ð¾Ð¿ÐºÑƒ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ",
                 elementsPage::editWebTables);
-        Allure.step("Èçìåíÿåì çíà÷åíèÿ  ñòðîêè",
+        Allure.step("Ð˜Ð·Ð¼ÐµÐ½ÑÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ  ÑÑ‚Ñ€Ð¾ÐºÐ¸",
                 ()->elementsPage.sendKeysWebTables(NAME, LAST_NAME, EMAIL, AGE , SALARY, DEPARTMENT));
-        Allure.step("Ïîäòâåðæäàåì èçìåíåíèÿ",
+        Allure.step("ÐŸÐ¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´Ð°ÐµÐ¼ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ",
                 elementsPage::clickButtonSubmit);
-        Allure.step("Ïðîâåðÿåì çíà÷åíèÿ ñòðîêè ïîñëå ðåäàêòèðîâàíèÿ",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ ÑÑ‚Ñ€Ð¾ÐºÐ¸ Ð¿Ð¾ÑÐ»Ðµ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ",
                 ()->{
                     String ACTUAL_FIRST_NAME = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/div/div[1]").getText();
                     String ACTUAL_LAST_NAME = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/div/div[2]").getText();
@@ -304,83 +304,83 @@ public class ElementsTest extends BaseTest {
                 });
     }
     @Test
-    @Owner("osipov_vr")// äîäåëàòü, êàê áðàòü ïåðåìåííûå èç äðóãèõ øàãîâ
+    @Owner("osipov_vr")// Ð´Ð¾Ð´ÐµÐ»Ð°Ñ‚ÑŒ, ÐºÐ°Ðº Ð±Ñ€Ð°Ñ‚ÑŒ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ðµ Ð¸Ð· Ð´Ñ€ÑƒÐ³Ð¸Ñ… ÑˆÐ°Ð³Ð¾Ð²
     @Order(10)
-    @Description("Äîáàâëåíèå çàïèñåé â ðàçäåëå Web Tables")
-    @DisplayName("10.Äîáàâëåíèå çàïèñåé â ðàçäåëå Web Tables")
+    @Description("Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð² Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ Web Tables")
+    @DisplayName("10.Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð² Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ Web Tables")
     public void newWebTables() {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Web Tables ");
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Web Tables ");
         elementsPage.clickWebTables();
         String [] actualTables = elementsPage.getTables();
-        Allure.step("Êëèêàåì  íà êíîïêó Add",
+        Allure.step("ÐšÐ»Ð¸ÐºÐ°ÐµÐ¼  Ð½Ð° ÐºÐ½Ð¾Ð¿ÐºÑƒ Add",
                 elementsPage::newWebTables);
-        Allure.step("Çàïîëíÿåì ïîëÿ äàííûì",
+        Allure.step("Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð¿Ð¾Ð»Ñ Ð´Ð°Ð½Ð½Ñ‹Ð¼",
                 ()->elementsPage.sendKeysWebTables(NAME, LAST_NAME, EMAIL, AGE , SALARY, DEPARTMENT));
-        Allure.step("Ïîäòâåðæäàåì ñîçäàíèå",
+        Allure.step("ÐŸÐ¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´Ð°ÐµÐ¼ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ðµ",
                 elementsPage::clickButtonSubmit);
-        Allure.step("Ïðîâåðÿåì çíà÷åíèÿ ñòðîêè ïîñëå ñîçäàíèÿ");
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ ÑÑ‚Ñ€Ð¾ÐºÐ¸ Ð¿Ð¾ÑÐ»Ðµ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ");
         String [] expectedTables = elementsPage.getTables();
         Assertions.assertNotEquals(actualTables, expectedTables);
     }
     @Test
     @Owner("osipov_vr")
     @Order(11)
-    @Description("Óäàëåíèå çàïèñåé â ðàçäåëå Web Tables")
-    @DisplayName("11.Óäàëåíèå çàïèñåé â ðàçäåëå Web Tables")
+    @Description("Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð² Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ Web Tables")
+    @DisplayName("11.Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð² Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ Web Tables")
     public void deleteWebTables() {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Web Tables ");
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Web Tables ");
         elementsPage.clickWebTables();
         String [] actualTables = elementsPage.getTables();
-        Allure.step("Êëèêàåì  íà êíîïêó óäàëåíèå",
+        Allure.step("ÐšÐ»Ð¸ÐºÐ°ÐµÐ¼  Ð½Ð° ÐºÐ½Ð¾Ð¿ÐºÑƒ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ðµ",
                 elementsPage::deleteWebTables);
-        Allure.step("Ïðîâåðÿåì ÷òî ñòðîêà óäàëèëàñü");
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‡Ñ‚Ð¾ ÑÑ‚Ñ€Ð¾ÐºÐ° ÑƒÐ´Ð°Ð»Ð¸Ð»Ð°ÑÑŒ");
         String [] expectedTables = elementsPage.getTables();
         Assertions.assertNotEquals(actualTables,expectedTables);
     }
     @Test
     @Owner("osipov_vr")
     @Order(12)
-    @Description("Îòêðûâàåì  ðàçäåë Buttons")
-    @DisplayName("12.Îòêðûâàåì  ðàçäåë Buttons")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Buttons")
+    @DisplayName("12.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Buttons")
     public void openButtons() {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Buttons",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Buttons",
                 elementsPage::clickButtons);
-        Allure.step("Ïðîâåðÿåì ñîäåðæèìîå ðàçäåëà Buttons",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Buttons",
                 elementsPage::checkButtons);
     }
     @Test
     @Owner("osipov_vr")
     @Order(13)
-    @Description("Ïðîâåðêà äâîéíîãî êëèêà")
-    @DisplayName("13.Ïðîâåðêà äâîéíîãî êëèêà")
+    @Description("ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð´Ð²Ð¾Ð¹Ð½Ð¾Ð³Ð¾ ÐºÐ»Ð¸ÐºÐ°")
+    @DisplayName("13.ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð´Ð²Ð¾Ð¹Ð½Ð¾Ð³Ð¾ ÐºÐ»Ð¸ÐºÐ°")
     public void checkDoubleClick() throws InterruptedException {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Buttons",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Buttons",
                 ()->{
                     elementsPage.clickButtons();
                     Thread.sleep(3000);
                 });
 
-        Allure.step("Äåëÿåì äâîéíèê êëèê íà ñîîòâåòñâóþùóþ êíîïêó",
+        Allure.step("Ð”ÐµÐ»ÑÐµÐ¼ Ð´Ð²Ð¾Ð¹Ð½Ð¸Ðº ÐºÐ»Ð¸Ðº Ð½Ð° ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÐ²ÑƒÑŽÑ‰ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ",
                 ()->{
                     elementsPage.checkDoubleClick();
                     String message = $x("//*[@id='doubleClickMessage']").getOwnText();
@@ -391,20 +391,20 @@ public class ElementsTest extends BaseTest {
     @Test
     @Owner("osipov_vr")
     @Order(14)
-    @Description("Ïðîâåðêà ïðàâîãî êëèêà")
-    @DisplayName("14.Ïðîâåðêà ïðàâîãî êëèêà")
+    @Description("ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð¿Ñ€Ð°Ð²Ð¾Ð³Ð¾ ÐºÐ»Ð¸ÐºÐ°")
+    @DisplayName("14.ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð¿Ñ€Ð°Ð²Ð¾Ð³Ð¾ ÐºÐ»Ð¸ÐºÐ°")
     public void checkRightClick() throws InterruptedException {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Buttons",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Buttons",
                 ()->{
                     elementsPage.clickButtons();
                     Thread.sleep(3000);
                 });
-        Allure.step("Äåëÿåì ïðàâûé êëèê íà ñîîòâåòñâóþùóþ êíîïêó",
+        Allure.step("Ð”ÐµÐ»ÑÐµÐ¼ Ð¿Ñ€Ð°Ð²Ñ‹Ð¹ ÐºÐ»Ð¸Ðº Ð½Ð° ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÐ²ÑƒÑŽÑ‰ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ",
                 ()->{
                     elementsPage.checkRightClick();
                     String message = $x("//*[@id='rightClickMessage']").getOwnText();
@@ -415,35 +415,35 @@ public class ElementsTest extends BaseTest {
     @Test
     @Owner("osipov_vr")
     @Order(15)
-    @Description("Îòêðûâàåì  ðàçäåë Links")
-    @DisplayName("15.Îòêðûâàåì  ðàçäåë Links")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Links")
+    @DisplayName("15.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Links")
     public void openLinks() {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Links",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Links",
                 elementsPage::clickButtonLinks);
-        Allure.step("Ïðîâåðÿåì ñîäåðæèìîå ðàçäåëà Links",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Links",
                 elementsPage::checkLinks);
     }
     @Test
     @Owner("osipov_vr")
     @Order(16)
-    @Description("Îòêðûâàåì  íîâóþ âêëàäêó")
-    @DisplayName("16.Îòêðûâàåì  íîâóþ âêëàäêó")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ð½Ð¾Ð²ÑƒÑŽ Ð²ÐºÐ»Ð°Ð´ÐºÑƒ")
+    @DisplayName("16.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ð½Ð¾Ð²ÑƒÑŽ Ð²ÐºÐ»Ð°Ð´ÐºÑƒ")
     public void openNewWindows() {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Links",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Links",
                 elementsPage::clickButtonLinks);
-        Allure.step("Êëèêàåì íà ëèíêó Home",
+        Allure.step("ÐšÐ»Ð¸ÐºÐ°ÐµÐ¼ Ð½Ð° Ð»Ð¸Ð½ÐºÑƒ Home",
                 elementsPage::clickNewWindowLinks);
-        Allure.step("Ïðîâåðÿåì ÷òî îòêðûëîñü íîâîå îêíî",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‡Ñ‚Ð¾ Ð¾Ñ‚ÐºÑ€Ñ‹Ð»Ð¾ÑÑŒ Ð½Ð¾Ð²Ð¾Ðµ Ð¾ÐºÐ½Ð¾",
                 ()->{
                     switchTo().window(1);
                     $x("//h5[text()='Elements']").shouldBe(Condition.visible);
@@ -459,33 +459,33 @@ public class ElementsTest extends BaseTest {
     @Test
     @Owner("osipov_vr")
     @Order(17)
-    @Description("Îòêðûâàåì  ðàçäåë Upload and Download")
-    @DisplayName("17.Îòêðûâàåì  ðàçäåë Upload and Download")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Upload and Download")
+    @DisplayName("17.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼  Ñ€Ð°Ð·Ð´ÐµÐ» Upload and Download")
     public void openUploadAndDownload() {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Upload and Download",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Upload and Download",
                 elementsPage::openUploadAndDownload);
-        Allure.step("Ïðîâåðÿåì ñîäåðæèìîå ðàçäåëà Upload and Download",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Upload and Download",
                 elementsPage::checkUploadAndDownload);
     }
     @Test
     @Owner("osipov_vr")
     @Order(18)
-    @Description("Ñêà÷èâàåì ôàéë")
-    @DisplayName("18.Ñêà÷èâàåì ôàéë")
+    @Description("Ð¡ÐºÐ°Ñ‡Ð¸Ð²Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð»")
+    @DisplayName("18.Ð¡ÐºÐ°Ñ‡Ð¸Ð²Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð»")
     public void Download() {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Upload and Download",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Upload and Download",
                 elementsPage::openUploadAndDownload);
-        Allure.step("Íàæèìàåì íà êíîïêó Download è ïðîâåðÿåì ÷òî ôàéë ñêà÷àëñÿ",
+        Allure.step("ÐÐ°Ð¶Ð¸Ð¼Ð°ÐµÐ¼ Ð½Ð° ÐºÐ½Ð¾Ð¿ÐºÑƒ Download Ð¸ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‡Ñ‚Ð¾ Ñ„Ð°Ð¹Ð» ÑÐºÐ°Ñ‡Ð°Ð»ÑÑ",
                 ()->{
                     String result = elementsPage.clickDownload();
                     Assertions.assertEquals(result,"sticker.png");
@@ -494,19 +494,19 @@ public class ElementsTest extends BaseTest {
     @Test
     @Owner("osipov_vr")
     @Order(19)
-    @Description("Çàãðóæàåì ôàéë")
-    @DisplayName("19.Çàãðóæàåì ôàéë")
+    @Description("Ð—Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð»")
+    @DisplayName("19.Ð—Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð»")
     public void Upload()  {
         ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Ïåðåõîäèì íà âêëàäêó Elements",
+        Allure.step("ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements",
                 elementsPage::clickElements);
-        Allure.step("Îòêðûâàåì ðàçäåë Upload and Download",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ñ€Ð°Ð·Ð´ÐµÐ» Upload and Download",
                 elementsPage::openUploadAndDownload);
-        Allure.step("Íàæèìàåì íà êíîïêó Upload",
+        Allure.step("ÐÐ°Ð¶Ð¸Ð¼Ð°ÐµÐ¼ Ð½Ð° ÐºÐ½Ð¾Ð¿ÐºÑƒ Upload",
                 elementsPage::clickUpload);
-        Allure.step("Ïðîâåðÿåì ÷òî ôàéë çàãðóçèëñÿ",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ñ‡Ñ‚Ð¾ Ñ„Ð°Ð¹Ð» Ð·Ð°Ð³Ñ€ÑƒÐ·Ð¸Ð»ÑÑ",
                 ()->$x("//*[@id='uploadedFilePath']").shouldBe(Condition.visible));
     }
 }

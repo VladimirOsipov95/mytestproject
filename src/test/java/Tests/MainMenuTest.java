@@ -10,20 +10,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.$x;
 /**
- * Ïðîâåðêà îòêðûòèÿ  âêëàäîê â ãëàâíîì ìåíþ
+ * ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ  Ð²ÐºÐ»Ð°Ð´Ð¾Ðº Ð² Ð³Ð»Ð°Ð²Ð½Ð¾Ð¼ Ð¼ÐµÐ½ÑŽ
  */
-@Epic("Ïðîâåðêè ïåðåõîäà ïî ðàçäåëàì èç ãëàâíîãî ìåíþ")
+@Epic("ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ¸ Ð¿ÐµÑ€ÐµÑ…Ð¾Ð´Ð° Ð¿Ð¾ Ñ€Ð°Ð·Ð´ÐµÐ»Ð°Ð¼ Ð¸Ð· Ð³Ð»Ð°Ð²Ð½Ð¾Ð³Ð¾ Ð¼ÐµÐ½ÑŽ")
 public class MainMenuTest extends BaseTest {
     private final static String homeURL = "http://85.192.34.140:8081/";
     @Test
     @Owner("osipov_vr")
-    @Description("Îòêðûâàåì âêëàäêó Elements")
-    @DisplayName("1.Îòêðûâàåì âêëàäêó Elements")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements")
+    @DisplayName("1.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Elements")
     public void openElements()  {
         MainPage mainPage = new MainPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()->mainPage.openMainPage(homeURL));
-        Allure.step("Ïðîâåðÿåì íàëè÷èå âñåõ ïóíêòîâ ìåíþ íà ãëàâíîé ñòðàíèöå",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ Ð²ÑÐµÑ… Ð¿ÑƒÐ½ÐºÑ‚Ð¾Ð² Ð¼ÐµÐ½ÑŽ Ð½Ð° Ð³Ð»Ð°Ð²Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ",
                 ()-> {
                     $x("//h5[text()='Elements']").shouldBe(Condition.visible);
                     $x("//h5[text()='Forms']").shouldBe(Condition.visible);
@@ -32,9 +32,9 @@ public class MainMenuTest extends BaseTest {
                     $x("//h5[text()='Interactions']").shouldBe(Condition.visible);
                     $x("//h5[text()='Game Store Application']").shouldBe(Condition.visible);
                 });
-        Allure.step("Êëèêàåì íà ïîëå Elements",
+        Allure.step("ÐšÐ»Ð¸ÐºÐ°ÐµÐ¼ Ð½Ð° Ð¿Ð¾Ð»Ðµ Elements",
                 mainPage::clickButtonElments);
-        Allure.step("Ïðîâåðÿåì íàëè÷èå âñåõ ðàçäåëîâ â Elements",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ Ð²ÑÐµÑ… Ñ€Ð°Ð·Ð´ÐµÐ»Ð¾Ð² Ð² Elements",
                 ()-> {
                     $x("//span[text()='Text Box']").shouldBe(Condition.visible);
                     $x("//span[text()='Check Box']").shouldBe(Condition.visible);
@@ -49,13 +49,13 @@ public class MainMenuTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
-    @Description("Îòêðûâàåì âêëàäêó Forms")
-    @DisplayName("2.Îòêðûâàåì âêëàäêó Forms")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Forms")
+    @DisplayName("2.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Forms")
     public void openForms()  {
         MainPage mainPage = new MainPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()->mainPage.openMainPage(homeURL));
-        Allure.step("Ïðîâåðÿåì íàëè÷èå âñåõ ïóíêòîâ ìåíþ íà ãëàâíîé ñòðàíèöå",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ Ð²ÑÐµÑ… Ð¿ÑƒÐ½ÐºÑ‚Ð¾Ð² Ð¼ÐµÐ½ÑŽ Ð½Ð° Ð³Ð»Ð°Ð²Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ",
                 ()-> {
                     $x("//h5[text()='Elements']").shouldBe(Condition.visible);
                     $x("//h5[text()='Forms']").shouldBe(Condition.visible);
@@ -64,20 +64,20 @@ public class MainMenuTest extends BaseTest {
                     $x("//h5[text()='Interactions']").shouldBe(Condition.visible);
                     $x("//h5[text()='Game Store Application']").shouldBe(Condition.visible);
                 });
-        Allure.step("Êëèêàåì íà ïîëå Forms",
+        Allure.step("ÐšÐ»Ð¸ÐºÐ°ÐµÐ¼ Ð½Ð° Ð¿Ð¾Ð»Ðµ Forms",
                 mainPage::clickButtonFroms);
-        Allure.step("Ïðîâåðÿåì íàëè÷èå âñåõ ðàçäåëîâ â Forms",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ Ð²ÑÐµÑ… Ñ€Ð°Ð·Ð´ÐµÐ»Ð¾Ð² Ð² Forms",
                 ()->$x("//span[text()='Practice Form']").shouldBe(Condition.visible));
     }
     @Test
     @Owner("osipov_vr")
-    @Description("Îòêðûâàåì âêëàäêó Alerts, Frame & Windows")
-    @DisplayName("3.Îòêðûâàåì âêëàäêó Alerts, Frame & Windows")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Alerts, Frame & Windows")
+    @DisplayName("3.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Alerts, Frame & Windows")
     public void openAFM ()  {
         MainPage mainPage = new MainPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()->mainPage.openMainPage(homeURL));
-        Allure.step("Ïðîâåðÿåì íàëè÷èå âñåõ ïóíêòîâ ìåíþ íà ãëàâíîé ñòðàíèöå",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ Ð²ÑÐµÑ… Ð¿ÑƒÐ½ÐºÑ‚Ð¾Ð² Ð¼ÐµÐ½ÑŽ Ð½Ð° Ð³Ð»Ð°Ð²Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ",
                 ()-> {
                     $x("//h5[text()='Elements']").shouldBe(Condition.visible);
                     $x("//h5[text()='Forms']").shouldBe(Condition.visible);
@@ -86,9 +86,9 @@ public class MainMenuTest extends BaseTest {
                     $x("//h5[text()='Interactions']").shouldBe(Condition.visible);
                     $x("//h5[text()='Game Store Application']").shouldBe(Condition.visible);
                 });
-        Allure.step("Êëèêàåì íà ïîëå Alerts, Frame & Windows",
+        Allure.step("ÐšÐ»Ð¸ÐºÐ°ÐµÐ¼ Ð½Ð° Ð¿Ð¾Ð»Ðµ Alerts, Frame & Windows",
                 mainPage::clickButtonAFW);
-        Allure.step("Ïðîâåðÿåì íàëè÷èå âñåõ ðàçäåëîâ â Alerts, Frame & Windows",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ Ð²ÑÐµÑ… Ñ€Ð°Ð·Ð´ÐµÐ»Ð¾Ð² Ð² Alerts, Frame & Windows",
                 ()-> {
                     $x("//span[text()='Browser Windows']").shouldBe(Condition.visible);
                     $x("//span[text()='Alerts']").shouldBe(Condition.visible);
@@ -99,13 +99,13 @@ public class MainMenuTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
-    @Description("Îòêðûâàåì âêëàäêó Widgets")
-    @DisplayName("4.Îòêðûâàåì âêëàäêó Widgets")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Widgets")
+    @DisplayName("4.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Widgets")
     public void openWidgets () {
         MainPage mainPage = new MainPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()->mainPage.openMainPage(homeURL));
-        Allure.step("Ïðîâåðÿåì íàëè÷èå âñåõ ïóíêòîâ ìåíþ íà ãëàâíîé ñòðàíèöå",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ Ð²ÑÐµÑ… Ð¿ÑƒÐ½ÐºÑ‚Ð¾Ð² Ð¼ÐµÐ½ÑŽ Ð½Ð° Ð³Ð»Ð°Ð²Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ",
                 ()-> {
                     $x("//h5[text()='Elements']").shouldBe(Condition.visible);
                     $x("//h5[text()='Forms']").shouldBe(Condition.visible);
@@ -114,9 +114,9 @@ public class MainMenuTest extends BaseTest {
                     $x("//h5[text()='Interactions']").shouldBe(Condition.visible);
                     $x("//h5[text()='Game Store Application']").shouldBe(Condition.visible);
                 });
-        Allure.step("Êëèêàåì íà ïîëå Widgets",
+        Allure.step("ÐšÐ»Ð¸ÐºÐ°ÐµÐ¼ Ð½Ð° Ð¿Ð¾Ð»Ðµ Widgets",
                 mainPage::clickButtonWidgets);
-        Allure.step("Ïðîâåðÿåì íàëè÷èå âñåõ ðàçäåëîâ â Widgets",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ Ð²ÑÐµÑ… Ñ€Ð°Ð·Ð´ÐµÐ»Ð¾Ð² Ð² Widgets",
                 ()-> {
                     $x("//span[text()='Accordian']").shouldBe(Condition.visible);
                     $x("//span[text()='Auto Complete']").shouldBe(Condition.visible);
@@ -131,13 +131,13 @@ public class MainMenuTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
-    @Description("Îòêðûâàåì âêëàäêó Interactions")
-    @DisplayName("5.Îòêðûâàåì âêëàäêó Interactions")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Interactions")
+    @DisplayName("5.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Interactions")
     public void openInteractions ()  {
         MainPage mainPage = new MainPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()->mainPage.openMainPage(homeURL));
-        Allure.step("Ïðîâåðÿåì íàëè÷èå âñåõ ïóíêòîâ ìåíþ íà ãëàâíîé ñòðàíèöå",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ Ð²ÑÐµÑ… Ð¿ÑƒÐ½ÐºÑ‚Ð¾Ð² Ð¼ÐµÐ½ÑŽ Ð½Ð° Ð³Ð»Ð°Ð²Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ",
                 ()-> {
                     $x("//h5[text()='Elements']").shouldBe(Condition.visible);
                     $x("//h5[text()='Forms']").shouldBe(Condition.visible);
@@ -146,9 +146,9 @@ public class MainMenuTest extends BaseTest {
                     $x("//h5[text()='Interactions']").shouldBe(Condition.visible);
                     $x("//h5[text()='Game Store Application']").shouldBe(Condition.visible);
                 });
-        Allure.step("Êëèêàåì íà ïîëå Interactions",
+        Allure.step("ÐšÐ»Ð¸ÐºÐ°ÐµÐ¼ Ð½Ð° Ð¿Ð¾Ð»Ðµ Interactions",
                 mainPage::clickButtonInteractions);
-        Allure.step("Ïðîâåðÿåì íàëè÷èå âñåõ ðàçäåëîâ â Interactions",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ Ð²ÑÐµÑ… Ñ€Ð°Ð·Ð´ÐµÐ»Ð¾Ð² Ð² Interactions",
                 ()->{
                     $x("//span[text()='Sortable']").shouldBe(Condition.visible);
                     $x("//span[text()='Selectable']").shouldBe(Condition.visible);
@@ -159,13 +159,13 @@ public class MainMenuTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
-    @Description("Îòêðûâàåì âêëàäêó Game Store Application")
-    @DisplayName("6.Îòêðûâàåì âêëàäêó Game Store Application")
+    @Description("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Game Store Application")
+    @DisplayName("6.ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð²ÐºÐ»Ð°Ð´ÐºÑƒ Game Store Application")
     public void openGSA () {
         MainPage mainPage = new MainPage();
-        Allure.step("Îòêðûâàåì ãëàâíóþ ñòðàíèöó",
+        Allure.step("ÐžÑ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ",
                 ()->mainPage.openMainPage(homeURL));
-        Allure.step("Ïðîâåðÿåì íàëè÷èå âñåõ ïóíêòîâ ìåíþ íà ãëàâíîé ñòðàíèöå",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ Ð²ÑÐµÑ… Ð¿ÑƒÐ½ÐºÑ‚Ð¾Ð² Ð¼ÐµÐ½ÑŽ Ð½Ð° Ð³Ð»Ð°Ð²Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ",
                 ()-> {
                     $x("//h5[text()='Elements']").shouldBe(Condition.visible);
                     $x("//h5[text()='Forms']").shouldBe(Condition.visible);
@@ -174,9 +174,9 @@ public class MainMenuTest extends BaseTest {
                     $x("//h5[text()='Interactions']").shouldBe(Condition.visible);
                     $x("//h5[text()='Game Store Application']").shouldBe(Condition.visible);
                 });
-        Allure.step("Êëèêàåì íà ïîëå Game Store Application",
+        Allure.step("ÐšÐ»Ð¸ÐºÐ°ÐµÐ¼ Ð½Ð° Ð¿Ð¾Ð»Ðµ Game Store Application",
                 mainPage::clickButtonGSA);
-        Allure.step("Ïðîâåðÿåì íàëè÷èå âñåõ ðàçäåëîâ â Game Store Application",
+        Allure.step("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ Ð²ÑÐµÑ… Ñ€Ð°Ð·Ð´ÐµÐ»Ð¾Ð² Ð² Game Store Application",
                 ()->$x("//span[text()='Link Page']").shouldBe(Condition.visible));
     }
 }

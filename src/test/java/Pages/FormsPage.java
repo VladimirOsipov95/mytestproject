@@ -6,22 +6,23 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class FormsPage {
-    private final SelenideElement buttonForms = $x("//h5[text()='Forms']"); // Открываем Forms
-    private final SelenideElement buttonPracticeForm = $x("//span[text()='Practice Form']"); // Открываем Practice Forms
-    private final SelenideElement labelPracticeForm = $x("//div[text()='Practice Form']");// Название странцы
-    private final SelenideElement fieldFirstName = $x("//*[@id='firstName']");// Поле  First Name
-    private final SelenideElement fieldLastName = $x("//*[@id='lastName']");// Поле  Last Name
-    private final SelenideElement fieldEmail = $x("//*[@id='userEmail']");// Поле  email
-    private final SelenideElement radioButtonGender = $x("//*[@id='genterWrapper']");// Радио-баттон Gender
-    private final SelenideElement fieldMobile = $x("//*[@id='userNumber']");// Поле Mobile
-    private final SelenideElement fieldDateOfBrith = $x("//*[@id='dateOfBirthInput']"); // Поле Date of Birth
-    private final SelenideElement fieldSubjects = $x("//*[@id='subjectsContainer']"); // Поле Subjects
-    private final SelenideElement checkBoxHobbies = $x("//*[@id='hobbiesWrapper']"); // Чек-бокс Hobbies
-    private final SelenideElement buttonSelectPicture = $x("//*[@id='uploadPicture']"); // Кнопка Select Picture
-    private final SelenideElement fieldCurrentAddress = $x("//*[@id='currentAddress']"); // Поле  current Address
-    private final SelenideElement selectState = $x("//*[@id='state']"); // Селект state
-    private final SelenideElement selectCity = $x("//*[@id='city']"); // Селект city
-    private final SelenideElement buttonSubmit = $x("//*[@id=\"submit\"]"); //  Кнопка Submit
+    private final SelenideElement buttonForms = $x("//h5[text()='Forms']"); // РћС‚РєСЂС‹РІР°РµРј Forms
+    private final SelenideElement buttonPracticeForm = $x("//span[text()='Practice Form']"); // РћС‚РєСЂС‹РІР°РµРј Practice Forms
+    private final SelenideElement labelPracticeForm = $x("//div[text()='Practice Form']");// РќР°Р·РІР°РЅРёРµ СЃС‚СЂР°РЅС†С‹
+    private final SelenideElement fieldFirstName = $x("//*[@id='firstName']");// РџРѕР»Рµ  First Name
+    private final SelenideElement fieldLastName = $x("//*[@id='lastName']");// РџРѕР»Рµ  Last Name
+    private final SelenideElement fieldEmail = $x("//*[@id='userEmail']");// РџРѕР»Рµ  email
+    private final SelenideElement radioButtonGender = $x("//*[@id='genterWrapper']");// Р Р°РґРёРѕ-Р±Р°С‚С‚РѕРЅ Gender
+    private final SelenideElement fieldMobile = $x("//*[@id='userNumber']");// РџРѕР»Рµ Mobile
+    private final SelenideElement fieldDateOfBrith = $x("//*[@id='dateOfBirthInput']"); // РџРѕР»Рµ Date of Birth
+    private final SelenideElement fieldSubjects = $x("//*[@id='subjectsContainer']"); // РџРѕР»Рµ Subjects
+    private final SelenideElement checkBoxHobbies = $x("//*[@id='hobbiesWrapper']"); // Р§РµРє-Р±РѕРєСЃ Hobbies
+    private final SelenideElement buttonSelectPicture = $x("//*[@id='uploadPicture']"); // РљРЅРѕРїРєР° Select Picture
+    private final SelenideElement fieldCurrentAddress = $x("//*[@id='currentAddress']"); // РџРѕР»Рµ  current Address
+    private final SelenideElement selectState = $x("//*[@id='state']"); // РЎРµР»РµРєС‚ state
+    private final SelenideElement selectCity = $x("//*[@id='city']"); // РЎРµР»РµРєС‚ city
+    private final SelenideElement buttonSubmit = $x("//*[@id=\"submit\"]"); //  РљРЅРѕРїРєР° Submit
+    private final SelenideElement buttonClose= $x("//*[@id=\"closeLargeModal\"]"); //  РљРЅРѕРїРєР° Close
     private final SelenideElement genderMale = $x("//*[@id=\"genterWrapper\"]/div[2]/div[1]"); // Male
     private final SelenideElement genderFemale = $x("//*[@id=\"genterWrapper\"]/div[2]/div[2]"); // Female
     private final SelenideElement genderOther = $x("//*[@id=\"genterWrapper\"]/div[2]/div[3]"); // Other
@@ -90,5 +91,8 @@ public class FormsPage {
     }
     public SelenideElement getButtonSubmit () {
         return buttonSubmit;
+    }
+    public SelenideElement getButtonClose() {
+        return buttonClose;
     }
 }
