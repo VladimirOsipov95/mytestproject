@@ -328,7 +328,7 @@ public class ElementsTest extends BaseTest {
         Assertions.assertNotEquals(actualTables, expectedTables);
     }
     @Test
-    @Owner("osipov_vr")
+    @Owner("osipov_vr") // доделать, как брать переменные из других шагов
     @Order(11)
     @Description("Удаление записей в разделе Web Tables")
     @DisplayName("11.Удаление записей в разделе Web Tables")

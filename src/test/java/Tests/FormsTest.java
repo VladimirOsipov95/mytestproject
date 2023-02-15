@@ -5,7 +5,10 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.*;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
@@ -18,8 +21,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Random;
 
-
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$$x;
+import static com.codeborne.selenide.Selenide.$x;
 
 
 @Epic("Проверки на вкладке Forms")
@@ -41,16 +44,15 @@ public class FormsTest extends BaseTest  {
     private final SelenideElement stateAndCity = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[10]/td[2]");
     public String dateFormat = "dd MMM yyyy";
     public String expectedDate =LocalDateTime.now().minusYears(20).format(DateTimeFormatter.ofPattern(dateFormat).localizedBy(Locale.US));
-
     private final String firstName = "Vladimir";
     private final String lastName = "Osipov";
     private final String email = "volodka10@yandex.ru";
     private final String currentAddress = "Moscow";
-    private long generateRandomNumber () {
+    private static long generateRandomNumber() {
         Random Random = new Random(1000000000);
         return Random.nextLong();
     }
-    public String randomNumber = String.valueOf(generateRandomNumber());
+    public static String randomNumber = String.valueOf(generateRandomNumber());
     @Test
     @Owner("osipov_vr")
     @Order(1)
@@ -337,7 +339,7 @@ public class FormsTest extends BaseTest  {
                 });
     }
     @Test
-    @Owner("osipov_vr") // сделать проверку номера и даты рождения
+    @Owner("osipov_vr")
     @Order(9)
     @Description("Проверка работы формы с валидными данными")
     @DisplayName("9.Проверка работы формы с валидными данными")
@@ -422,9 +424,7 @@ public class FormsTest extends BaseTest  {
                                     .getSelectCity()
                                     .click());
                     Allure.step("Устанавливаем значение Select City",
-                            ()->{
-                                selectCity.click();
-                            });
+                            ()-> selectCity.click());
                 });
         Allure.step("Нажимаем на кнопку Submit",
                 ()->formsPage.getButtonSubmit().click());
@@ -440,6 +440,16 @@ public class FormsTest extends BaseTest  {
                             ()-> Assertions.assertEquals("", subjects.getText()));
                     Allure.step("Проверяем поле Hobbies",
                             ()-> Assertions.assertEquals("Sports, Reading", hobbies.getText()));
+                    Allure.step("Проверяем поле Date of Birth",
+                            ()-> {
+                            String [] arrayDateOfBirth = dateOfBirth.getText().split("\\s|,");
+                            String day = arrayDateOfBirth [0];
+                            String month = arrayDateOfBirth[1].substring(0,3);
+                            String year = arrayDateOfBirth [2];
+                            Assertions.assertEquals(expectedDate, (day+" "+month+" "+year));
+                            });
+                    Allure.step("Проверяем поле Mobile",
+                            ()-> Assertions.assertEquals(randomNumber.substring(0,10), mobile.getText()));
                     Allure.step("Проверяем поле Picture",
                             ()-> Assertions.assertEquals("1.png", picture.getText()));
                     Allure.step("Проверяем поле Address",
