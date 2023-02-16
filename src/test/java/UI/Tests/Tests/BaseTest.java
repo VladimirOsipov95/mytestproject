@@ -1,4 +1,4 @@
-package Tests;
+package UI.Tests.Tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
@@ -15,7 +15,7 @@ abstract class BaseTest {
         Configuration.browser= "chrome";
         Configuration.driverManagerEnabled = true;
         Configuration.browserSize = "1920x1080";
-        Configuration.headless = true; // false чтобы видеть как автотесты прогоняются в браузере
+        Configuration.headless = false; // false чтобы видеть как автотесты прогоняются в браузере
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
     @BeforeAll

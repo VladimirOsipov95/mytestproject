@@ -1,6 +1,6 @@
-package Tests;
+package UI.Tests.Tests;
 
-import Pages.ElementsPage;
+import UI.Tests.Pages.ElementsPage;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Selenide.*;
+
 
 /**
  *  Проверки вкладок в разделе Elements
@@ -304,7 +305,7 @@ public class ElementsTest extends BaseTest {
                 });
     }
     @Test
-    @Owner("osipov_vr")// доделать, как брать переменные из других шагов
+    @Owner("osipov_vr")
     @Order(10)
     @Description("Добавление записей в разделе Web Tables")
     @DisplayName("10.Добавление записей в разделе Web Tables")
@@ -314,8 +315,8 @@ public class ElementsTest extends BaseTest {
                 ()-> elementsPage.openMainPage(homeURL));
         Allure.step("Переходим на вкладку Elements",
                 elementsPage::clickElements);
-        Allure.step("Открываем раздел Web Tables ");
-        elementsPage.clickWebTables();
+        Allure.step("Открываем раздел Web Tables ",
+                elementsPage::clickWebTables);
         String [] actualTables = elementsPage.getTables();
         Allure.step("Кликаем  на кнопку Add",
                 elementsPage::newWebTables);
@@ -323,12 +324,14 @@ public class ElementsTest extends BaseTest {
                 ()->elementsPage.sendKeysWebTables(NAME, LAST_NAME, EMAIL, AGE , SALARY, DEPARTMENT));
         Allure.step("Подтверждаем создание",
                 elementsPage::clickButtonSubmit);
-        Allure.step("Проверяем значения строки после создания");
-        String [] expectedTables = elementsPage.getTables();
-        Assertions.assertNotEquals(actualTables, expectedTables);
+        Allure.step("Проверяем значения строки после создания",
+                ()-> {
+                    String [] expectedTables = elementsPage.getTables();
+                    Assertions.assertNotEquals(actualTables, expectedTables);
+                });
     }
     @Test
-    @Owner("osipov_vr") // доделать, как брать переменные из других шагов
+    @Owner("osipov_vr")
     @Order(11)
     @Description("Удаление записей в разделе Web Tables")
     @DisplayName("11.Удаление записей в разделе Web Tables")
@@ -338,14 +341,16 @@ public class ElementsTest extends BaseTest {
                 ()-> elementsPage.openMainPage(homeURL));
         Allure.step("Переходим на вкладку Elements",
                 elementsPage::clickElements);
-        Allure.step("Открываем раздел Web Tables ");
-        elementsPage.clickWebTables();
+        Allure.step("Открываем раздел Web Tables ",
+                elementsPage::clickWebTables);
         String [] actualTables = elementsPage.getTables();
         Allure.step("Кликаем  на кнопку удаление",
                 elementsPage::deleteWebTables);
-        Allure.step("Проверяем что строка удалилась");
-        String [] expectedTables = elementsPage.getTables();
-        Assertions.assertNotEquals(actualTables,expectedTables);
+        Allure.step("Проверяем что строка удалилась",
+                ()-> {
+                    String [] expectedTables = elementsPage.getTables();
+                    Assertions.assertNotEquals(actualTables,expectedTables);
+                });
     }
     @Test
     @Owner("osipov_vr")

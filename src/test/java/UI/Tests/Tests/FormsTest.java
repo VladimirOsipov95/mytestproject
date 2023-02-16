@@ -1,6 +1,6 @@
-package Tests;
+package UI.Tests.Tests;
 
-import Pages.FormsPage;
+import UI.Tests.Pages.FormsPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
@@ -21,6 +21,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Random;
 
+import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -459,5 +460,45 @@ public class FormsTest extends BaseTest  {
                 });
         Allure.step("Нажимаем на кнопку Close",
                 ()->formsPage.getButtonClose().click());
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Order(10)
+    @Description("Проверка работы формы с некорректными данными")
+    @DisplayName("10.Проверка работы формы с некорректными данными")
+    public void workWithIncorrectData() {
+        FormsPage formsPage = new FormsPage();
+        Allure.step("Открываем главную страницу",
+                () -> formsPage.openMainPage(homeURL));
+        Allure.step("Переходим на вкладку Forms",
+                formsPage::openForms);
+        Allure.step("Открываем раздел Practice Form",
+                formsPage::openPracticeForm);
+        Allure.step("Нажимаем на кнопку Submit",
+                ()->formsPage.getButtonSubmit().click());
+        Allure.step("Проверяем что подсветились обязательные  поля",
+                () -> {
+                    Allure.step("Проверям поле First Name",
+                            () -> formsPage
+                                    .getFieldFirstName()
+                                    .shouldHave(cssValue("border-color", "rgb(220, 53, 69)")));
+                    Allure.step("Проверяем поле Last Name",
+                            () -> formsPage
+                                    .getFieldLastName()
+                                    .shouldHave(cssValue("border-color", "rgb(220, 53, 69)")));
+                    Allure.step("Проверяем Mobile ",
+                            () -> formsPage
+                                    .getFieldMobile()
+                                    .shouldHave(cssValue("border-color", "rgb(220, 53, 69)")));
+                    Allure.step("Проверяем Gender ",
+                            () -> {
+                                Allure.step("Проверяем Male",
+                                        ()-> formsPage.getGenderMale().shouldHave(cssValue("color", "rgba(255, 255, 255, 1)")));
+                                Allure.step("Проверяем Female",
+                                        ()-> formsPage.getGenderFemale().shouldHave(cssValue("color", "rgba(255, 255, 255, 1)")));
+                                Allure.step("Проверяем Other",
+                                        ()-> formsPage.getGenderOther().shouldHave(cssValue("color", "rgba(255, 255, 255, 1)")));
+                            });
+                });
     }
 }
