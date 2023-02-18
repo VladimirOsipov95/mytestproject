@@ -30,7 +30,60 @@ public class WidgetsPage {
     private final SelenideElement sliderInput = $x("//*[@id=\"sliderValue\"]");
 
     private final SelenideElement buttonProgressBar= $x("//span[text()='Progress Bar']"); // Открываем Progress Bar
+    private final SelenideElement buttonStart= $x("//*[@id=\"startStopButton\"]");
+    private final SelenideElement buttonReset= $x("//*[@id=\"resetButton\"]");
+
+    public SelenideElement getButtonReset() {
+        return buttonReset;
+    }
+
+    private final SelenideElement progressBar= $x("//*[@id=\"progressBar\"]");
+
+    public SelenideElement getButtonStart() {
+        return buttonStart;
+    }
+
+    public SelenideElement getProgressBar() {
+        return progressBar;
+    }
+
     private final SelenideElement buttonTabs= $x("//span[text()='Tabs']"); // Открываем Tabs
+    private final SelenideElement tabWhat= $x("//*[@id=\"demo-tab-what\"]");
+    private final SelenideElement tabOrigin= $x("//*[@id=\"demo-tab-origin\"]");
+    private final SelenideElement tabUse= $x("//*[@id=\"demo-tab-use\"]");
+    private final SelenideElement tabMore= $x("//*[@id=\"demo-tab-more\"]");
+    private final SelenideElement textWhat= $x("//*[@id=\"demo-tabpane-what\"]");
+    private final SelenideElement textOrigin= $x("//*[@id=\"demo-tabpane-origin\"]");
+    private final SelenideElement textUse= $x("//*[@id=\"demo-tabpane-use\"]");
+
+    public SelenideElement getTextWhat() {
+        return textWhat;
+    }
+
+    public SelenideElement getTextOrigin() {
+        return textOrigin;
+    }
+
+    public SelenideElement getTextUse() {
+        return textUse;
+    }
+
+    public SelenideElement getTabWhat() {
+        return tabWhat;
+    }
+
+    public SelenideElement getTabOrigin() {
+        return tabOrigin;
+    }
+
+    public SelenideElement getTabUse() {
+        return tabUse;
+    }
+
+    public SelenideElement getTabMore() {
+        return tabMore;
+    }
+
     private final SelenideElement buttonToolTips= $x("//span[text()='Tool Tips']"); // Открываем Tool Tips
     private final SelenideElement buttonMenu= $x("//span[text()='Menu']"); // Открываем Menu
     private final SelenideElement buttonSelectMenu= $x("//span[text()='Select Menu']"); // Открываем Select Menu

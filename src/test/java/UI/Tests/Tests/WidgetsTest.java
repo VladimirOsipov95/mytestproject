@@ -13,7 +13,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.$x;
 
 @Epic("Проверки на вкладке Widgets")
 public class WidgetsTest extends BaseTest {
@@ -168,9 +167,9 @@ public class WidgetsTest extends BaseTest {
     }
     @Test
     @Owner("osipov_vr")
-    @Order(5) //сделать
+    @Order(5) //сделать проверку на перенос слайдера
     @Description("Проверяем работу слайдера")
-    @DisplayName("4.Проверяем работу слайдера")
+    @DisplayName("5.Проверяем работу слайдера")
     public void workSlider () {
         WidgetsPage widgetsPage = new WidgetsPage();
         Allure.step("Открываем главную страницу",
@@ -185,8 +184,138 @@ public class WidgetsTest extends BaseTest {
                         .click());
         Allure.step("Проверяем работу раздела Slider",
                 () -> {
-                    Selenide.actions().dragAndDropBy($x("//*[@id=\"sliderContainer\"]/div[1]/span/div/div[2]"), 1000, 0).perform();
+                    // widgetsPage.getSlider().dragAndDropTo("55");
                 });
-        Selenide.sleep(3000);
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Order(6)
+    @Description("Открываем  раздел Progress Bar")
+    @DisplayName("6.Открываем  раздел Progress Bar")
+    public void openProgressBar () {
+        WidgetsPage widgetsPage = new WidgetsPage();
+        Allure.step("Открываем главную страницу",
+                () -> widgetsPage.openMainPage(homeURL));
+        Allure.step("Переходим на вкладку Widgets",
+                () -> widgetsPage
+                        .getButtonWidgets()
+                        .click());
+        Allure.step("Переходим в раздел  Progress Bar",
+                () -> widgetsPage
+                        .getButtonProgressBar()
+                        .click());
+        Allure.step("Проверяем содреждание раздела Progress Bar",
+                () -> {
+                    widgetsPage.getButtonStart().shouldBe(Condition.visible);
+                    widgetsPage.getProgressBar().shouldBe(Condition.visible);
+                });
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Order(7)
+    @Description("Проверяем работу Progress Bar")
+    @DisplayName("7.Проверяем работу Progress Bar")
+    public void workProgressBar () {
+        WidgetsPage widgetsPage = new WidgetsPage();
+        Allure.step("Открываем главную страницу",
+                () -> widgetsPage.openMainPage(homeURL));
+        Allure.step("Переходим на вкладку Widgets",
+                () -> widgetsPage
+                        .getButtonWidgets()
+                        .click());
+        Allure.step("Переходим в раздел  Progress Bar",
+                () -> widgetsPage
+                        .getButtonProgressBar()
+                        .click());
+        Allure.step("Нажимаем на кнопку Start",
+                () -> {
+                    widgetsPage.getButtonStart().click();
+                    Allure.step(":Ждем пока Progress Bar достигнет 100%",
+                            () -> {
+                                String progress;
+                                do
+                                {
+                                    progress = widgetsPage.getProgressBar().getText();
+                                }
+                                while (!progress.equals("100%"));
+                            });
+                });
+        Allure.step("Проверяем что Progrees Bar достиг 100% и появлиась кнопка Reset",
+                () -> {
+                    Assertions.assertEquals("100%", widgetsPage.getProgressBar().getText());
+                    widgetsPage.getButtonReset().shouldBe(Condition.visible);
+                });
+        Allure.step("Нажимаем на Reset",
+                () -> {
+                    widgetsPage
+                            .getButtonReset()
+                            .click();
+                    Assertions.assertEquals("0%", widgetsPage.getProgressBar().getText());
+                });
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Order(8)
+    @Description("Открываем  раздел Tabs")
+    @DisplayName("8.Открываем  раздел Tabs")
+    public void openTabs () {
+        WidgetsPage widgetsPage = new WidgetsPage();
+        Allure.step("Открываем главную страницу",
+                () -> widgetsPage.openMainPage(homeURL));
+        Allure.step("Переходим на вкладку Widgets",
+                () -> widgetsPage
+                        .getButtonWidgets()
+                        .click());
+        Allure.step("Переходим в раздел  Tabs",
+                () -> widgetsPage
+                        .getButtonTabs()
+                        .click());
+        Allure.step("Проверяем содреждание раздела Tabs",
+                () -> {
+                    widgetsPage.getTabWhat().shouldBe(Condition.visible);
+                    widgetsPage.getTabOrigin().shouldBe(Condition.visible);
+                    widgetsPage.getTabUse().shouldBe(Condition.visible);
+                    widgetsPage.getTabMore().shouldBe(Condition.visible);
+                });
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Order(9)
+    @Description("Открываем  раздел Tabs")
+    @DisplayName("9.Открываем  раздел Tabs")
+    public void workTabs () {
+        WidgetsPage widgetsPage = new WidgetsPage();
+        Allure.step("Открываем главную страницу",
+                () -> widgetsPage.openMainPage(homeURL));
+        Allure.step("Переходим на вкладку Widgets",
+                () -> widgetsPage
+                        .getButtonWidgets()
+                        .click());
+        Allure.step("Переходим в раздел  Tabs",
+                () -> widgetsPage
+                        .getButtonTabs()
+                        .click());
+        Allure.step("Проверяем текст в  табе What",
+                () -> Assertions.assertEquals(textSection1, widgetsPage.getTextWhat().getText()));
+        Allure.step("Открываем таб Origin",
+                () -> {
+                    widgetsPage
+                            .getTabOrigin()
+                            .click();
+                    Selenide.sleep(1000);
+                    Allure.step("Проверяем текст в  табе Origin",
+                            () -> Assertions.assertEquals(textSection2, widgetsPage.getTextOrigin().getText().trim().replace("\n", " ")));
+                });
+        Allure.step("Открываем таб Use",
+                () -> {
+                    widgetsPage
+                            .getTabUse()
+                            .click();
+                    Selenide.sleep(1000);
+                    Allure.step("Проверяем текст в  табе Use",
+                            () -> Assertions.assertEquals(textSection3, widgetsPage.getTextUse().getText()));
+                });
+        Allure.step("Проверяем  таб More недоступен",
+                () -> widgetsPage.getTabMore().shouldBe(Condition.enabled));
     }
 }
