@@ -14,6 +14,10 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$x;
+
+
 @Epic("Проверки на вкладке Widgets")
 public class WidgetsTest extends BaseTest {
     private final static String homeURL = "http://85.192.34.140:8081/";
@@ -317,5 +321,54 @@ public class WidgetsTest extends BaseTest {
                 });
         Allure.step("Проверяем  таб More недоступен",
                 () -> widgetsPage.getTabMore().shouldBe(Condition.enabled));
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Order(10)
+    @Description("Открываем  раздел Tool Tips")
+    @DisplayName("10.Открываем  раздел Tool Tips")
+    public void openToolTips () {
+        WidgetsPage widgetsPage = new WidgetsPage();
+        Allure.step("Открываем главную страницу",
+                () -> widgetsPage.openMainPage(homeURL));
+        Allure.step("Переходим на вкладку Widgets",
+                () -> widgetsPage
+                        .getButtonWidgets()
+                        .click());
+        Allure.step("Переходим в раздел  ToolTips",
+                () -> widgetsPage
+                        .getButtonToolTips()
+                        .click());
+        Allure.step("Проверяем содреждание раздела Tabs",
+                () -> {
+                    widgetsPage.getButtonHover().shouldBe(Condition.visible);
+                    widgetsPage.getTextField().shouldBe(Condition.visible);
+                    widgetsPage.getTextArea().shouldBe(Condition.visible);
+                });
+    }
+    @Test
+    @Owner("osipov_vr") //разобраться с ховерами
+    @Order(11)
+    @Description("Проверка работы Tool Tips")
+    @DisplayName("11.Проверка работы Tool Tips")
+    public void workToolTips () {
+        WidgetsPage widgetsPage = new WidgetsPage();
+        Allure.step("Открываем главную страницу",
+                () -> widgetsPage.openMainPage(homeURL));
+        Allure.step("Переходим на вкладку Widgets",
+                () -> widgetsPage
+                        .getButtonWidgets()
+                        .click());
+        Allure.step("Переходим в раздел  ToolTips",
+                () -> widgetsPage
+                        .getButtonToolTips()
+                        .click());
+        Allure.step("Проверяем содреждание тултипа Tabs",
+                () -> {
+                    widgetsPage
+                            .getButtonHover()
+                            .hover();
+                    $x("//*[@class='tooltip-inner']").shouldHave(text("You hovered over the Button"));
+                });
     }
 }

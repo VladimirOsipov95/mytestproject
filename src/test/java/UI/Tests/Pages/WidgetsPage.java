@@ -85,6 +85,22 @@ public class WidgetsPage {
     }
 
     private final SelenideElement buttonToolTips= $x("//span[text()='Tool Tips']"); // Открываем Tool Tips
+    private final SelenideElement buttonHover = $x("//*[@id=\"toolTipButton\"]");
+    private final SelenideElement textField= $x("//*[@id=\"toolTipTextField\"]");
+    private final SelenideElement textArea= $x("//*[@id=\"texToolTopContainer\"]");
+
+    public SelenideElement getButtonHover() {
+        return buttonHover;
+    }
+
+    public SelenideElement getTextField() {
+        return textField;
+    }
+
+    public SelenideElement getTextArea() {
+        return textArea;
+    }
+
     private final SelenideElement buttonMenu= $x("//span[text()='Menu']"); // Открываем Menu
     private final SelenideElement buttonSelectMenu= $x("//span[text()='Select Menu']"); // Открываем Select Menu
     private final SelenideElement section1= $x("//*[@id='section1Heading']");
