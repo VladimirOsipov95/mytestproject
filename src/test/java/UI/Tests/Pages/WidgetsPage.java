@@ -17,6 +17,8 @@ public class WidgetsPage {
 
     private final SelenideElement buttonDatePicker= $x("//span[text()='Date Picker']"); // Открываем Date Picker
     private final SelenideElement buttonSlider= $x("//span[text()='Slider']"); // Открываем Slider
+    private final SelenideElement slider = $x("//*[@id=\"sliderContainer\"]/div[1]/span/input");
+    private final SelenideElement sliderInput = $x("//*[@id=\"sliderValue\"]");
 
     public SelenideElement getSlider() {
         return slider;
@@ -26,8 +28,7 @@ public class WidgetsPage {
         return sliderInput;
     }
 
-    private final SelenideElement slider = $x("//*[@id=\"sliderContainer\"]/div[1]/span/input");
-    private final SelenideElement sliderInput = $x("//*[@id=\"sliderValue\"]");
+
 
     private final SelenideElement buttonProgressBar= $x("//span[text()='Progress Bar']"); // Открываем Progress Bar
     private final SelenideElement buttonStart= $x("//*[@id=\"startStopButton\"]");

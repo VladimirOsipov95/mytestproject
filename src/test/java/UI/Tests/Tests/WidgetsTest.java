@@ -188,7 +188,10 @@ public class WidgetsTest extends BaseTest {
                         .click());
         Allure.step("Проверяем работу раздела Slider",
                 () -> {
-                    // widgetsPage.getSlider().dragAndDropTo("55");
+                    Allure.step("Двигаем слайдер",
+                            () -> widgetsPage.getSlider().setValue("35"));
+                    Allure.step("Проверяем что значение слайдера изменилось",
+                            () -> Assertions.assertNotEquals("25", widgetsPage.getSlider().getValue()));
                 });
     }
     @Test
@@ -351,7 +354,7 @@ public class WidgetsTest extends BaseTest {
     @Order(11)
     @Description("Проверка работы Tool Tips")
     @DisplayName("11.Проверка работы Tool Tips")
-    public void workToolTips () {
+    public void workToolTips () throws InterruptedException {
         WidgetsPage widgetsPage = new WidgetsPage();
         Allure.step("Открываем главную страницу",
                 () -> widgetsPage.openMainPage(homeURL));
@@ -363,12 +366,34 @@ public class WidgetsTest extends BaseTest {
                 () -> widgetsPage
                         .getButtonToolTips()
                         .click());
-        Allure.step("Проверяем содреждание тултипа Tabs",
+        Thread.sleep(1000);
+        Allure.step("Проверяем содреждание тултипа у кнопки",
                 () -> {
                     widgetsPage
                             .getButtonHover()
                             .hover();
-                    $x("//*[@class='tooltip-inner']").shouldHave(text("You hovered over the Button"));
+                    Allure.step("Проверяем текст в тултипе",
+                            () -> $x("//*[@class='tooltip-inner']").shouldHave(text("You hovered over the Button")));
+                });
+        Allure.step("Проверяем содреждание тултипа у поля",
+                () -> {
+                    widgetsPage
+                            .getTextField()
+                            .hover();
+                    Allure.step("Проверяем текст в тултипе",
+                            () -> $x("//*[@class='tooltip-inner']").shouldHave(text("You hovered over the text field")));
+                });
+        Allure.step("Проверяем содреждание тултипа у Contrary",
+                () -> {
+                    $x("//*[@id=\"texToolTopContainer\"]/a[1]").hover();
+                    Allure.step("Проверяем текст в тултипе",
+                            () -> $x("//*[@class='tooltip-inner']").shouldHave(text("You hovered over the Contrary")));
+                });
+        Allure.step("Проверяем содреждание тултипа у 1.10.32",
+                () -> {
+                    $x("//*[@id=\"texToolTopContainer\"]/a[2]").hover();
+                    Allure.step("Проверяем текст в тултипе",
+                            () -> $x("//*[@class='tooltip-inner']").shouldHave(text("You hovered over the 1.10.32")));
                 });
     }
 }
