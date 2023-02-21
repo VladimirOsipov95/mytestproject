@@ -12,6 +12,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Selenide.*;
 
 @Epic("Проверки на вкладке Alerts, Frame & Windows")
@@ -134,5 +136,98 @@ public class AWFTest extends BaseTest {
                                 switchTo().window(0);
                             });
                 });
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Order(4)
+    @Description("Открываем  раздел Alerts")
+    @DisplayName("4.Открываем  раздел Alerts")
+    public void openAlerts() {
+        AFWPage page  = new AFWPage();
+        Allure.step("Открываем главную страницу",
+                ()-> page.openMainPage(homeURL));
+        Allure.step("Переходим на вкладку Alerts, Frame & Windows",
+                ()-> page
+                        .getButtonAFW()
+                        .click());
+        Allure.step("Переходим в раздел раздел Alerts",
+                ()-> page
+                        .getButtonAlerts()
+                        .click());
+        Allure.step("Проверяем содержание раздела Alerts",
+                ()->  {
+                    page
+                            .getAlertButton()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getTimerAlertButton()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getConfirmButton()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getPromptButton()
+                            .shouldBe(Condition.visible);
+                });
+    }
+    @Test
+    @Owner("osipov_vr")
+    @Order(5)
+    @Description("Проверяем работу Alerts")
+    @DisplayName("5.Проверяем работу Alerts")
+    public void workAlerts() {
+        AFWPage page  = new AFWPage();
+        Allure.step("Открываем главную страницу",
+                ()-> page.openMainPage(homeURL));
+        Allure.step("Переходим на вкладку Alerts, Frame & Windows",
+                ()-> page
+                        .getButtonAFW()
+                        .click());
+        Allure.step("Переходим в раздел раздел Alerts",
+                ()-> page
+                        .getButtonAlerts()
+                        .click());
+        Allure.step("Проверяем работу Alerts",
+                ()->  {
+                    Allure.step("Нажимаем на  кнопку Click Button to see alert",
+                            ()-> {
+                                page
+                                        .getAlertButton()
+                                        .click();
+                                Allure.step("Проверяем что Alert открылся и закрываем его",
+                                        () -> Selenide.switchTo().alert().accept());
+                            });
+                    Allure.step("Нажимаем на  кнопку On button click, alert will appear after 5 seconds",
+                            ()-> {
+                                page
+                                        .getTimerAlertButton()
+                                        .click();
+                                Allure.step("Проверяем что Alert открылся и закрываем его",
+                                        () -> Selenide.switchTo().alert(Duration.ofSeconds(5)).accept());
+                            });
+                    Allure.step("Нажимаем на  кнопку On button click, confirm box will appear",
+                            ()-> {
+                                page
+                                        .getConfirmButton()
+                                        .click();
+                                Allure.step("Проверяем что Alert открылся и закрываем его",
+                                        () -> {
+                                    Selenide.switchTo().alert().dismiss();
+                                    Assertions.assertEquals("You selected Cancel", $x("//*[@id=\"confirmResult\"]").getText());
+                                        });
+                            });
+                    Allure.step("Нажимаем на  кнопку On button click, prompt box will appear",
+                            ()-> {
+                                page
+                                        .getPromptButton()
+                                        .click();
+                                Allure.step("Проверяем что Alert открылся и закрываем его",
+                                        () -> {
+                                    Selenide.switchTo().alert().sendKeys("Vova");
+                                    Selenide.switchTo().alert().accept();
+                                    Assertions.assertEquals("You entered Vova", $x("//*[@id=\"promptResult\"]").getText());
+                                        });
+                            });
+        });
     }
 }

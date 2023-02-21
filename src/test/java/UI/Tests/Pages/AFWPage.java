@@ -32,6 +32,27 @@ public class AFWPage {
     }
 
     private final SelenideElement buttonAlerts = $x("//span[text()='Alerts']");
+    private final SelenideElement alertButton = $x("//*[@id=\"alertButton\"]");
+    private final SelenideElement timerAlertButton = $x("//*[@id=\"timerAlertButton\"]");
+    private final SelenideElement confirmButton = $x("//*[@id=\"confirmButton\"]");
+    private final SelenideElement promptButton = $x("//*[@id=\"promtButton\"]");
+
+    public SelenideElement getAlertButton() {
+        return alertButton;
+    }
+
+    public SelenideElement getTimerAlertButton() {
+        return timerAlertButton;
+    }
+
+    public SelenideElement getConfirmButton() {
+        return confirmButton;
+    }
+
+    public SelenideElement getPromptButton() {
+        return promptButton;
+    }
+
     private final SelenideElement buttonFrames = $x("//span[text()='Frames']");
     private final SelenideElement buttonNestedFrames = $x("//span[text()='Nested Frames']");
     private final SelenideElement buttonModalDialogs = $x("//span[text()='Modal Dialogs']");
