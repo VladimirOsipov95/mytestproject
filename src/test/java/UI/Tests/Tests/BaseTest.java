@@ -24,7 +24,6 @@ abstract class BaseTest {
     }
     @AfterAll
     public static void tearDown() {
-        SelenideLogger.removeListener("AllureSelenide");
         Selenide.closeWebDriver();
     }
 }

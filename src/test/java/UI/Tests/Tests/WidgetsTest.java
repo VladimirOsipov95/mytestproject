@@ -8,10 +8,7 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 
 import static com.codeborne.selenide.Condition.text;
@@ -20,6 +17,16 @@ import static com.codeborne.selenide.Selenide.$x;
 
 @Epic("Проверки на вкладке Widgets")
 public class WidgetsTest extends BaseTest {
+    WidgetsPage page = new WidgetsPage();
+    @BeforeEach
+    public  void startPage () {
+        Allure.step("Открываем главную страницу",
+                ()-> page.openMainPage(homeURL));
+        Allure.step("Переходим на вкладку Widgets",
+                ()->page
+                        .getButtonWidgets()
+                        .click());
+    }
     private final static String homeURL = "http://85.192.34.140:8081/";
     private final static String textSection1 = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
     private final static String  textSection2  = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.";
@@ -30,40 +37,33 @@ public class WidgetsTest extends BaseTest {
     @Description("Открываем  вкладку Widgets")
     @DisplayName("1.Открываем  вкладку Widgets")
     public void openWidgets () {
-        WidgetsPage widgetsPage = new WidgetsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> widgetsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Widgets",
-                ()->widgetsPage
-                        .getButtonWidgets()
-                        .click());
         Allure.step("Проверяем содержимое раздела Widgets",
                 ()-> {
-                    widgetsPage
+                    page
                             .getButtonAccordian()
                             .shouldBe(Condition.visible);
-                    widgetsPage
+                    page
                             .getButtonAutoComplete()
                             .shouldBe(Condition.visible);
-                    widgetsPage
+                    page
                             .getButtonDatePicker()
                             .shouldBe(Condition.visible);
-                    widgetsPage
+                    page
                             .getButtonSlider()
                             .shouldBe(Condition.visible);
-                    widgetsPage
+                    page
                             .getButtonProgressBar()
                             .shouldBe(Condition.visible);
-                    widgetsPage
+                    page
                             .getButtonTabs()
                             .shouldBe(Condition.visible);
-                    widgetsPage
+                    page
                             .getButtonToolTips()
                             .shouldBe(Condition.visible);
-                    widgetsPage
+                    page
                             .getButtonMenu()
                             .shouldBe(Condition.visible);
-                    widgetsPage
+                    page
                             .getButtonSelectMenu()
                             .shouldBe(Condition.visible);
                 });
@@ -74,36 +74,29 @@ public class WidgetsTest extends BaseTest {
     @Description("Открываем  раздел Accordian")
     @DisplayName("2.Открываем  раздел Accordian")
     public void openAccordian () {
-        WidgetsPage widgetsPage = new WidgetsPage();
-        Allure.step("Открываем главную страницу",
-                () -> widgetsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Widgets",
-                () -> widgetsPage
-                        .getButtonWidgets()
-                        .click());
         Allure.step("Переходим в раздел  Accordian",
-                () -> widgetsPage
+                () -> page
                         .getButtonAccordian()
                         .click());
         Allure.step("Проверяем содреждание раздела Accordian",
                 () -> {
-                    widgetsPage
+                    page
                             .getSection1()
                             .shouldBe(Condition.visible);
-                    widgetsPage
+                    page
                             .getSection2()
                             .shouldBe(Condition.visible);
-                    widgetsPage
+                    page
                             .getSection3()
                             .shouldBe(Condition.visible);
-                    widgetsPage
+                    page
                             .getSection1Content()
                             .shouldBe(Condition.visible);
-                    widgetsPage
+                    page
 
                             .getSection2Content()
                             .shouldNotBe(Condition.visible);
-                    widgetsPage
+                    page
                             .getSection3Content()
                             .shouldNotBe(Condition.visible);
                 });
@@ -114,36 +107,29 @@ public class WidgetsTest extends BaseTest {
     @Description("Проверяем  раздел Accordian")
     @DisplayName("3.Проверяем  раздел Accordian")
     public void workAccordian () {
-        WidgetsPage widgetsPage = new WidgetsPage();
-        Allure.step("Открываем главную страницу",
-                () -> widgetsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Widgets",
-                () -> widgetsPage
-                        .getButtonWidgets()
-                        .click());
         Allure.step("Переходим в раздел  Accordian",
-                () -> widgetsPage
+                () -> page
                         .getButtonAccordian()
                         .click());
-        Allure.step("Проверяем текст в 1 секции",
-                () -> Assertions.assertEquals(textSection1, widgetsPage.getSection1Content().getText()));
+        Allure.step("Проверяем что в 1 секции текст" +textSection1,
+                () -> page.getSection1Content().shouldHave(text(textSection1)));
         Allure.step("Открываем 2 секцию",
                 () -> {
-                    widgetsPage
+                    page
                             .getSection2()
                             .click();
                     Selenide.sleep(1000);
-                    Allure.step("Проверяем текст во 2 секции",
-                            () -> Assertions.assertEquals(textSection2, widgetsPage.getSection2Content().getText().trim().replace("\n", " ")));
+                    Allure.step("Проверяем текст во 2 секции текст" +textSection2,
+                            () -> Assertions.assertEquals(textSection2, page.getSection2Content().getText().trim().replace("\n", " ")));
                 });
         Allure.step("Открываем 3 секцию",
                 () -> {
-                    widgetsPage
+                    page
                             .getSection3()
                             .click();
                     Selenide.sleep(1000);
-                    Allure.step("Проверяем текст в 3 секции",
-                            () -> Assertions.assertEquals(textSection3, widgetsPage.getSection3Content().getText()));
+                    Allure.step("Проверяем что в 3 секции текст"+textSection3,
+                            () -> page.getSection3Content().shouldHave(text(textSection3)));
                 });
     }
     @Test
@@ -152,46 +138,32 @@ public class WidgetsTest extends BaseTest {
     @Description("Открываем  раздел Slider")
     @DisplayName("4.Открываем  раздел Slider")
     public void openSlider () {
-        WidgetsPage widgetsPage = new WidgetsPage();
-        Allure.step("Открываем главную страницу",
-                () -> widgetsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Widgets",
-                () -> widgetsPage
-                        .getButtonWidgets()
-                        .click());
         Allure.step("Переходим в раздел  Slider",
-                () -> widgetsPage
+                () -> page
                         .getButtonSlider()
                         .click());
         Allure.step("Проверяем содреждание раздела Slider",
                 () -> {
-            widgetsPage.getSlider().shouldBe(Condition.visible);
-            widgetsPage.getSliderInput().shouldBe(Condition.visible);
+            page.getSlider().shouldBe(Condition.visible);
+            page.getSliderInput().shouldBe(Condition.visible);
                 });
     }
     @Test
     @Owner("osipov_vr")
-    @Order(5) //сделать проверку на перенос слайдера
+    @Order(5) 
     @Description("Проверяем работу слайдера")
     @DisplayName("5.Проверяем работу слайдера")
     public void workSlider () {
-        WidgetsPage widgetsPage = new WidgetsPage();
-        Allure.step("Открываем главную страницу",
-                () -> widgetsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Widgets",
-                () -> widgetsPage
-                        .getButtonWidgets()
-                        .click());
         Allure.step("Переходим в раздел  Slider",
-                () -> widgetsPage
+                () -> page
                         .getButtonSlider()
                         .click());
         Allure.step("Проверяем работу раздела Slider",
                 () -> {
                     Allure.step("Двигаем слайдер",
-                            () -> widgetsPage.getSlider().setValue("35"));
+                            () -> page.getSlider().setValue("35"));
                     Allure.step("Проверяем что значение слайдера изменилось",
-                            () -> Assertions.assertNotEquals("25", widgetsPage.getSlider().getValue()));
+                            () -> Assertions.assertNotEquals("25", page.getSlider().getValue()));
                 });
     }
     @Test
@@ -200,21 +172,14 @@ public class WidgetsTest extends BaseTest {
     @Description("Открываем  раздел Progress Bar")
     @DisplayName("6.Открываем  раздел Progress Bar")
     public void openProgressBar () {
-        WidgetsPage widgetsPage = new WidgetsPage();
-        Allure.step("Открываем главную страницу",
-                () -> widgetsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Widgets",
-                () -> widgetsPage
-                        .getButtonWidgets()
-                        .click());
         Allure.step("Переходим в раздел  Progress Bar",
-                () -> widgetsPage
+                () -> page
                         .getButtonProgressBar()
                         .click());
         Allure.step("Проверяем содреждание раздела Progress Bar",
                 () -> {
-                    widgetsPage.getButtonStart().shouldBe(Condition.visible);
-                    widgetsPage.getProgressBar().shouldBe(Condition.visible);
+                    page.getButtonStart().shouldBe(Condition.visible);
+                    page.getProgressBar().shouldBe(Condition.visible);
                 });
     }
     @Test
@@ -223,41 +188,35 @@ public class WidgetsTest extends BaseTest {
     @Description("Проверяем работу Progress Bar")
     @DisplayName("7.Проверяем работу Progress Bar")
     public void workProgressBar () {
-        WidgetsPage widgetsPage = new WidgetsPage();
-        Allure.step("Открываем главную страницу",
-                () -> widgetsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Widgets",
-                () -> widgetsPage
-                        .getButtonWidgets()
-                        .click());
         Allure.step("Переходим в раздел  Progress Bar",
-                () -> widgetsPage
+                () -> page
                         .getButtonProgressBar()
                         .click());
         Allure.step("Нажимаем на кнопку Start",
                 () -> {
-                    widgetsPage.getButtonStart().click();
+                    page.getButtonStart().click();
                     Allure.step(":Ждем пока Progress Bar достигнет 100%",
                             () -> {
                                 String progress;
                                 do
                                 {
-                                    progress = widgetsPage.getProgressBar().getText();
+                                    progress = page.getProgressBar().getText();
+                                    Selenide.sleep(1000);
                                 }
                                 while (!progress.equals("100%"));
                             });
                 });
         Allure.step("Проверяем что Progrees Bar достиг 100% и появлиась кнопка Reset",
                 () -> {
-                    Assertions.assertEquals("100%", widgetsPage.getProgressBar().getText());
-                    widgetsPage.getButtonReset().shouldBe(Condition.visible);
+                    Assertions.assertEquals("100%", page.getProgressBar().getText());
+                    page.getButtonReset().shouldBe(Condition.visible);
                 });
         Allure.step("Нажимаем на Reset",
                 () -> {
-                    widgetsPage
+                    page
                             .getButtonReset()
                             .click();
-                    Assertions.assertEquals("0%", widgetsPage.getProgressBar().getText());
+                    Assertions.assertEquals("0%", page.getProgressBar().getText());
                 });
     }
     @Test
@@ -266,23 +225,16 @@ public class WidgetsTest extends BaseTest {
     @Description("Открываем  раздел Tabs")
     @DisplayName("8.Открываем  раздел Tabs")
     public void openTabs () {
-        WidgetsPage widgetsPage = new WidgetsPage();
-        Allure.step("Открываем главную страницу",
-                () -> widgetsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Widgets",
-                () -> widgetsPage
-                        .getButtonWidgets()
-                        .click());
         Allure.step("Переходим в раздел  Tabs",
-                () -> widgetsPage
+                () -> page
                         .getButtonTabs()
                         .click());
         Allure.step("Проверяем содреждание раздела Tabs",
                 () -> {
-                    widgetsPage.getTabWhat().shouldBe(Condition.visible);
-                    widgetsPage.getTabOrigin().shouldBe(Condition.visible);
-                    widgetsPage.getTabUse().shouldBe(Condition.visible);
-                    widgetsPage.getTabMore().shouldBe(Condition.visible);
+                    page.getTabWhat().shouldBe(Condition.visible);
+                    page.getTabOrigin().shouldBe(Condition.visible);
+                    page.getTabUse().shouldBe(Condition.visible);
+                    page.getTabMore().shouldBe(Condition.visible);
                 });
     }
     @Test
@@ -291,39 +243,32 @@ public class WidgetsTest extends BaseTest {
     @Description("Открываем  раздел Tabs")
     @DisplayName("9.Открываем  раздел Tabs")
     public void workTabs () {
-        WidgetsPage widgetsPage = new WidgetsPage();
-        Allure.step("Открываем главную страницу",
-                () -> widgetsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Widgets",
-                () -> widgetsPage
-                        .getButtonWidgets()
-                        .click());
         Allure.step("Переходим в раздел  Tabs",
-                () -> widgetsPage
+                () -> page
                         .getButtonTabs()
                         .click());
-        Allure.step("Проверяем текст в  табе What",
-                () -> Assertions.assertEquals(textSection1, widgetsPage.getTextWhat().getText()));
+        Allure.step("Проверяем что в  табе What текст" +textSection1,
+                () -> page.getTextWhat().shouldHave(text(textSection1)));
         Allure.step("Открываем таб Origin",
                 () -> {
-                    widgetsPage
+                    page
                             .getTabOrigin()
                             .click();
                     Selenide.sleep(1000);
-                    Allure.step("Проверяем текст в  табе Origin",
-                            () -> Assertions.assertEquals(textSection2, widgetsPage.getTextOrigin().getText().trim().replace("\n", " ")));
+                    Allure.step("Проверяем что табе в табе Origin текст"+textSection2,
+                            () -> Assertions.assertEquals(textSection2, page.getTextOrigin().getText().trim().replace("\n", " ")));
                 });
         Allure.step("Открываем таб Use",
                 () -> {
-                    widgetsPage
+                    page
                             .getTabUse()
                             .click();
                     Selenide.sleep(1000);
-                    Allure.step("Проверяем текст в  табе Use",
-                            () -> Assertions.assertEquals(textSection3, widgetsPage.getTextUse().getText()));
+                    Allure.step("Проверяем что в табе Use текст "+textSection3,
+                            () -> page.getTextUse().shouldHave(text(textSection3)));
                 });
         Allure.step("Проверяем  таб More недоступен",
-                () -> widgetsPage.getTabMore().shouldBe(Condition.enabled));
+                () -> page.getTabMore().shouldBe(Condition.enabled));
     }
     @Test
     @Owner("osipov_vr")
@@ -331,45 +276,38 @@ public class WidgetsTest extends BaseTest {
     @Description("Открываем  раздел Tool Tips")
     @DisplayName("10.Открываем  раздел Tool Tips")
     public void openToolTips () {
-        WidgetsPage widgetsPage = new WidgetsPage();
-        Allure.step("Открываем главную страницу",
-                () -> widgetsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Widgets",
-                () -> widgetsPage
-                        .getButtonWidgets()
-                        .click());
+        //WidgetsPage page = new WidgetsPage();
         Allure.step("Переходим в раздел  ToolTips",
-                () -> widgetsPage
+                () -> page
                         .getButtonToolTips()
                         .click());
         Allure.step("Проверяем содреждание раздела Tabs",
                 () -> {
-                    widgetsPage.getButtonHover().shouldBe(Condition.visible);
-                    widgetsPage.getTextField().shouldBe(Condition.visible);
-                    widgetsPage.getTextArea().shouldBe(Condition.visible);
+                    page.getButtonHover().shouldBe(Condition.visible);
+                    page.getTextField().shouldBe(Condition.visible);
+                    page.getTextArea().shouldBe(Condition.visible);
                 });
     }
     @Test
-    @Owner("osipov_vr") //разобраться с ховерами
+    @Owner("osipov_vr")
     @Order(11)
     @Description("Проверка работы Tool Tips")
     @DisplayName("11.Проверка работы Tool Tips")
     public void workToolTips () throws InterruptedException {
-        WidgetsPage widgetsPage = new WidgetsPage();
         Allure.step("Открываем главную страницу",
-                () -> widgetsPage.openMainPage(homeURL));
+                () -> page.openMainPage(homeURL));
         Allure.step("Переходим на вкладку Widgets",
-                () -> widgetsPage
+                () -> page
                         .getButtonWidgets()
                         .click());
         Allure.step("Переходим в раздел  ToolTips",
-                () -> widgetsPage
+                () -> page
                         .getButtonToolTips()
                         .click());
         Thread.sleep(1000);
         Allure.step("Проверяем содреждание тултипа у кнопки",
                 () -> {
-                    widgetsPage
+                    page
                             .getButtonHover()
                             .hover();
                     Allure.step("Проверяем текст в тултипе",
@@ -377,7 +315,7 @@ public class WidgetsTest extends BaseTest {
                 });
         Allure.step("Проверяем содреждание тултипа у поля",
                 () -> {
-                    widgetsPage
+                    page
                             .getTextField()
                             .hover();
                     Allure.step("Проверяем текст в тултипе",
