@@ -2,10 +2,14 @@ package UI.Tests.Pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import lombok.Getter;
 
 import static com.codeborne.selenide.Selenide.$x;
-
+@Getter
 public class FormsPage {
+    public  void openMainPage (String url) {
+        Selenide.open(url);
+    }
     private final SelenideElement buttonForms = $x("//h5[text()='Forms']"); // Открываем Forms
     private final SelenideElement buttonPracticeForm = $x("//span[text()='Practice Form']"); // Открываем Practice Forms
     private final SelenideElement labelPracticeForm = $x("//div[text()='Practice Form']");// Название странцы
@@ -26,73 +30,18 @@ public class FormsPage {
     private final SelenideElement genderMale = $x("//*[@id=\"genterWrapper\"]/div[2]/div[1]"); // Male
     private final SelenideElement genderFemale = $x("//*[@id=\"genterWrapper\"]/div[2]/div[2]"); // Female
     private final SelenideElement genderOther = $x("//*[@id=\"genterWrapper\"]/div[2]/div[3]"); // Other
-
-    public  void openMainPage (String url) {
-        Selenide.open(url);
-    }
-    public void openForms () {
-        buttonForms.click();
-    }
-    public void openPracticeForm () {
-        buttonPracticeForm.click();
-    }
-    public SelenideElement getLabelPracticeForm() {
-        return labelPracticeForm;
-    }
-    public SelenideElement getFieldFirstName () {
-        return fieldFirstName;
-    }
-    public SelenideElement getFieldLastName() {
-        return fieldLastName;
-    }
-    public SelenideElement getFieldEmail() {
-        return fieldEmail;
-    }
-    public SelenideElement getRadioButtonGender() {
-        return radioButtonGender;
-    }
-    public SelenideElement getFieldMobile() {
-        return fieldMobile;
-    }
-
+    private final SelenideElement studentName = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[1]/td[2]");
+    private final SelenideElement studentEmail = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[2]/td[2]");
+    private final SelenideElement gender = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[3]/td[2]");
+    private final SelenideElement mobile = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[4]/td[2]");
+    private final SelenideElement dateOfBirth = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[5]/td[2]");
+    private final SelenideElement subjects = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[6]/td[2]");
+    private final SelenideElement hobbies = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[7]/td[2]");
+    private final SelenideElement picture = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[8]/td[2]");
+    private final SelenideElement address = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[9]/td[2]");
+    private final SelenideElement stateAndCity = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[10]/td[2]");
     public void checkFieldMobile(String number) {
         fieldMobile.click();
         fieldMobile.sendKeys(number);
-    }
-    public SelenideElement getFieldDateOfBrith() {
-        return fieldDateOfBrith;
-    }
-    public SelenideElement getFieldSubjects() {
-        return fieldSubjects;
-    }
-    public SelenideElement getCheckBoxHobbies() {
-        return checkBoxHobbies;
-    }
-    public SelenideElement getButtonSelectPicture() {
-        return buttonSelectPicture;
-    }
-    public SelenideElement getFieldCurrentAddress() {
-        return fieldCurrentAddress;
-    }
-    public SelenideElement getSelectCity() {
-        return selectCity;
-    }
-    public SelenideElement getSelectState() {
-        return selectState;
-    }
-    public SelenideElement getGenderMale () {
-        return genderMale;
-    }
-    public SelenideElement getGenderFemale() {
-        return genderFemale;
-    }
-    public SelenideElement getGenderOther() {
-        return genderOther;
-    }
-    public SelenideElement getButtonSubmit () {
-        return buttonSubmit;
-    }
-    public SelenideElement getButtonClose() {
-        return buttonClose;
     }
 }

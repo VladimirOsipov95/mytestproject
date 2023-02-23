@@ -2,11 +2,16 @@ package UI.Tests.Pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import lombok.Getter;
 
 
 import static com.codeborne.selenide.Selenide.$x;
 
+@Getter
 public class WidgetsPage {
+    public  void openMainPage (String url) {
+        Selenide.open(url);
+    }
     private final SelenideElement buttonWidgets = $x("//h5[text()='Widgets']"); // Открываем Widgets
     private final SelenideElement buttonAccordian = $x("//span[text()='Accordian']"); // Открываем Accordian
     private final SelenideElement section1Content= $x("//*[@id='section1Content']");
@@ -38,132 +43,4 @@ public class WidgetsPage {
     private final SelenideElement buttonMenu= $x("//span[text()='Menu']"); // Открываем Menu
     private final SelenideElement buttonSelectMenu= $x("//span[text()='Select Menu']"); // Открываем Select Menu
     private final SelenideElement section1= $x("//*[@id='section1Heading']");
-
-    public SelenideElement getButtonWidgets() {
-        return buttonWidgets;
-    }
-
-    public SelenideElement getButtonAccordian() {
-        return buttonAccordian;
-    }
-
-    public SelenideElement getSection1Content() {
-        return section1Content;
-    }
-
-    public SelenideElement getSection2Content() {
-        return section2Content;
-    }
-
-    public SelenideElement getSection3Content() {
-        return section3Content;
-    }
-
-    public SelenideElement getSection2() {
-        return section2;
-    }
-
-    public SelenideElement getSection3() {
-        return section3;
-    }
-
-    public SelenideElement getButtonAutoComplete() {
-        return buttonAutoComplete;
-    }
-
-    public SelenideElement getButtonDatePicker() {
-        return buttonDatePicker;
-    }
-
-    public SelenideElement getButtonSlider() {
-        return buttonSlider;
-    }
-
-    public SelenideElement getSlider() {
-        return slider;
-    }
-
-    public SelenideElement getSliderInput() {
-        return sliderInput;
-    }
-
-    public SelenideElement getButtonProgressBar() {
-        return buttonProgressBar;
-    }
-
-    public SelenideElement getButtonStart() {
-        return buttonStart;
-    }
-
-    public SelenideElement getButtonReset() {
-        return buttonReset;
-    }
-
-    public SelenideElement getProgressBar() {
-        return progressBar;
-    }
-
-    public SelenideElement getButtonTabs() {
-        return buttonTabs;
-    }
-
-    public SelenideElement getTabWhat() {
-        return tabWhat;
-    }
-
-    public SelenideElement getTabOrigin() {
-        return tabOrigin;
-    }
-
-    public SelenideElement getTabUse() {
-        return tabUse;
-    }
-
-    public SelenideElement getTabMore() {
-        return tabMore;
-    }
-
-    public SelenideElement getTextWhat() {
-        return textWhat;
-    }
-
-    public SelenideElement getTextOrigin() {
-        return textOrigin;
-    }
-
-    public SelenideElement getTextUse() {
-        return textUse;
-    }
-
-    public SelenideElement getButtonToolTips() {
-        return buttonToolTips;
-    }
-
-    public SelenideElement getButtonHover() {
-        return buttonHover;
-    }
-
-    public SelenideElement getTextField() {
-        return textField;
-    }
-
-    public SelenideElement getTextArea() {
-        return textArea;
-    }
-
-    public SelenideElement getButtonMenu() {
-        return buttonMenu;
-    }
-
-    public SelenideElement getButtonSelectMenu() {
-        return buttonSelectMenu;
-    }
-
-    public SelenideElement getSection1() {
-        return section1;
-    }
-
-    public  void openMainPage (String url) {
-        Selenide.open(url);
-    }
 }

@@ -8,13 +8,20 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 @Epic("Проверки на вкладке Game Store Application")
 public class GameStoreApplicationTest extends BaseTest {
+    GameStoreApplicationPage page = new GameStoreApplicationPage();
+    @BeforeEach
+    public void startPage (){
+        Allure.step("Открываем главную страницу",
+                () -> page.openMainPage(homeURL));
+        Allure.step("Переходим на вкладку Game Store Application",
+                ()->page
+                        .getButtonGSA()
+                        .click());
+    }
     private final static String homeURL = "http://85.192.34.140:8081/";
     @Test
     @Owner("osipov_vr")
@@ -22,19 +29,10 @@ public class GameStoreApplicationTest extends BaseTest {
     @Description("Открываем  вкладку Game Store Application")
     @DisplayName("1.Открываем  вкладку Game Store Application")
     public void openGSA () {
-        GameStoreApplicationPage page = new GameStoreApplicationPage();
-        Allure.step("Открываем главную страницу",
-                ()-> page.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Game Store Application",
-                ()->page
-                        .getButtonGSA()
-                        .click());
         Allure.step("Проверяем содержимое раздела Widgets",
-                ()-> {
-                    page
+                ()-> page
                             .getButtonLinkPage()
-                            .shouldBe(Condition.visible);
-                });
+                            .shouldBe(Condition.visible));
     }
     @Test
     @Owner("osipov_vr")
@@ -42,13 +40,7 @@ public class GameStoreApplicationTest extends BaseTest {
     @Description("Открываем  раздел Link Page")
     @DisplayName("2.Открываем  раздел Link Page")
     public void openLinkPage () {
-        GameStoreApplicationPage page = new GameStoreApplicationPage();
-        Allure.step("Открываем главную страницу",
-                () -> page.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Game Store Application",
-                ()->page
-                        .getButtonGSA()
-                        .click());
+
         Allure.step("Переходим в раздел  Link Page",
                 () -> page
                         .getButtonLinkPage()
@@ -71,13 +63,6 @@ public class GameStoreApplicationTest extends BaseTest {
     @Description("Проверяем  раздел Link Page")
     @DisplayName("3.Проверяем  раздел Link Page")
     public void workLinkPage () {
-        GameStoreApplicationPage page = new GameStoreApplicationPage();
-        Allure.step("Открываем главную страницу",
-                () -> page.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Game Store Application",
-                ()->page
-                        .getButtonGSA()
-                        .click());
         Allure.step("Переходим в раздел  Link Page",
                 () -> page
                         .getButtonLinkPage()

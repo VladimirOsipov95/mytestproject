@@ -3,16 +3,12 @@ package UI.Tests.Tests;
 import UI.Tests.Pages.FormsPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
 
 import java.io.File;
@@ -25,24 +21,30 @@ import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
-
+/**
+ * Проверка работы разделов на вкладке Forms
+ */
 @Epic("Проверки на вкладке Forms")
 public class FormsTest extends BaseTest  {
+    FormsPage page = new FormsPage();
+    @BeforeEach
+    public void startPage () {
+        Allure.step("Открываем главную страницу",
+                ()-> page.openMainPage(homeURL));
+        Allure.step("Переходим на вкладку Forms",
+                ()->page
+                        .getButtonForms()
+                        .click());
+        Allure.step("Открываем раздел Practice Form",
+                ()->page
+                        .getButtonPracticeForm()
+                        .click());
+    }
     private final static String homeURL = "http://85.192.34.140:8081/";
     private final SelenideElement selectState = $x("//div[contains(text(),'NCR')]");
     private final SelenideElement selectCity = $x("//div[contains(text(),'Delhi')]");
     private final ElementsCollection selectRadio= $$x("//input[@type='radio']");
     private final ElementsCollection selectBox = $$x("//*[@id=\"hobbiesWrapper\"]/div[2]/div | //input[contains(@id,'hobbies-checkbox')]");
-    private final SelenideElement studentName = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[1]/td[2]");
-    private final SelenideElement studentEmail = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[2]/td[2]");
-    private final SelenideElement gender = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[3]/td[2]");
-    private final SelenideElement mobile = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[4]/td[2]");
-    private final SelenideElement dateOfBirth = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[5]/td[2]");
-    private final SelenideElement subjects = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[6]/td[2]");
-    private final SelenideElement hobbies = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[7]/td[2]");
-    private final SelenideElement picture = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[8]/td[2]");
-    private final SelenideElement address = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[9]/td[2]");
-    private final SelenideElement stateAndCity = $x("/html/body/div[3]/div/div/div[2]/div/table/tbody/tr[10]/td[2]");
     public String dateFormat = "dd MMM yyyy";
     public String expectedDate =LocalDateTime.now().minusYears(20).format(DateTimeFormatter.ofPattern(dateFormat).localizedBy(Locale.US));
     private final String firstName = "Vladimir";
@@ -60,28 +62,47 @@ public class FormsTest extends BaseTest  {
     @Description("Открываем  раздел Practice Form")
     @DisplayName("1.Открываем  раздел Practice Form")
     public void openPracticeForms () {
-        FormsPage formsPage = new FormsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Forms",
-                formsPage::openForms);
-        Allure.step("Открываем раздел Practice Form",
-                formsPage::openPracticeForm);
         Allure.step("Проверяем содержимое раздела Practice Form",
                 ()-> {
-                    formsPage.getLabelPracticeForm().shouldBe(Condition.visible);
-                    formsPage.getFieldFirstName().shouldBe(Condition.visible);
-                    formsPage.getFieldLastName().shouldBe(Condition.visible);
-                    formsPage.getFieldEmail().shouldBe(Condition.visible);
-                    formsPage.getRadioButtonGender().shouldBe(Condition.visible);
-                    formsPage.getFieldMobile().shouldBe(Condition.visible);
-                    formsPage.getFieldDateOfBrith().shouldBe(Condition.visible);
-                    formsPage.getFieldSubjects().shouldBe(Condition.visible);
-                    formsPage.getCheckBoxHobbies().shouldBe(Condition.visible);
-                    formsPage.getButtonSelectPicture().shouldBe(Condition.visible);
-                    formsPage.getFieldCurrentAddress().shouldBe(Condition.visible);
-                    formsPage.getSelectState().shouldBe(Condition.visible);
-                    formsPage.getSelectCity().shouldBe(Condition.visible);
+                    page
+                            .getLabelPracticeForm()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getFieldFirstName()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getFieldLastName()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getFieldEmail()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getRadioButtonGender()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getFieldMobile()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getFieldDateOfBrith()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getFieldSubjects()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getCheckBoxHobbies()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getButtonSelectPicture()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getFieldCurrentAddress()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getSelectState()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getSelectCity()
+                            .shouldBe(Condition.visible);
                 });
     }
     @Test
@@ -90,18 +111,11 @@ public class FormsTest extends BaseTest  {
     @Description("Проверяем что в поле Mobile вводиться не больше 10 символов")
     @DisplayName("2.Проверяем что в поле Mobile вводиться не больше 10 символов")
     public void checkFieldMobile () {
-        FormsPage formsPage = new FormsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Переходим на кладку Forms",
-                formsPage::openForms);
-        Allure.step("Открываем раздел Practice Form",
-                formsPage::openPracticeForm);
         Allure.step("Вводим в поле Mobile больше 10 цифр",
-                ()-> formsPage.checkFieldMobile(randomNumber));
+                ()-> page.checkFieldMobile(randomNumber));
         Allure.step("Провряем что в поле только 10 цифр",
                 ()-> {
-                    String results = formsPage.getFieldMobile().getAttribute("value");
+                    String results = page.getFieldMobile().getAttribute("value");
                     Assertions.assertNotEquals(randomNumber,results);
                 });
     }
@@ -111,31 +125,24 @@ public class FormsTest extends BaseTest  {
     @Description("Проверяем работы датапикера")
     @DisplayName("3.Проверяем работу датапикера")
     public void workDataPicker () {
-        FormsPage formsPage = new FormsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Forms",
-                formsPage::openForms);
-        Allure.step("Открываем раздел Practice Form",
-                formsPage::openPracticeForm);
         Allure.step("Открываем дата-пикер",
-                ()->formsPage
+                ()->page
                         .getFieldDateOfBrith()
                         .click());
         Allure.step("Устанаволиваем значение = текущая дата - 20 лет",
                 ()-> {
-                    formsPage
+                    page
                             .getFieldDateOfBrith()
                             .sendKeys(Keys.chord(Keys.CONTROL, "a"));
-                    formsPage
+                    page
                             .getFieldDateOfBrith()
                             .sendKeys(expectedDate);
-                    formsPage
+                    page
                             .getFieldDateOfBrith()
                             .sendKeys(Keys.ENTER);
                 });
         Allure.step("Проверярем отображения значения",
-                ()->Assertions.assertEquals(expectedDate, formsPage.getFieldDateOfBrith().getValue()));
+                ()->Assertions.assertEquals(expectedDate, page.getFieldDateOfBrith().getValue()));
     }
     @Test
     @Owner("osipov_vr")
@@ -143,39 +150,32 @@ public class FormsTest extends BaseTest  {
     @Description("Проверяем работы селектов")
     @DisplayName("4.Проверяем работу селектов")
     public void workSelected () {
-        FormsPage formsPage = new FormsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Forms",
-                formsPage::openForms);
-        Allure.step("Открываем раздел Practice Form",
-                formsPage::openPracticeForm);
         Allure.step("Проверяем что поле Select City недоступно для выбора",
-                ()->formsPage
+                ()->page
                         .getSelectCity()
                         .shouldBe(Condition.editable));
         Allure.step("Устанаволиваем значение в Select State",
                 ()-> {
-                formsPage
+                page
                         .getSelectState()
                         .click();
                 selectState.click();
                 });
         Allure.step("Проверярем что поле Select City доступно для редактирования",
-                ()->formsPage
+                ()->page
                         .getSelectCity()
                         .click());
         Allure.step("Устанавливаем значение Select City",
                 ()->{
                 selectCity.click();
-                formsPage
+                page
                         .getFieldMobile()
                         .click();
                 });
         Allure.step("Проверяем что в селектах установленные нами значения",
                 ()-> {
-                Assertions.assertEquals("NCR", formsPage.getSelectState().getText());
-                Assertions.assertEquals("Delhi", formsPage.getSelectCity().getText());
+                Assertions.assertEquals("NCR", page.getSelectState().getText());
+                Assertions.assertEquals("Delhi", page.getSelectCity().getText());
                 });
     }
     @Test
@@ -184,17 +184,9 @@ public class FormsTest extends BaseTest  {
     @Description("Проверяем работу радио-баттонов Gender")
     @DisplayName("5.Проверяем работу радио-баттонов Gender")
     public void workGender () {
-        FormsPage formsPage = new FormsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> formsPage.openMainPage(homeURL));
-        Selenide.sleep(1000);
-        Allure.step("Переходим на вкладку Forms",
-                formsPage::openForms);
-        Allure.step("Открываем раздел Practice Form",
-                formsPage::openPracticeForm);
         Allure.step("Устанавливаем значение Male",
                 ()-> {
-                formsPage
+                page
                         .getGenderMale()
                         .click();
                 selectRadio
@@ -202,7 +194,7 @@ public class FormsTest extends BaseTest  {
                         .shouldBe(Condition.selected);
                 });
         Allure.step("Устанавливаем значение Female",
-                ()->formsPage.getGenderFemale().click());
+                ()->page.getGenderFemale().click());
         Allure.step("Проверяем что активно только выбранное значение",
                 ()-> {
                 selectRadio
@@ -213,7 +205,7 @@ public class FormsTest extends BaseTest  {
                         .shouldNotBe(Condition.selected);
                 });
         Allure.step("Устанавливаем значение Other",
-                ()->formsPage
+                ()->page
                         .getGenderOther()
                         .click());
         Allure.step("Проверяем что активно только выбранное значение",
@@ -232,13 +224,6 @@ public class FormsTest extends BaseTest  {
     @Description("Проверяем работу чек-боксов  Hobbies")
     @DisplayName("6.Проверяем работу чек-боксов  Hobbies")
     public void workHobbies () {
-        FormsPage formsPage = new FormsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Forms",
-                formsPage::openForms);
-        Allure.step("Открываем раздел Practice Form",
-                formsPage::openPracticeForm);
         Allure.step("Устанавливаем чек у  Sports",
                 ()->selectBox
                         .get(0)
@@ -286,19 +271,12 @@ public class FormsTest extends BaseTest  {
     @Description("Загружаем файл")
     @DisplayName("7.Загружаем файл")
     public void Upload()  {
-        FormsPage formsPage = new FormsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Forms",
-                formsPage::openForms);
-        Allure.step("Открываем раздел Practice Form",
-                formsPage::openPracticeForm);
         Allure.step("Загружаем файл",
-                () -> formsPage
+                () -> page
                         .getButtonSelectPicture()
                         .uploadFile(new File("src/test/resources/1.png")));
         Allure.step("Проверяем что файл загрузился",
-                () -> formsPage
+                () -> page
                         .getButtonSelectPicture()
                         .shouldBe(Condition.value("1.png")));
     }
@@ -308,35 +286,28 @@ public class FormsTest extends BaseTest  {
     @Description("Заполнение всех текстовых полей")
     @DisplayName("8.Заполненение всех текстовых полей")
     public void workField()  {
-        FormsPage formsPage = new FormsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Forms",
-                formsPage::openForms);
-        Allure.step("Открываем раздел Practice Form",
-                formsPage::openPracticeForm);
         Allure.step("Заполняем поле First Name",
-                () -> formsPage
+                () -> page
                         .getFieldFirstName()
                         .setValue(firstName));
         Allure.step("Заполняем поле Last Name",
-                () -> formsPage
+                () -> page
                         .getFieldLastName()
                         .setValue(lastName));
         Allure.step("Заполняем поле email",
-                () -> formsPage
+                () -> page
                         .getFieldEmail()
                         .setValue(email));
         Allure.step("Заполняем поле Current Address",
-                () -> formsPage
+                () -> page
                         .getFieldCurrentAddress()
                         .setValue(currentAddress));
         Allure.step("Проверяем, что в  полях присутвтуеют веденные нами значения",
                 () -> {
-                Assertions.assertEquals(firstName, formsPage.getFieldFirstName().getValue());
-                Assertions.assertEquals(lastName, formsPage.getFieldLastName().getValue());
-                Assertions.assertEquals(email, formsPage.getFieldEmail().getValue());
-                Assertions.assertEquals(currentAddress, formsPage.getFieldCurrentAddress().getValue());
+                Assertions.assertEquals(firstName, page.getFieldFirstName().getValue());
+                Assertions.assertEquals(lastName, page.getFieldLastName().getValue());
+                Assertions.assertEquals(email, page.getFieldEmail().getValue());
+                Assertions.assertEquals(currentAddress, page.getFieldCurrentAddress().getValue());
                 });
     }
     @Test
@@ -345,53 +316,46 @@ public class FormsTest extends BaseTest  {
     @Description("Проверка работы формы с валидными данными")
     @DisplayName("9.Проверка работы формы с валидными данными")
     public void workWithValidData()  {
-        FormsPage formsPage = new FormsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> formsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Forms",
-                formsPage::openForms);
-        Allure.step("Открываем раздел Practice Form",
-                formsPage::openPracticeForm);
         Allure.step("Заполняем все текстовых поля",
                 ()->{
                     Allure.step("Заполняем поле First Name",
-                            () -> formsPage
+                            () -> page
                                     .getFieldFirstName()
                                     .setValue(firstName));
                     Allure.step("Заполняем поле Last Name",
-                            () -> formsPage
+                            () -> page
                                     .getFieldLastName()
                                     .setValue(lastName));
                     Allure.step("Заполняем поле email",
-                            () -> formsPage
+                            () -> page
                                     .getFieldEmail()
                                     .setValue(email));
                     Allure.step("Заполняем поле Current Address",
-                            () -> formsPage
+                            () -> page
                                     .getFieldCurrentAddress()
                                     .setValue(currentAddress));
                 });
         Allure.step("Заполняем номер телефона",
-                ()-> formsPage.checkFieldMobile(randomNumber));
+                ()-> page.checkFieldMobile(randomNumber));
         Allure.step("Устанваливаем гендер",
-                ()-> formsPage
+                ()-> page
                         .getGenderMale()
                         .click());
         Allure.step("Заполняем дату",
                 ()->{
                     Allure.step("Открываем дата-пикер",
-                            ()->formsPage
+                            ()->page
                                     .getFieldDateOfBrith()
                                     .click());
                     Allure.step("Устанаволиваем значение = текущая дата - 20 лет",
                             ()-> {
-                                formsPage
+                                page
                                         .getFieldDateOfBrith()
                                         .sendKeys(Keys.chord(Keys.CONTROL, "a"));
-                                formsPage
+                                page
                                         .getFieldDateOfBrith()
                                         .sendKeys(expectedDate);
-                                formsPage
+                                page
                                         .getFieldDateOfBrith()
                                         .sendKeys(Keys.ENTER);
                             });
@@ -408,58 +372,58 @@ public class FormsTest extends BaseTest  {
                                     .click());
                 });
         Allure.step("Загружаем файл",
-                () -> formsPage
+                () -> page
                         .getButtonSelectPicture()
                         .uploadFile(new File("src/test/resources/1.png")));
         Allure.step("Устанвливаем значения в  State and City",
                 () -> {
                     Allure.step("Устанаволиваем значение в Select State",
                             ()-> {
-                                formsPage
+                                page
                                         .getSelectState()
                                         .click();
                                 selectState.click();
                             });
                     Allure.step("Проверярем что поле Select City доступно для редактирования",
-                            ()->formsPage
+                            ()->page
                                     .getSelectCity()
                                     .click());
                     Allure.step("Устанавливаем значение Select City",
                             ()-> selectCity.click());
                 });
         Allure.step("Нажимаем на кнопку Submit",
-                ()->formsPage.getButtonSubmit().click());
+                ()->page.getButtonSubmit().click());
          Allure.step("Проверяем данные в открывшемся окне",
                 ()->{
                     Allure.step("Проверяем поле Student Name",
-                            ()-> Assertions.assertEquals(firstName+" "+lastName, studentName.getText()));
+                            ()-> Assertions.assertEquals(firstName+" "+lastName, page.getStudentName().getText()));
                     Allure.step("Проверяем поле Student Email",
-                            ()-> Assertions.assertEquals(email, studentEmail.getText()));
+                            ()-> Assertions.assertEquals(email, page.getStudentEmail().getText()));
                     Allure.step("Проверяем поле Gender",
-                            ()-> Assertions.assertEquals("Male", gender.getText()));
+                            ()-> Assertions.assertEquals("Male", page.getGender().getText()));
                     Allure.step("Проверяем поле Subjects",
-                            ()-> Assertions.assertEquals("", subjects.getText()));
+                            ()-> Assertions.assertEquals("", page.getSubjects().getText()));
                     Allure.step("Проверяем поле Hobbies",
-                            ()-> Assertions.assertEquals("Sports, Reading", hobbies.getText()));
+                            ()-> Assertions.assertEquals("Sports, Reading", page.getHobbies().getText()));
                     Allure.step("Проверяем поле Date of Birth",
                             ()-> {
-                            String [] arrayDateOfBirth = dateOfBirth.getText().split("\\s|,");
+                            String [] arrayDateOfBirth = page.getDateOfBirth().getText().split("\\s|,");
                             String day = arrayDateOfBirth [0];
                             String month = arrayDateOfBirth[1].substring(0,3);
                             String year = arrayDateOfBirth [2];
                             Assertions.assertEquals(expectedDate, (day+" "+month+" "+year));
                             });
                     Allure.step("Проверяем поле Mobile",
-                            ()-> Assertions.assertEquals(randomNumber.substring(0,10), mobile.getText()));
+                            ()-> Assertions.assertEquals(randomNumber.substring(0,10), page.getMobile().getText()));
                     Allure.step("Проверяем поле Picture",
-                            ()-> Assertions.assertEquals("1.png", picture.getText()));
+                            ()-> Assertions.assertEquals("1.png", page.getPicture().getText()));
                     Allure.step("Проверяем поле Address",
-                            ()-> Assertions.assertEquals(currentAddress, address.getText()));
+                            ()-> Assertions.assertEquals(currentAddress, page.getAddress().getText()));
                     Allure.step("Проверяем поле State and City",
-                            ()-> Assertions.assertEquals("NCR Delhi", stateAndCity.getText()));
+                            ()-> Assertions.assertEquals("NCR Delhi", page.getStateAndCity().getText()));
                 });
         Allure.step("Нажимаем на кнопку Close",
-                ()->formsPage.getButtonClose().click());
+                ()->page.getButtonClose().click());
     }
     @Test
     @Owner("osipov_vr")
@@ -467,37 +431,36 @@ public class FormsTest extends BaseTest  {
     @Description("Проверка работы формы с некорректными данными")
     @DisplayName("10.Проверка работы формы с некорректными данными")
     public void workWithIncorrectData() {
-        FormsPage formsPage = new FormsPage();
-        Allure.step("Открываем главную страницу",
-                () -> formsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Forms",
-                formsPage::openForms);
-        Allure.step("Открываем раздел Practice Form",
-                formsPage::openPracticeForm);
         Allure.step("Нажимаем на кнопку Submit",
-                ()->formsPage.getButtonSubmit().click());
+                ()->page.getButtonSubmit().click());
         Allure.step("Проверяем что подсветились обязательные  поля",
                 () -> {
                     Allure.step("Проверям поле First Name",
-                            () -> formsPage
+                            () -> page
                                     .getFieldFirstName()
                                     .shouldHave(cssValue("border-color", "rgb(220, 53, 69)")));
                     Allure.step("Проверяем поле Last Name",
-                            () -> formsPage
+                            () -> page
                                     .getFieldLastName()
                                     .shouldHave(cssValue("border-color", "rgb(220, 53, 69)")));
                     Allure.step("Проверяем Mobile ",
-                            () -> formsPage
+                            () -> page
                                     .getFieldMobile()
                                     .shouldHave(cssValue("border-color", "rgb(220, 53, 69)")));
                     Allure.step("Проверяем Gender ",
                             () -> {
                                 Allure.step("Проверяем Male",
-                                        ()-> formsPage.getGenderMale().shouldHave(cssValue("color", "rgba(255, 255, 255, 1)")));
+                                        ()-> page
+                                                .getGenderMale()
+                                                .shouldHave(cssValue("color", "rgba(255, 255, 255, 1)")));
                                 Allure.step("Проверяем Female",
-                                        ()-> formsPage.getGenderFemale().shouldHave(cssValue("color", "rgba(255, 255, 255, 1)")));
+                                        ()-> page
+                                                .getGenderFemale()
+                                                .shouldHave(cssValue("color", "rgba(255, 255, 255, 1)")));
                                 Allure.step("Проверяем Other",
-                                        ()-> formsPage.getGenderOther().shouldHave(cssValue("color", "rgba(255, 255, 255, 1)")));
+                                        ()-> page
+                                                .getGenderOther()
+                                                .shouldHave(cssValue("color", "rgba(255, 255, 255, 1)")));
                             });
                 });
     }

@@ -2,24 +2,30 @@ package UI.Tests.Tests;
 
 import UI.Tests.Pages.ElementsPage;
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Selenide.*;
-
-
 /**
  *  Проверки вкладок в разделе Elements
  */
 @Epic("Проверки на вкладке Elements")
 public class ElementsTest extends BaseTest {
+    ElementsPage page = new ElementsPage();
+    @BeforeEach
+    public void startPage () {
+        Allure.step("Открываем главную страницу",
+                ()-> page.openMainPage(homeURL));
+        Allure.step("Переходим на вкладку Elements",
+                ()-> page
+                        .getButtonElements()
+                        .click());
+    }
     private final static String homeURL = "http://85.192.34.140:8081/";
     private final static String search = "Alden";
     private final static String NAME = "Vladimir";
@@ -35,20 +41,27 @@ public class ElementsTest extends BaseTest {
     @Description("Открываем  раздел Text Box")
     @DisplayName("1.Открываем  раздел Text Box")
     public void openTextBox () {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Text Box",
-                elementsPage::clickButtonTextBox);
+                ()-> page
+                        .getButtonTextBox()
+                        .click());
         Allure.step("Проверяем содержимое раздела Text Box",
                 ()-> {
-                    elementsPage.getFullName().shouldBe(Condition.visible);
-                    elementsPage.getEmail().shouldBe(Condition.visible);
-                    elementsPage.getCurrentAddress().shouldBe(Condition.visible);
-                    elementsPage.getPermanentAddress().shouldBe (Condition.visible);
-                    elementsPage.getButtonSubmit().shouldBe(Condition.visible);
+                    page
+                            .getFullName()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getEmail()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getCurrentAddress()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getPermanentAddress()
+                            .shouldBe (Condition.visible);
+                    page
+                            .getButtonSubmit()
+                            .shouldBe(Condition.visible);
                 });
 
     }
@@ -58,23 +71,22 @@ public class ElementsTest extends BaseTest {
     @Description("Проверяем работу раздела Text Box")
     @DisplayName("2.Проверяем работу раздела Text Box")
     public void workTextBox () {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Text Box",
-                elementsPage::clickButtonTextBox);
+                ()-> page
+                        .getButtonTextBox()
+                        .click());
         Allure.step("Заполняем поле Full Name",
-                elementsPage::fullName);
+                page::fullName);
         Allure.step("Заполняем поле Email",
-                elementsPage::email);
+                page::email);
         Allure.step("Заполняем поле Current  Address",
-                elementsPage::currentAddress);
+                page::currentAddress);
         Allure.step("Заполняем поле Permanent Address",
-                elementsPage::permanentAddress);
+                page::permanentAddress);
         Allure.step("Нажимаем кнопку  Submit",
-                elementsPage::clickButtonSubmit);
+                ()-> page
+                        .getButtonSubmit()
+                        .click());
     }
     @Test
     @Owner("osipov_vr")
@@ -82,89 +94,109 @@ public class ElementsTest extends BaseTest {
     @Description("Открываем  раздел Check Box")
     @DisplayName("3.Открываем  раздел Check Box")
     public void openCheckBox () {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Check Box",
-                elementsPage::clickButtonCheckBox);
+                ()->page
+                        .getButtonCheckBox()
+                        .click());
         Allure.step("Проверяем содержимое раздела Check Box",
-                ()->elementsPage.getHome().shouldBe(Condition.visible));
+                ()->page
+                        .getCheckBoxHome()
+                        .shouldBe(Condition.visible));
     }
     @Test
     @Owner("osipov_vr")
     @Order(4)
     @Description("Проверка работы раздела Check Box")
     @DisplayName("4.Проверка работы раздела Check Box")
-    public void workCheckBox () throws InterruptedException {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
+    public void workCheckBox ()  {
         Allure.step("Открываем раздел Check Box",
-                elementsPage::clickButtonCheckBox);
+                ()->page
+                        .getButtonCheckBox()
+                        .click());
         Allure.step("Раскрываем папку Home",
                 ()->{
-                    elementsPage.clickHome();
+                    page
+                            .getButtonHome()
+                            .click();
                     Thread.sleep(30);
                 });
         Allure.step("Раскрываем папку Desktop",
                 ()-> {
-                    elementsPage.clickDesktop();
+                    page
+                            .getButtonDesktop()
+                            .click();
                     Thread.sleep(30);
                 });
         Allure.step("Раскрываем папку Documents",
                 ()->{
-                    elementsPage.clickDocuments();
+                    page
+                            .getButtonDocuments()
+                            .click();
                     Thread.sleep(30);
                 });
         Allure.step("Раскрываем папку Downloads",
                 ()->{
-                    elementsPage.clickDownloads();
+                    page
+                            .getButtonDownloads()
+                            .click();
                     Thread.sleep(30);
                 });
         Allure.step("Активируем чек-бокс у папки Desktop",
                 ()->{
-                    elementsPage.clickCheckBoxDesktop();
+                    page
+                            .getCheckBoxDesktop()
+                            .click();
                     Thread.sleep(30);
                 });
         Allure.step("Дизейблим чек-бокс у папки Desktop",
                 ()-> {
-                    elementsPage.clickCheckBoxDesktop();
+                    page
+                            .getCheckBoxDesktop()
+                            .click();
                     Thread.sleep(30);
                 });
 
         Allure.step("Активируем чек-бокс у папки Documents",
                 ()->{
-                    elementsPage.clickCheckBoxDocuments();
+                    page
+                            .getCheckBoxDocuments()
+                            .click();
                     Thread.sleep(30);
                 });
 
         Allure.step("Дизейблим чек-бокс у папки Documents",
                 ()->{
-                    elementsPage.clickCheckBoxDocuments();
+                    page
+                            .getCheckBoxDocuments()
+                            .click();
                     Thread.sleep(30);
                 });
         Allure.step("Активируем чек-бокс у папки Downloads",
                 ()->{
-                    elementsPage.clickCheckBoxDownloads();
+                    page
+                            .getCheckBoxDownloads()
+                            .click();
                     Thread.sleep(30);
                 });
 
         Allure.step("Дизейблим чек-бокс у папки Downloads",
                 ()->{
-                    elementsPage.clickCheckBoxDownloads();
+                    page
+                            .getCheckBoxDownloads()
+                            .click();
                     Thread.sleep(30);
                 });
         Allure.step("Активируем чек-бокс у папки Home",
                 ()->{
-                    elementsPage.clickCheckBoxHome();
+                    page
+                            .getCheckBoxHome()
+                            .click();
                     Thread.sleep(30);
                 });
         Allure.step("Дизейблим чек-бокс у папки Home",
-                elementsPage::clickCheckBoxHome);
+                ()-> page
+                        .getCheckBoxDownloads()
+                        .click());
     }
     @Test
     @Owner("osipov_vr")
@@ -172,18 +204,21 @@ public class ElementsTest extends BaseTest {
     @Description("Открываем  раздел Radio Button")
     @DisplayName("5.Открываем  раздел Radio Button")
     public void openRadioButton () {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Radio Button",
-                elementsPage::clickRadioButton);
+                ()-> page
+                        .getButtonRadioButton()
+                        .click());
         Allure.step("Проверяем содержимое раздела Radio Button",
                 ()->{
-                    elementsPage.getButtonYes().shouldBe(Condition.visible);
-                    elementsPage.getButtonImpressive().shouldBe(Condition.visible);
-                    elementsPage.getButtonNo().shouldBe(Condition.visible);
+                    page
+                            .getButtonYes()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getButtonImpressive()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getButtonNo()
+                            .shouldBe(Condition.visible);
                 });
     }
     @Test
@@ -191,35 +226,32 @@ public class ElementsTest extends BaseTest {
     @Order(6)
     @Description("Проверка работы раздела Radio Button")
     @DisplayName("6.Проверка работы раздела Radio Button")
-    public void workRadioButton () throws InterruptedException {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
+    public void workRadioButton ()  {
         Allure.step("Открываем раздел Radio Button",
-                elementsPage::clickRadioButton);
+                ()-> page
+                        .getButtonRadioButton()
+                        .click());
         Allure.step("Кликаем в Yes",
                 ()-> {
-                    elementsPage.clickYes();
-                    String Yes = elementsPage.afterClick();
-                    String Yes1 = elementsPage.getAfterClickRadio().getText();
+                    page.getButtonYes().click();
+                    String Yes = page.afterClick();
+                    String Yes1 = page.getAfterClickRadio().getText();
                     Assertions.assertTrue(Yes.contains(Yes1));
                     Thread.sleep(150);
                 });
         Allure.step("Кликаем в Impressive",
                 ()->{
-                    elementsPage.clickImpressive();
-                    String Impressive = elementsPage.afterClick();
-                    String Impressive1 = elementsPage.getAfterClickRadio().getText();
+                    page.getButtonImpressive().click();
+                    String Impressive = page.afterClick();
+                    String Impressive1 = page.getAfterClickRadio().getText();
                     Assertions.assertTrue(Impressive.contains(Impressive1));
                     Thread.sleep(150);
                 });
         Allure.step("Кликаем в No",
                 ()-> {
-                    elementsPage.clickNo();
-                    String No = elementsPage.afterClick();
-                    String No1 = elementsPage.getAfterClickRadio().getText();
+                    page.getButtonNo().click();
+                    String No = page.afterClick();
+                    String No1 = page.getAfterClickRadio().getText();
                     Assertions.assertTrue(No.contains(No1));
                 });
     }
@@ -229,26 +261,34 @@ public class ElementsTest extends BaseTest {
     @Description("Открываем  раздел Web Tables")
     @DisplayName("7.Открываем  раздел Web Tables")
     public void openWebTables() {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Web Tables",
-                elementsPage::clickWebTables);
+                ()->page
+                        .getButtonWebTables()
+                        .click());
         Allure.step("Проверяем содержимое раздела Web Tables",
                 ()->{
-                    $x("//*[@id='addNewRecordButton']").shouldBe(Condition.visible);
-                    $x("//*[@id='searchBox']").shouldBe(Condition.visible);
-                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[2]/div/div[2]/span[1]/div/input").shouldBe(Condition.visible);
-                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[2]/div/div[2]/span[2]/select").shouldBe(Condition.visible);
-                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[1]/div[1]").shouldBe(Condition.visible);
-                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[2]/div[1]").shouldBe(Condition.visible);
-                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[3]").shouldBe(Condition.visible);
-                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[4]/div[1]").shouldBe(Condition.visible);
-                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[5]/div[1]").shouldBe(Condition.visible);
-                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[6]/div[1]").shouldBe(Condition.visible);
-                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[7]/div[1]").shouldBe(Condition.visible);
+                    $x("//*[@id='addNewRecordButton']")
+                            .shouldBe(Condition.visible);
+                    $x("//*[@id='searchBox']")
+                            .shouldBe(Condition.visible);
+                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[2]/div/div[2]/span[1]/div/input")
+                            .shouldBe(Condition.visible);
+                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[2]/div/div[2]/span[2]/select")
+                            .shouldBe(Condition.visible);
+                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[1]/div[1]")
+                            .shouldBe(Condition.visible);
+                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[2]/div[1]")
+                            .shouldBe(Condition.visible);
+                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[3]")
+                            .shouldBe(Condition.visible);
+                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[4]/div[1]")
+                            .shouldBe(Condition.visible);
+                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[5]/div[1]")
+                            .shouldBe(Condition.visible);
+                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[6]/div[1]")
+                            .shouldBe(Condition.visible);
+                    $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[1]/div/div[7]/div[1]")
+                            .shouldBe(Condition.visible);
                 });
     }
     @Test
@@ -257,17 +297,15 @@ public class ElementsTest extends BaseTest {
     @Description("Поиск записей в разделе Web Tables")
     @DisplayName("8.Поиск записей в разделе Web Tables")
     public void searchWebTables() {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Web Tables ",
-                elementsPage::clickWebTables);
+                ()->page
+                        .getButtonWebTables()
+                        .click());
         Allure.step("Вводим значение в поиске",
-                ()->elementsPage.searchWebTables(search));
+                ()->page.searchWebTables(search));
         Allure.step("Проверяем отображаемые значения",
-                ()->$$x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]").shouldHave(texts(search)));
+                ()->$$x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]")
+                        .shouldHave(texts(search)));
     }
     @Test
     @Owner("osipov_vr")
@@ -275,19 +313,20 @@ public class ElementsTest extends BaseTest {
     @Description("Редактирование записей в разделе Web Tables")
     @DisplayName("9.Редактирование записей в разделе Web Tables")
     public void editWebTables()  {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Web Tables ",
-                elementsPage::clickWebTables);
+                ()->page
+                        .getButtonWebTables()
+                        .click());
         Allure.step("Кликаем  на кнопку редактирования",
-                elementsPage::editWebTables);
+                ()-> page
+                        .getEditWebTables()
+                        .click());
         Allure.step("Изменяем значения  строки",
-                ()->elementsPage.sendKeysWebTables(NAME, LAST_NAME, EMAIL, AGE , SALARY, DEPARTMENT));
+                ()->page.sendKeysWebTables(NAME, LAST_NAME, EMAIL, AGE , SALARY, DEPARTMENT));
         Allure.step("Подтверждаем изменения",
-                elementsPage::clickButtonSubmit);
+                ()-> page
+                        .getButtonSubmit()
+                        .click());
         Allure.step("Проверяем значения строки после редактирования",
                 ()->{
                     String ACTUAL_FIRST_NAME = $x("//*[@id='app']/div/div/div[2]/div[2]/div[1]/div[3]/div[1]/div[2]/div[1]/div/div[1]").getText();
@@ -310,23 +349,24 @@ public class ElementsTest extends BaseTest {
     @Description("Добавление записей в разделе Web Tables")
     @DisplayName("10.Добавление записей в разделе Web Tables")
     public void newWebTables() {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Web Tables ",
-                elementsPage::clickWebTables);
-        String [] actualTables = elementsPage.getTables();
+                ()->page
+                        .getButtonWebTables()
+                        .click());
+        String [] actualTables = page.getTables();
         Allure.step("Кликаем  на кнопку Add",
-                elementsPage::newWebTables);
+                ()->page
+                        .getNewWebTables()
+                        .click());
         Allure.step("Заполняем поля данным",
-                ()->elementsPage.sendKeysWebTables(NAME, LAST_NAME, EMAIL, AGE , SALARY, DEPARTMENT));
+                ()->page.sendKeysWebTables(NAME, LAST_NAME, EMAIL, AGE , SALARY, DEPARTMENT));
         Allure.step("Подтверждаем создание",
-                elementsPage::clickButtonSubmit);
+                ()-> page
+                        .getButtonSubmit()
+                        .click());
         Allure.step("Проверяем значения строки после создания",
                 ()-> {
-                    String [] expectedTables = elementsPage.getTables();
+                    String [] expectedTables = page.getTables();
                     Assertions.assertNotEquals(actualTables, expectedTables);
                 });
     }
@@ -336,19 +376,18 @@ public class ElementsTest extends BaseTest {
     @Description("Удаление записей в разделе Web Tables")
     @DisplayName("11.Удаление записей в разделе Web Tables")
     public void deleteWebTables() {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Web Tables ",
-                elementsPage::clickWebTables);
-        String [] actualTables = elementsPage.getTables();
+                ()->page
+                        .getButtonWebTables()
+                        .click());
+        String [] actualTables = page.getTables();
         Allure.step("Кликаем  на кнопку удаление",
-                elementsPage::deleteWebTables);
+                ()->page
+                        .getDeleteWebTables()
+                        .click());
         Allure.step("Проверяем что строка удалилась",
                 ()-> {
-                    String [] expectedTables = elementsPage.getTables();
+                    String [] expectedTables = page.getTables();
                     Assertions.assertNotEquals(actualTables,expectedTables);
                 });
     }
@@ -358,36 +397,45 @@ public class ElementsTest extends BaseTest {
     @Description("Открываем  раздел Buttons")
     @DisplayName("12.Открываем  раздел Buttons")
     public void openButtons() {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Buttons",
-                elementsPage::clickButtons);
+                ()-> {
+                    page
+                            .getButtonButtons()
+                            .click();
+                    Selenide.sleep(2000);
+                });
         Allure.step("Проверяем содержимое раздела Buttons",
-                elementsPage::checkButtons);
+                ()-> {
+            page
+                    .getButtonClickClick()
+                    .shouldBe(Condition.visible);
+            page
+                    .getButtonDoubleClick()
+                    .shouldBe(Condition.visible);
+            page
+                    .getButtonRightClick()
+                    .shouldBe(Condition.visible);
+                });
     }
     @Test
     @Owner("osipov_vr")
     @Order(13)
     @Description("Проверка двойного клика")
     @DisplayName("13.Проверка двойного клика")
-    public void checkDoubleClick() throws InterruptedException {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
+    public void checkDoubleClick()  {
         Allure.step("Открываем раздел Buttons",
                 ()->{
-                    elementsPage.clickButtons();
-                    Thread.sleep(3000);
+                    page
+                            .getButtonButtons()
+                            .click();
+                    Selenide.sleep(2000);
                 });
 
         Allure.step("Деляем двойник клик на соответсвующую кнопку",
                 ()->{
-                    elementsPage.checkDoubleClick();
+                    page
+                            .getButtonDoubleClick()
+                            .doubleClick();
                     String message = $x("//*[@id='doubleClickMessage']").getOwnText();
                     Assertions.assertEquals(message, "You have done a double click");
                 });
@@ -398,24 +446,22 @@ public class ElementsTest extends BaseTest {
     @Order(14)
     @Description("Проверка правого клика")
     @DisplayName("14.Проверка правого клика")
-    public void checkRightClick() throws InterruptedException {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
+    public void checkRightClick()  {
         Allure.step("Открываем раздел Buttons",
                 ()->{
-                    elementsPage.clickButtons();
-                    Thread.sleep(3000);
+                    page
+                            .getButtonButtons()
+                            .click();
+                    Selenide.sleep(2000);
                 });
         Allure.step("Деляем правый клик на соответсвующую кнопку",
                 ()->{
-                    elementsPage.checkRightClick();
+                    page
+                            .getButtonRightClick()
+                            .contextClick();
                     String message = $x("//*[@id='rightClickMessage']").getOwnText();
                     Assertions.assertEquals(message, "You have done a right click");
                 });
-
     }
     @Test
     @Owner("osipov_vr")
@@ -423,15 +469,19 @@ public class ElementsTest extends BaseTest {
     @Description("Открываем  раздел Links")
     @DisplayName("15.Открываем  раздел Links")
     public void openLinks() {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Links",
-                elementsPage::clickButtonLinks);
+                ()->page
+                        .getButtonLinks()
+                        .click());
         Allure.step("Проверяем содержимое раздела Links",
-                elementsPage::checkLinks);
+                ()-> {
+            page
+                    .getOpenNewTabsLinks()
+                    .shouldBe(Condition.visible);
+            page
+                    .getSendAnApiCall()
+                    .shouldBe(Condition.visible);
+                });
     }
     @Test
     @Owner("osipov_vr")
@@ -439,24 +489,29 @@ public class ElementsTest extends BaseTest {
     @Description("Открываем  новую вкладку")
     @DisplayName("16.Открываем  новую вкладку")
     public void openNewWindows() {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Links",
-                elementsPage::clickButtonLinks);
+                ()->page
+                        .getButtonLinks()
+                        .click());
         Allure.step("Кликаем на линку Home",
-                elementsPage::clickNewWindowLinks);
+                ()-> page
+                        .getNewWindowHome()
+                        .click());
         Allure.step("Проверяем что открылось новое окно",
                 ()->{
                     switchTo().window(1);
-                    $x("//h5[text()='Elements']").shouldBe(Condition.visible);
-                    $x("//h5[text()='Forms']").shouldBe(Condition.visible);
-                    $x("//h5[text()='Alerts, Frame & Windows']").shouldBe(Condition.visible);
-                    $x("//h5[text()='Widgets']").shouldBe(Condition.visible);
-                    $x("//h5[text()='Interactions']").shouldBe(Condition.visible);
-                    $x("//h5[text()='Game Store Application']").shouldBe(Condition.visible);
+                    $x("//h5[text()='Elements']")
+                            .shouldBe(Condition.visible);
+                    $x("//h5[text()='Forms']")
+                            .shouldBe(Condition.visible);
+                    $x("//h5[text()='Alerts, Frame & Windows']")
+                            .shouldBe(Condition.visible);
+                    $x("//h5[text()='Widgets']")
+                            .shouldBe(Condition.visible);
+                    $x("//h5[text()='Interactions']")
+                            .shouldBe(Condition.visible);
+                    $x("//h5[text()='Game Store Application']")
+                            .shouldBe(Condition.visible);
                     closeWindow();
                 });
 
@@ -467,15 +522,19 @@ public class ElementsTest extends BaseTest {
     @Description("Открываем  раздел Upload and Download")
     @DisplayName("17.Открываем  раздел Upload and Download")
     public void openUploadAndDownload() {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Upload and Download",
-                elementsPage::openUploadAndDownload);
+                ()-> page
+                        .getButtonUploadAndDownload()
+                        .click());
         Allure.step("Проверяем содержимое раздела Upload and Download",
-                elementsPage::checkUploadAndDownload);
+                ()-> {
+            page
+                    .getButtonUpload()
+                    .shouldBe(Condition.visible);
+            page
+                    .getButtonDownload()
+                    .shouldBe(Condition.visible);
+                });
     }
     @Test
     @Owner("osipov_vr")
@@ -483,16 +542,13 @@ public class ElementsTest extends BaseTest {
     @Description("Скачиваем файл")
     @DisplayName("18.Скачиваем файл")
     public void Download() {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Upload and Download",
-                elementsPage::openUploadAndDownload);
+                ()-> page
+                        .getButtonUploadAndDownload()
+                        .click());
         Allure.step("Нажимаем на кнопку Download и проверяем что файл скачался",
                 ()->{
-                    String result = elementsPage.clickDownload();
+                    String result = page.clickDownload();
                     Assertions.assertEquals(result,"sticker.png");
                 });
     }
@@ -502,16 +558,14 @@ public class ElementsTest extends BaseTest {
     @Description("Загружаем файл")
     @DisplayName("19.Загружаем файл")
     public void Upload()  {
-        ElementsPage elementsPage = new ElementsPage();
-        Allure.step("Открываем главную страницу",
-                ()-> elementsPage.openMainPage(homeURL));
-        Allure.step("Переходим на вкладку Elements",
-                elementsPage::clickElements);
         Allure.step("Открываем раздел Upload and Download",
-                elementsPage::openUploadAndDownload);
+                ()-> page
+                        .getButtonUploadAndDownload()
+                        .click());
         Allure.step("Нажимаем на кнопку Upload",
-                elementsPage::clickUpload);
+                page::clickUpload);
         Allure.step("Проверяем что файл загрузился",
-                ()->$x("//*[@id='uploadedFilePath']").shouldBe(Condition.visible));
+                ()->$x("//*[@id='uploadedFilePath']")
+                        .shouldBe(Condition.visible));
     }
 }

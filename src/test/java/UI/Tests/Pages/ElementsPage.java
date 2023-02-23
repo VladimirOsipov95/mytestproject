@@ -2,6 +2,7 @@ package UI.Tests.Pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import lombok.Getter;
 import org.openqa.selenium.Keys;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,8 +11,11 @@ import java.util.Objects;
 import static com.codeborne.selenide.Selenide.$x;
 import static org.junit.Assert.assertNotNull;
 
-
+@Getter
 public class ElementsPage {
+    public void openMainPage(String url) {
+        Selenide.open(url);
+    }
     private final SelenideElement buttonElements = $x("//h5[text()='Elements']"); // Открываем Elements
     private final SelenideElement buttonTextBox = $x("//span[text()='Text Box']"); // Находим раздел "TextBox"
     private final SelenideElement fullName = $x("//input[@class=' mr-sm-2 form-control']"); // Находим поле "Имя"
@@ -48,7 +52,7 @@ public class ElementsPage {
     private final SelenideElement buttonButtons = $x("//span[text()='Buttons']"); // Находим раздел "Buttons"
     private final SelenideElement buttonDoubleClick = $x("//button[text()='Double Click Me']"); // Находим кнопку  "Double Click Me"
     private final SelenideElement buttonRightClick = $x("//button[text()='Right Click Me']"); // Находим кнопку  "Right Click Me"
-    private final SelenideElement buttonClickClick = $x("//*[@id='TYjkE']"); // Находим кнопку  "Click Me"
+    private final SelenideElement buttonClickClick = $x("//*[text()=\"Click Me\"]"); // Находим кнопку  "Click Me"
     private final SelenideElement buttonLinks = $x("//span[text()='Links']"); // Находим раздел "Links"
     private final SelenideElement openNewTabsLinks = $x("//*[@id='linkWrapper']/h5[1]/strong"); // Находим раздел с сылками на новое окно
     private final SelenideElement sendAnApiCall = $x("//*[@id='linkWrapper']/h5[2]/strong"); // Находим раздел с сылками на апи
@@ -56,29 +60,6 @@ public class ElementsPage {
     private final SelenideElement buttonUploadAndDownload = $x("//span[text()='Upload and Download']"); // Находим раздел "Upload And Download"
     private final SelenideElement buttonDownload = $x("//a[@href='images/sticker.png']"); // Находим кнопку "Download"
     private final SelenideElement buttonUpload = $x("//*[@id='uploadFile']"); // Находим кнопку "Upload"
-
-
-
-    public void openMainPage(String url) {
-        Selenide.open(url);
-    }
-
-    public SelenideElement getFullName() {
-        return fullName;
-    }
-    public SelenideElement getEmail () {
-        return email;
-    }
-    public SelenideElement getCurrentAddress () {
-        return currentAddress;
-    }
-    public SelenideElement getPermanentAddress () {
-        return permanentAddress;
-    }
-    public SelenideElement getButtonSubmit () {
-        return buttonSubmit;
-    }
-
     public String [] getTables () {
         return tablesWebTables.getText().split(" ");
     }
@@ -105,12 +86,6 @@ public class ElementsPage {
         departmentWebTables.click();
         clearAndType(departmentWebTables, department);
     }
-    public void clickElements () {
-        buttonElements.click();
-    }
-    public void clickButtonTextBox () {
-        buttonTextBox.click();
-    }
     public void fullName (){
         fullName.click();
         fullName.sendKeys("Vladimir");
@@ -127,118 +102,15 @@ public class ElementsPage {
         permanentAddress.click();
         permanentAddress.sendKeys("Moscow");
     }
-    public void clickButtonSubmit () {
-        buttonSubmit.click();
-    }
-    public void clickButtonCheckBox () {
-        buttonCheckBox.click();
-    }
-    public SelenideElement getHome () {
-        return buttonHome;
-    }
-    public void clickHome () {
-        buttonHome.click();
-    }
-    public void clickDesktop () {
-        buttonDesktop.click();
-    }
-    public void clickDocuments () {
-        buttonDocuments.click();
-    }
-    public void clickDownloads () {
-        buttonDownloads.click();
-    }
-    public void clickCheckBoxDesktop () {
-        checkBoxDesktop.click();
-    }
-    public void clickCheckBoxDocuments () {
-        checkBoxDocuments.click();
-    }
-    public void clickCheckBoxDownloads () {
-        checkBoxDownloads.click();
-    }
-    public void clickCheckBoxHome () {
-        checkBoxHome.click();
-    }
-    public void clickRadioButton () {
-        buttonRadioButton.click();
-    }
-    public SelenideElement getButtonYes () {
-        return buttonYes;
-    }
-    public SelenideElement getButtonImpressive () {
-        return buttonImpressive;
-    }
-    public SelenideElement getButtonNo () {
-        return buttonNo;
-    }
-    public void clickYes () {
-        buttonYes.click();
-    }
-    public SelenideElement getAfterClickRadio () {
-        return afterClickRadio;
-    }
     public String afterClick () {
         return afterClickRadio.getText();
-    }
-    public void clickImpressive () {
-        buttonImpressive.click();
-    }
-    public void clickNo () {
-        buttonNo.click();
-    }
-    public void clickWebTables () {
-        buttonWebTables.click();
     }
     public void searchWebTables (String search) {
         buttonSearchWebTables.click();
         buttonSearchWebTables.sendKeys(search);
     }
-    public void editWebTables () {
-        editWebTables.click();
-    }
-    public void newWebTables () {
-        newWebTables.click();
-    }
-    public void deleteWebTables () {
-        deleteWebTables.click();
-    }
-    public void clickButtons () {
-        buttonButtons.click();
-    }
-
-    public void checkButtons () {
-        buttonDoubleClick.isDisplayed();
-        buttonRightClick.isDisplayed();
-        buttonClickClick.isDisplayed();
-    }
-    public void checkDoubleClick () {
-        buttonDoubleClick.doubleClick();
-    }
-    public void checkRightClick () {
-        buttonRightClick.contextClick();
-    }
-    public void clickButtonLinks () {
-        buttonLinks.click();
-    }
-    public void checkLinks () {
-        openNewTabsLinks.isDisplayed();
-        sendAnApiCall.isDisplayed();
-    }
-
-    public void clickNewWindowLinks () {
-        newWindowHome.click();
-    }
-    public void openUploadAndDownload () {
-        buttonUploadAndDownload.click();
-    }
-    public void checkUploadAndDownload () {
-        buttonUpload.isDisplayed();
-        buttonDownload.isDisplayed();
-    }
     public String clickDownload () throws FileNotFoundException {
         File download = buttonDownload.download();
-        download.getName();
         assertNotNull(download);
         return download.getName();
     }

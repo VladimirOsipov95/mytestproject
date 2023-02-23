@@ -14,7 +14,9 @@ import org.junit.jupiter.api.*;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$x;
 
-
+/**
+ * Проверка работы разделов на вкладке Widgets
+ */
 @Epic("Проверки на вкладке Widgets")
 public class WidgetsTest extends BaseTest {
     WidgetsPage page = new WidgetsPage();
@@ -112,7 +114,9 @@ public class WidgetsTest extends BaseTest {
                         .getButtonAccordian()
                         .click());
         Allure.step("Проверяем что в 1 секции текст" +textSection1,
-                () -> page.getSection1Content().shouldHave(text(textSection1)));
+                () -> page
+                        .getSection1Content()
+                        .shouldHave(text(textSection1)));
         Allure.step("Открываем 2 секцию",
                 () -> {
                     page
@@ -129,7 +133,9 @@ public class WidgetsTest extends BaseTest {
                             .click();
                     Selenide.sleep(1000);
                     Allure.step("Проверяем что в 3 секции текст"+textSection3,
-                            () -> page.getSection3Content().shouldHave(text(textSection3)));
+                            () -> page
+                                    .getSection3Content()
+                                    .shouldHave(text(textSection3)));
                 });
     }
     @Test
@@ -144,8 +150,12 @@ public class WidgetsTest extends BaseTest {
                         .click());
         Allure.step("Проверяем содреждание раздела Slider",
                 () -> {
-            page.getSlider().shouldBe(Condition.visible);
-            page.getSliderInput().shouldBe(Condition.visible);
+            page
+                    .getSlider()
+                    .shouldBe(Condition.visible);
+            page
+                    .getSliderInput()
+                    .shouldBe(Condition.visible);
                 });
     }
     @Test
@@ -161,7 +171,9 @@ public class WidgetsTest extends BaseTest {
         Allure.step("Проверяем работу раздела Slider",
                 () -> {
                     Allure.step("Двигаем слайдер",
-                            () -> page.getSlider().setValue("35"));
+                            () -> page
+                                    .getSlider()
+                                    .setValue("35"));
                     Allure.step("Проверяем что значение слайдера изменилось",
                             () -> Assertions.assertNotEquals("25", page.getSlider().getValue()));
                 });
@@ -178,8 +190,12 @@ public class WidgetsTest extends BaseTest {
                         .click());
         Allure.step("Проверяем содреждание раздела Progress Bar",
                 () -> {
-                    page.getButtonStart().shouldBe(Condition.visible);
-                    page.getProgressBar().shouldBe(Condition.visible);
+                    page
+                            .getButtonStart()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getProgressBar()
+                            .shouldBe(Condition.visible);
                 });
     }
     @Test
@@ -194,29 +210,37 @@ public class WidgetsTest extends BaseTest {
                         .click());
         Allure.step("Нажимаем на кнопку Start",
                 () -> {
-                    page.getButtonStart().click();
+                    page
+                            .getButtonStart()
+                            .click();
                     Allure.step(":Ждем пока Progress Bar достигнет 100%",
                             () -> {
                                 String progress;
                                 do
                                 {
                                     progress = page.getProgressBar().getText();
-                                    Selenide.sleep(1000);
+                                    Selenide.sleep(2000);
                                 }
                                 while (!progress.equals("100%"));
                             });
                 });
         Allure.step("Проверяем что Progrees Bar достиг 100% и появлиась кнопка Reset",
                 () -> {
-                    Assertions.assertEquals("100%", page.getProgressBar().getText());
-                    page.getButtonReset().shouldBe(Condition.visible);
+                    page
+                            .getProgressBar()
+                            .shouldHave(text("100%"));
+                    page
+                            .getButtonReset()
+                            .shouldBe(Condition.visible);
                 });
         Allure.step("Нажимаем на Reset",
                 () -> {
                     page
                             .getButtonReset()
                             .click();
-                    Assertions.assertEquals("0%", page.getProgressBar().getText());
+                    page
+                            .getProgressBar()
+                            .shouldHave(text("0%"));
                 });
     }
     @Test
@@ -231,10 +255,18 @@ public class WidgetsTest extends BaseTest {
                         .click());
         Allure.step("Проверяем содреждание раздела Tabs",
                 () -> {
-                    page.getTabWhat().shouldBe(Condition.visible);
-                    page.getTabOrigin().shouldBe(Condition.visible);
-                    page.getTabUse().shouldBe(Condition.visible);
-                    page.getTabMore().shouldBe(Condition.visible);
+                    page
+                            .getTabWhat()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getTabOrigin()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getTabUse()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getTabMore()
+                            .shouldBe(Condition.visible);
                 });
     }
     @Test
@@ -248,7 +280,9 @@ public class WidgetsTest extends BaseTest {
                         .getButtonTabs()
                         .click());
         Allure.step("Проверяем что в  табе What текст" +textSection1,
-                () -> page.getTextWhat().shouldHave(text(textSection1)));
+                () -> page
+                        .getTextWhat()
+                        .shouldHave(text(textSection1)));
         Allure.step("Открываем таб Origin",
                 () -> {
                     page
@@ -265,10 +299,14 @@ public class WidgetsTest extends BaseTest {
                             .click();
                     Selenide.sleep(1000);
                     Allure.step("Проверяем что в табе Use текст "+textSection3,
-                            () -> page.getTextUse().shouldHave(text(textSection3)));
+                            () -> page
+                                    .getTextUse()
+                                    .shouldHave(text(textSection3)));
                 });
         Allure.step("Проверяем  таб More недоступен",
-                () -> page.getTabMore().shouldBe(Condition.enabled));
+                () -> page
+                        .getTabMore()
+                        .shouldBe(Condition.enabled));
     }
     @Test
     @Owner("osipov_vr")
@@ -276,16 +314,21 @@ public class WidgetsTest extends BaseTest {
     @Description("Открываем  раздел Tool Tips")
     @DisplayName("10.Открываем  раздел Tool Tips")
     public void openToolTips () {
-        //WidgetsPage page = new WidgetsPage();
         Allure.step("Переходим в раздел  ToolTips",
                 () -> page
                         .getButtonToolTips()
                         .click());
         Allure.step("Проверяем содреждание раздела Tabs",
                 () -> {
-                    page.getButtonHover().shouldBe(Condition.visible);
-                    page.getTextField().shouldBe(Condition.visible);
-                    page.getTextArea().shouldBe(Condition.visible);
+                    page
+                            .getButtonHover()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getTextField()
+                            .shouldBe(Condition.visible);
+                    page
+                            .getTextArea()
+                            .shouldBe(Condition.visible);
                 });
     }
     @Test
@@ -311,7 +354,8 @@ public class WidgetsTest extends BaseTest {
                             .getButtonHover()
                             .hover();
                     Allure.step("Проверяем текст в тултипе",
-                            () -> $x("//*[@class='tooltip-inner']").shouldHave(text("You hovered over the Button")));
+                            () -> $x("//*[@class='tooltip-inner']")
+                                    .shouldHave(text("You hovered over the Button")));
                 });
         Allure.step("Проверяем содреждание тултипа у поля",
                 () -> {
@@ -319,19 +363,24 @@ public class WidgetsTest extends BaseTest {
                             .getTextField()
                             .hover();
                     Allure.step("Проверяем текст в тултипе",
-                            () -> $x("//*[@class='tooltip-inner']").shouldHave(text("You hovered over the text field")));
+                            () -> $x("//*[@class='tooltip-inner']")
+                                    .shouldHave(text("You hovered over the text field")));
                 });
         Allure.step("Проверяем содреждание тултипа у Contrary",
                 () -> {
-                    $x("//*[@id=\"texToolTopContainer\"]/a[1]").hover();
+                    $x("//*[@id=\"texToolTopContainer\"]/a[1]")
+                            .hover();
                     Allure.step("Проверяем текст в тултипе",
-                            () -> $x("//*[@class='tooltip-inner']").shouldHave(text("You hovered over the Contrary")));
+                            () -> $x("//*[@class='tooltip-inner']")
+                                    .shouldHave(text("You hovered over the Contrary")));
                 });
         Allure.step("Проверяем содреждание тултипа у 1.10.32",
                 () -> {
-                    $x("//*[@id=\"texToolTopContainer\"]/a[2]").hover();
+                    $x("//*[@id=\"texToolTopContainer\"]/a[2]")
+                            .hover();
                     Allure.step("Проверяем текст в тултипе",
-                            () -> $x("//*[@class='tooltip-inner']").shouldHave(text("You hovered over the 1.10.32")));
+                            () -> $x("//*[@class='tooltip-inner']")
+                                    .shouldHave(text("You hovered over the 1.10.32")));
                 });
     }
 }
