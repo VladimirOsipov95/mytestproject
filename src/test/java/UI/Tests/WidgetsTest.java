@@ -1,7 +1,7 @@
-package UI.Tests.Tests;
+package UI.Tests;
 
 
-import UI.Tests.Pages.WidgetsPage;
+import UI.Pages.WidgetsPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Allure;

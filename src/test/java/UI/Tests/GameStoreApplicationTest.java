@@ -1,6 +1,6 @@
-package UI.Tests.Tests;
+package UI.Tests;
 
-import UI.Tests.Pages.GameStoreApplicationPage;
+import UI.Pages.GameStoreApplicationPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;

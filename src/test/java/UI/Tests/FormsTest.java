@@ -1,6 +1,6 @@
-package UI.Tests.Tests;
+package UI.Tests;
 
-import UI.Tests.Pages.FormsPage;
+import UI.Pages.FormsPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
