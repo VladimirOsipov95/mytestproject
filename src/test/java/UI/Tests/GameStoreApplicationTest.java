@@ -4,13 +4,13 @@ import UI.Pages.GameStoreApplicationPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
-import io.qameta.allure.Allure;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Owner;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 
-@Epic("Проверки на вкладке Game Store Application")
+
+@DisplayName("Проверки на вкладке Game Store Application")
+@Feature("Game Store Application")
+@Epic("UI")
 public class GameStoreApplicationTest extends BaseTest {
     GameStoreApplicationPage page = new GameStoreApplicationPage();
     @BeforeEach

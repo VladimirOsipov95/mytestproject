@@ -2,10 +2,7 @@ package UI.Tests;
 
 import UI.Pages.MainPage;
 import com.codeborne.selenide.Condition;
-import io.qameta.allure.Allure;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Owner;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +10,10 @@ import static com.codeborne.selenide.Selenide.$x;
 /**
  * Проверка открытия  вкладок в главном меню
  */
-@Epic("Проверки перехода по разделам из главного меню")
+
+@DisplayName("Проверки перехода по разделам из главного меню")
+@Feature("Main Menu")
+@Epic("UI")
 public class MainMenuTest extends BaseTest {
     MainPage page = new MainPage();
     @BeforeEach

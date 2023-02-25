@@ -3,41 +3,24 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/build.gradle" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/API/Reqres/Pojo/UserData.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/API/Reqres/Pojo/UserData.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/API/Reqres/Pojo/UserData.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/API/Reqres/Pojo/UserData.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/API/Reqres/Pojo/UserData.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/API/Reqres/Tests/ReqresTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/API/Reqres/Tests/ReqresTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/AFWPage.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/API/Reqres/Tests/ReqresDeleteTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/API/Reqres/Tests/ReqresGetTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/API/Reqres/Tests/ReqresPutTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/API/Reqres/Tests/ReqrestPostTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/AFWPage.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/ElementsPage.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/ElementsPage.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/FormsPage.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/FormsPage.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/GameStoreApplicationPage.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/GameStoreApplicationPage.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/InteractionsPage.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/InteractionsPage.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/MainPage.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/MainPage.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/WidgetsPage.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/WidgetsPage.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/AWFTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/AWFTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/BaseTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/BaseTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/ElementsTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/ElementsTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/FormsTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/FormsTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/GameStoreApplicationTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/GameStoreApplicationTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/InteractionsTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/InteractionsTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/MainMenuTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/MainMenuTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/WidgetsTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Tests/WidgetsTest.java" charset="UTF-8" />
     <file url="PROJECT" charset="windows-1251" />
   </component>

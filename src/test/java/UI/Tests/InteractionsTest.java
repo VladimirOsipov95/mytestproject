@@ -4,10 +4,7 @@ import UI.Pages.InteractionsPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Allure;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Owner;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
@@ -16,7 +13,10 @@ import org.junit.jupiter.api.Test;
 /**
  * Проверка работы разделов на вкладке Interactions
  */
-@Epic("Проверки на вкладке Interactions")
+
+@DisplayName("Проверки на вкладке Interactions")
+@Feature("Game Store ApplicationInteractions")
+@Epic("UI")
 public class InteractionsTest extends BaseTest {
     InteractionsPage page = new InteractionsPage();
     @BeforeEach

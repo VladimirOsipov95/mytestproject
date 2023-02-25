@@ -3,10 +3,7 @@ package UI.Tests;
 import UI.Pages.AFWPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
-import io.qameta.allure.Allure;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Owner;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 
 import java.time.Duration;
@@ -15,7 +12,9 @@ import static com.codeborne.selenide.Selenide.*;
 /**
  * Проверка работы разделов на вкладке Alerts, Frame & Windows
  */
-@Epic("Проверки на вкладке Alerts, Frame & Windows")
+@DisplayName("Проверки на вкладке Alerts, Frame & Windows")
+@Feature("Alerts, Frame & Windows")
+@Epic("UI")
 public class AWFTest extends BaseTest {
     AFWPage page  = new AFWPage();
     @BeforeEach

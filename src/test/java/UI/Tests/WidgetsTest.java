@@ -4,10 +4,7 @@ package UI.Tests;
 import UI.Pages.WidgetsPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
-import io.qameta.allure.Allure;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Owner;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 
 
@@ -17,7 +14,9 @@ import static com.codeborne.selenide.Selenide.$x;
 /**
  * Проверка работы разделов на вкладке Widgets
  */
-@Epic("Проверки на вкладке Widgets")
+@DisplayName("Проверки на вкладке Widgets")
+@Feature("Widgets")
+@Epic("UI")
 public class WidgetsTest extends BaseTest {
     WidgetsPage page = new WidgetsPage();
     @BeforeEach

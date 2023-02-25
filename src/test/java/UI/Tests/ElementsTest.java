@@ -3,10 +3,7 @@ package UI.Tests;
 import UI.Pages.ElementsPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
-import io.qameta.allure.Allure;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Owner;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
@@ -14,8 +11,12 @@ import static com.codeborne.selenide.Selenide.*;
 /**
  *  Проверки вкладок в разделе Elements
  */
-@Epic("Проверки на вкладке Elements")
+
+@DisplayName("Проверки на вкладке Elements")
+@Feature("Elements")
+@Epic("UI")
 public class ElementsTest extends BaseTest {
+
     ElementsPage page = new ElementsPage();
     @BeforeEach
     public void startPage () {
@@ -26,6 +27,8 @@ public class ElementsTest extends BaseTest {
                         .getButtonElements()
                         .click());
     }
+
+
     private final static String homeURL = "http://85.192.34.140:8081/";
     private final static String search = "Alden";
     private final static String NAME = "Vladimir";

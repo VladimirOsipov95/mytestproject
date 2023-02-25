@@ -4,10 +4,7 @@ import UI.Pages.FormsPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Allure;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Owner;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
 
@@ -24,7 +21,10 @@ import static com.codeborne.selenide.Selenide.$x;
 /**
  * Проверка работы разделов на вкладке Forms
  */
-@Epic("Проверки на вкладке Forms")
+
+@DisplayName("Проверки на вкладке Forms")
+@Feature("Forms")
+@Epic("UI")
 public class FormsTest extends BaseTest  {
     FormsPage page = new FormsPage();
     @BeforeEach

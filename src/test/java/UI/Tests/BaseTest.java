@@ -18,6 +18,7 @@ abstract class BaseTest {
         Configuration.headless = true; // false чтобы видеть как автотесты прогоняются в браузере
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
+
     @BeforeAll
     public static void setUp() {
         start();
