@@ -66,9 +66,4 @@ public class ReqrestPostTest {
          */
         Assertions.assertEquals("Missing password", unsuccessReg.getError());
     }
-    /**
-     * Используя сервис https://reqres.in/ убедиться, что операция LIST<RESOURCE> возвращает данные,
-     * отсортированные по годам.
-     */
-
 }

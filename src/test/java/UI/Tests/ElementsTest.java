@@ -28,7 +28,6 @@ public class ElementsTest extends BaseTest {
                         .click());
     }
 
-
     private final static String homeURL = "http://85.192.34.140:8081/";
     private final static String search = "Alden";
     private final static String NAME = "Vladimir";
