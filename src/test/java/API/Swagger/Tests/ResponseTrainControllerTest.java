@@ -22,10 +22,10 @@ import static io.restassured.RestAssured.given;
 @Epic("API")
 public class ResponseTrainControllerTest {
     private final static String URL = "http://85.192.34.140:8080/";
-    private final static String brand = "ALfa Romeo";
+    private final static String brand = "Alfa Romeo";
     private final static String version = "1.0.2";
     @Test
-    @Owner("osipov_vr")// сделать проверку на конкретную модель
+    @Owner("osipov_vr")
     @Order(1)
     @Description("Проверка получения списка машин")
     @DisplayName("1.Проверка получения списка машин")
@@ -44,23 +44,12 @@ public class ResponseTrainControllerTest {
          */
         List<String> brands = carsBrands.stream().map(CarsBrand::getBrand).collect(Collectors.toList());
         Assertions.assertTrue(brands.contains(brand));
-    }
-    @Test
-    @Owner("osipov_vr")
-    @Order(3) // надо сделать
-    @Description("Проверка редиректа на 301 статус-код")
-    @DisplayName("3.Проверка редиректа на 301 статус-код")
-    public void redirectTest() {
         /**
-         * 1. Используя сервис  отправляем запрос на получение актуальной версию API приложения
+         * 3. Проверяем что в списке нет дублирующихся элементов
          */
-        Specification.installSpecification(Specification.requestSpec(URL), Specification.responseSpec(200));
-        given()
-                .when()
-                .get("/api/easy/redirect")
-                .then()
-                .log().all();
+        Assertions.assertTrue(carsBrands.stream().allMatch(x->carsBrands.indexOf(x) == carsBrands.lastIndexOf(x)));
     }
+
     @Test
     @Owner("osipov_vr")
     @Order(4)
@@ -79,6 +68,7 @@ public class ResponseTrainControllerTest {
         /**
          * 2. Проверяем версию приложения
          */
+        Assertions.assertNotNull(versionApp.getApiVersion());
         Assertions.assertEquals(version, versionApp.getApiVersion());
     }
 }

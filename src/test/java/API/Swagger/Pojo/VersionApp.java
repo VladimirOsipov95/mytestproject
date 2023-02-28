@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class VersionApp {
-    public String apiVersion;
+    private String apiVersion;
 
     public VersionApp(String apiVersion) {
         this.apiVersion = apiVersion;

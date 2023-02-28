@@ -7,6 +7,8 @@
     <file url="file://$PROJECT_DIR$/src/test/java/API/Reqres/Tests/ReqresGetTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/API/Reqres/Tests/ReqresPutTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/API/Reqres/Tests/ReqrestPostTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/API/Swagger/Pojo/ErrorResponse.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/API/Swagger/Tests/BasicErrorControllerTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/API/Swagger/Tests/ResponseTrainControllerTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/AFWPage.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/UI/Pages/ElementsPage.java" charset="UTF-8" />
