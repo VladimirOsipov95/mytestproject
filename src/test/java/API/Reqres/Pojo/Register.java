@@ -1,18 +1,13 @@
 package API.Reqres.Pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Register {
     private String email;
     private String password;
-
-
-    public Register(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-    public Register() {
-        super();
-    }
 }

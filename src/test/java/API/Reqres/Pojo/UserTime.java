@@ -1,18 +1,13 @@
 package API.Reqres.Pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserTime {
     private String name;
     private String job;
-
-    public UserTime(String name, String job) {
-        this.name = name;
-        this.job = job;
-    }
-
-    public UserTime() {
-
-    }
 }

@@ -1,17 +1,13 @@
 package API.Reqres.Pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class SuccessReg {
     private Integer id;
     private String token;
-
-    public SuccessReg(int id, String token) {
-        this.id = id;
-        this.token = token;
-    }
-    public SuccessReg() {
-        super();
-    }
 }
